@@ -24,6 +24,7 @@
         <?php require_once '../views/navbar.php'; ?>
 
         <div class="container">
+
             <div class="row">
                 <div class="col-md-12">
                     <h2>The ZTR Industries Ad Lister 3000</h2>
@@ -57,8 +58,15 @@
             <div class="row">
                 <div class="col-md-12">
                     <h4>Other Stuff of Some Import</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 </div> <!-- End col-md-12 -->
             </div> <!-- End row. --> 
+
         </div> <!-- End container. -->
 
         <?php require_once '../views/footer.php'; ?>
