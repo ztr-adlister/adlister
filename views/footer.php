@@ -1,7 +1,7 @@
 
 
 <footer class="footer">
-	<div class="container">
+	<div class="footer_container">
 
 		<p class="text-muted">All rights reserved ZTR Industires</p>
 		<p>Email: <a href="mailto:someone@ztr.com">someone@ztr.com</a>.</p>
