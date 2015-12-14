@@ -21,7 +21,7 @@
         <link rel="stylesheet" href="../css/main.css">
     </head>
     <body>
-        <?php require_once 'navbar.php'; ?>
+        <?php require_once '../views/navbar.php'; ?>
 
         <div class="container">
             <div class="row">
@@ -61,6 +61,6 @@
             </div> <!-- End row. --> 
         </div> <!-- End container. -->
 
-        <?php require_once 'footer.php'; ?>
+        <?php require_once '../views/footer.php'; ?>
     </body>
 </html>
