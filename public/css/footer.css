@@ -20,7 +20,7 @@ body {
 .footer_container {
   width: auto;
   max-width: 680px;
-  padding: 0 15px;
+  padding: 0 10px;
 }
 .footer_container .text-muted {
   margin: 20px 0;
