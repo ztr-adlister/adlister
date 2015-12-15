@@ -1,6 +1,6 @@
 <?php
-require_once '';
-require_once '';
+require_once '../Auth.php';
+require_once '../Input_adlister.php';
 
 session_start();
 // get the current session id
@@ -41,7 +41,7 @@ if(Auth::attempt($userName, $password))
 
         <div class="container">
             <form method="POST">
-                <label>UserName:</label>
+                <label>Username:</label>
                 <input value="<?= Input::escape($userName)?>" type="text" name="userName" autofocus><br>
                 <label>Password:</label>
                 <input type="password" name="password"><br>
