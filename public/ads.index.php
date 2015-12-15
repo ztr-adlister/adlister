@@ -1,3 +1,40 @@
+<?php
+
+    function pageController()
+    {
+        $adsArray = [
+            'one' => [
+                'id' => 1,
+                'img' => '...',
+                'title' => 'Pencil, slightly used',
+                'price' => '100',
+                'location' => 'Alamo Heights'
+            ], 
+            'two' => [
+                'id' => 2,
+                'img' => '...',
+                'title' => 'Superman #75, near mint',
+                'price' => '200',
+                'location' => 'Lackland'
+            ],
+            'three' => [
+                'id' => 3,
+                'img' => '...',
+                'title' => 'Fish, small limp',
+                'price' => '5',
+                'location' => 'Sea World'
+            ]
+        ];
+
+        return array(
+            'adsArray' => $adsArray
+        );    
+    }
+
+    extract(pageController());
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -44,21 +81,14 @@
                             <th>Title</th>
                             <th>Price</th>
                         </tr> -->
-                        <tr>
-                            <td><img src="..." class="img-responsive fakeimg" alt="Responsive image"></td>
-                            <td>The first item, stuff and things.</td>
-                            <td>$$$</td>
-                        </tr>
-                        <tr>
-                            <td><img src="..." class="img-responsive fakeimg" alt="Responsive image"></td>
-                            <td>The second item, stuff and things.</td>
-                            <td>$$$</td>
-                        </tr>
-                        <tr>
-                            <td><img src="..." class="img-responsive fakeimg" alt="Responsive image"></td>
-                            <td>The third item, stuff and things.</td>
-                            <td>$$$</td>
-                        </tr>   
+                        <?php foreach ($adsArray as $ad): ?>
+                            <tr>
+                                <td><img src="{$ad['img']}" class="img-responsive fakeimg" alt="Responsive image"></td>
+                                <td><?= "{$ad['title']} in {$ad['location']}"; ?></td>
+                                <td>$<?= "{$ad['price']}"; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                        
                     </table>
                 </div> <!-- End col-md-8 -->
             </div> <!-- End row. -->
