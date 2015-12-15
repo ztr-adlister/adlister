@@ -1,28 +1,28 @@
 <?php
-require_once '../utils/Auth.php';
-require_once '../utils/Input.php';
+// require_once '../utils/Auth.php';
+// require_once '../utils/Input.php';
 
-session_start();
-// get the current session id
-$sessionId = session_id();
+// session_start();
+// // get the current session id
+// $sessionId = session_id();
 
-$userName = Input::get('userName');
-$password = Input::get('password');
-$login = '';
+// $userName = Input::get('userName');
+// $password = Input::get('password');
+// $login = '';
 
 
 // why is this an if statement and the line below it, as well? 
-if(Auth::check())
-{
-    header("Location: authorized.php"); 
-    die();
-}
+// if(Auth::check())
+// {
+//     header("Location: authorized.php"); 
+//     die();
+// }
 
-if(Auth::attempt($userName, $password))
-{
-    header("Location: authorized.php");
-    die();
-} 
+// if(Auth::attempt($userName, $password))
+// {
+//     header("Location: authorized.php");
+//     die();
+// } 
 
 ?>
 <!DOCTYPE html>
@@ -35,20 +35,45 @@ if(Auth::attempt($userName, $password))
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/footer.css">
         <link rel="stylesheet" href="../css/main.css">
+        
+        <style type="text/css">
+            .login_container{
+                margin-top: 70px;
+            }
+
+        </style>
+
     </head>
     <body>
         <?php require_once '../views/navbar.php'; ?>
 
-        <div class="container">
-            <form method="POST">
-                <label>Username:</label>
-                <input value="<?= Input::escape($userName)?>" type="text" name="userName" autofocus><br>
-                <label>Password:</label>
-                <input type="password" name="password"><br>
-                <input type="submit">
-            </form>
+        <div class="container login_container">
+            <div class="row">
+                <div class="col-sm-5">
+                    <form class= "form-horizontal" method="POST">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Username:</label>
 
-            <h2><?= $login ?><h2>
+                            <div class="col-sm-4">
+                                <input type="text" name="userName" autofocus><br>
+                            </div>
+                        </div>
+                            
+                        <div class="form-group">   
+                                <label class="control-label col-sm-2">Password:</label>
+
+                            <div class="col-sm-4">
+                                <input type="password" name="password"><br>
+                            </div>    
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="btn btn-default col-sm-2" type="submit">Submit</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>        
+            <!-- <h2><?= $login ?><h2> -->
         </div> <!-- End container. -->
 
         <?php require_once '../views/footer.php'; ?>
