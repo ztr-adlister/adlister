@@ -35,6 +35,7 @@
     <body>
     	<h2 class = "show">Hello, {User}!</h2>
 
+<!-- Ads the user has posted -->
     	<h3 class = "show">Your Ads:</h3>
     	<ul class = "show">
     		<li>Ad1</li>
@@ -44,6 +45,7 @@
     		<li>Ad5</li>
     	</ul>
 
+<!-- Ads the user has responded to -->
     	<h3 class = "show">Ads you have responded to:</h3>
     	<ul class = "show">
     		<li>Ad1</li>

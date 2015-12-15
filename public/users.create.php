@@ -19,6 +19,8 @@
         <?php require_once '../views/navbar.php'; ?>
     <h2 class = "signuphead">Welcome to ZTR Industries!</h2>
     <h3 class = "signuphead">Please enter an email address, username, and password!</h3>
+
+    <!-- The signup form -->
     <form class = "signuphead">
         <p>
             <label for "signupemail">Email</label>

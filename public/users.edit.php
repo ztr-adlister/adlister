@@ -12,6 +12,7 @@
     <body>
     	<?php require_once '../views/navbar.php'; ?>
     	<br><br><br>
+    <!-- Once we have php, this will gray out certain fields -->
     	<form>
     		<p>What do you want to update?</p>
     		<p>
