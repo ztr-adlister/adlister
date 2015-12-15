@@ -5,43 +5,45 @@ require_once 'db_connect.php';
 
 $clearData = 'TRUNCATE ads';
 
-$dbc->exec($ads);
+$dbc->exec($clearData);
 
 $ads = [
-    ['adTitle' => 'Dryer',   'adPrice' => 'two-fiddy', 'adlocation' =>  'Austin, TX', 'adDescrip' => ['Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway.'],
+    ['title' => 'Dryer',   'price' => '50', 'location' =>  'Austin, TX', 'description' => 'Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway', 'image_url'=>'...', ],
     
-    ['adTitle' => 'hanger',   'adPrice' => '70', 'adlocation' =>  'Bucktown, TX', 'adDescrip' => ['Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway.'],
+    ['title' => 'hanger',   'price' => '70', 'location' =>  'Bucktown, TX', 'description' => 'Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway', 'image_url'=>'...'],
 
-    ['adTitle' => 'used sock',   'adPrice' => 'tree-fiddy', 'adlocation' =>  'Dee Eff Dub, TX', 'adDescrip' => ['Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway.'],
+    ['title' => 'used sock',   'price' => '60', 'location' =>  'Dee Eff Dub, TX', 'description' => 'Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway', 'image_url'=>'...'],
 
-    ['adTitle' => 'Fake Jays',   'adPrice' => '$53.27', 'adlocation' =>  'Austin, TX', 'adDescrip' => ['Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway.'],
+    ['title' => 'Fake Jays',   'price' => '53.27', 'location' =>  'Austin, TX', 'description' => 'Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway', 'image_url'=>'...'],
 
-    ['adTitle' => 'Bbq pit',   'adPrice' => '$250', 'adlocation' =>  'Lockhart, TX', 'adDescrip' => ['Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway.'],
+    ['title' => 'Bbq pit',   'price' => '250', 'location' =>  'Lockhart, TX', 'description' => 'Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway', 'image_url'=>'...'],
 
-    ['adTitle' => 'Dryer',   'adPrice' => 'two-fiddy', 'adlocation' =>  'Austin, TX', 'adDescrip' => ['Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway.'],
+    ['title' => 'Dryer',   'price' => '2.50', 'location' =>  'Austin, TX', 'description' => 'Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway', 'image_url'=>'...'],
 
-    ['adTitle' => 'bird\'s nest',   'adPrice' => '$0.50', 'adlocation' =>  'San Antonio, TX', 'adDescrip' => ['Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway.'],
+    ['title' => 'bird\'s nest',   'price' => '0.50', 'location' =>  'San Antonio, TX', 'description' => 'Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway', 'image_url'=>'...'],
 
-    ['adTitle' => 'Cat',   'adPrice' => 'FREE', 'adlocation' =>  'Alamo Heights, TX', 'adDescrip' => ['Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway.']
+    ['title' => 'Cat',   'price' => '0.00', 'location' =>  'Alamo Heights, TX', 'description' => 'Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway', 'image_url'=>'...']
 ];
 
-$query = "INSERT INTO ads (adTitle, adPrice, adLocation, AdDescription) 
-			VALUES (:adTitle, 
-    			:adPrice, 
-    			:adLocation, 
-    			:adDescrip)";
+$query = "INSERT INTO ads (title, price, location, description, image_url) 
+			VALUES (:title, 
+    			:price, 
+    			:location, 
+    			:description,
+                :image_url)";
 
 
 $stmt = $dbc->prepare($query);
 
 foreach ($ads as $ad) {
-	$stmt->bindValue(':adTitle', $ad['adTitle'], PDO::PARAM_STR);
-	$stmt->bindValue(':adPrice', $ad['adPrice'], PDO::PARAM_STR);
-	$stmt->bindValue(':adLocation', $ad['adLocation'], PDO::PARAM_STR);
-	$stmt->bindValue(':adDescrip', $ad['adDescrip'], PDO::PARAM_STR);
+	$stmt->bindValue(':title', $ad['title'], PDO::PARAM_STR);
+	$stmt->bindValue(':price', $ad['price'], PDO::PARAM_STR);
+	$stmt->bindValue(':location', $ad['location'], PDO::PARAM_STR);
+	$stmt->bindValue(':description', $ad['description'], PDO::PARAM_STR);
+    $stmt->bindValue(':image_url', $ad['image_url'], PDO::PARAM_STR);
 	$stmt->execute();
 
     echo "Inserted ID: " . $dbc->lastInsertId() . PHP_EOL;
 }
 
-echo $dbc->getAttribute(PDO::ATTR_CONECTION_STATUS) . "\n";
+echo $dbc->getAttribute(PDO::ATTR_CONNECTION_STATUS) . "\n";
