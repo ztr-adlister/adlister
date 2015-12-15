@@ -17,26 +17,8 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/footer.css">
         <link rel="stylesheet" href="../css/main.css">
+        <link rel="stylesheet" type="text/css" href="/css/reagan.css">
     </head>
-    <style>
-        body {
-            background-color: #E0E0E0;
-        }
-        .signuphead {
-            text-align: center;
-            margin-top: 60px;
-        }
-    /*These line up the inputs neatly*/
-        #em {
-            margin-left: 30px;
-        }
-        #confirm {
-            margin-left: -60px;
-        }
-        #select {
-            margin-left: -150px;
-        }
-    </style>
     <body>
         <?php require_once '../views/navbar.php'; ?>
     <h2 class = "signuphead">Welcome to the ZTR Industries Ad-Lister!</h2>
@@ -60,7 +42,7 @@
             <input type = "password" name = "password" id = "password">
         </p>
     <!-- Confirm Password -->
-        <p id = "confirm">
+        <p id = "confirm1">
             <label for "confirmpassword">Confirm Password</label>
             <input type = "password" name = "confirmpassword" id = "confirmpassword">
         </p>
