@@ -12,6 +12,14 @@
             .clearthetop {
                 margin-top: 50px;
             }
+            .fakeimg {
+                width: 100px;
+                height: 100px;
+                background-color: gray;
+            }
+            table tr td {
+                vertical-align: middle;
+            }
         </style>
     </head>
     <body>
@@ -24,17 +32,34 @@
                         <li><a href ="ads.index.php">Ads Index</a></li>
                         <li><a href="ads.create.php">Post an Ad</a></li>
                         <li><a href = "ads.edit.php">Edit an Ad</a></li>
-                        <li><a href="ads.show.php">Show all Ads</a></li>
+                        <li><a href="ads.show.php">Show one Ad</a></li>
                     </ul>
                 </div> <!-- End col-md-2 -->
 
                 <div class="col-md-8">
                     <h3>All The Ads</h3>
-                    <ul class="list-group">
-                        <li class="list-group-item"><img src="..." class="img-responsive" alt="Responsive image"><p>stuff and things.</p></li>
-                        <li class="list-group-item"><img src="..." class="img-responsive" alt="Responsive image"><p>stuff and things.</p></li>
-                        <li class="list-group-item"><img src="..." class="img-responsive" alt="Responsive image"><p>stuff and things.</p></li>
-                    </ul>    
+                    <table class="table table-bordered">
+                        <!-- <tr>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Price</th>
+                        </tr> -->
+                        <tr>
+                            <td><img src="..." class="img-responsive fakeimg" alt="Responsive image"></td>
+                            <td>The first item, stuff and things.</td>
+                            <td>$$$</td>
+                        </tr>
+                        <tr>
+                            <td><img src="..." class="img-responsive fakeimg" alt="Responsive image"></td>
+                            <td>The second item, stuff and things.</td>
+                            <td>$$$</td>
+                        </tr>
+                        <tr>
+                            <td><img src="..." class="img-responsive fakeimg" alt="Responsive image"></td>
+                            <td>The third item, stuff and things.</td>
+                            <td>$$$</td>
+                        </tr>   
+                    </table>
                 </div> <!-- End col-md-8 -->
             </div> <!-- End row. -->
 
