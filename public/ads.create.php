@@ -38,8 +38,8 @@
                     </ul>
                 </div> <!-- End col-md-2 -->
 
-                <div class="col-md-9">
-                    <h4>Create an Ad</h4>
+                <div class="col-md-8">
+                    <h3>Create an Ad</h3>
                     <form method="POST" action="ads.create.php">
                         <div class="row formmargin">
                             <div class="col-xs-6">    
