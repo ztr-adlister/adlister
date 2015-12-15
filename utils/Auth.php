@@ -1,9 +1,9 @@
 <?php
-// require_once 'public/Log.php'; NEED TO CHANGE TO CORRECT require log
+require_once '../utils/Log.php';
 
 class Auth 
 {
-	public static $password = '';
+	public static $password = 'NEED PASSWORD KEY';
 
 	public static function attempt($userName, $password){ 
 		$log = new Log();

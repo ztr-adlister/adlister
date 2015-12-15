@@ -1,6 +1,6 @@
 <?php
-require_once '../Auth.php';
-require_once '../Input_adlister.php';
+require_once '../utils/Auth.php';
+require_once '../utils/Input.php';
 
 session_start();
 // get the current session id
