@@ -5,7 +5,7 @@ require_once 'db_connect.php';
 
 $clearData = 'TRUNCATE ads';
 
-$dbc->exec($ads)
+$dbc->exec($ads);
 
 $ads = [
     ['adTitle' => 'Dryer',   'adPrice' => 'two-fiddy', 'adlocation' =>  'Austin, TX', 'adDescrip' => ['Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway.'],
