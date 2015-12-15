@@ -1,4 +1,13 @@
+<?php
+/* TODO:
+1) Redirect to login if user is not logged in
+2) Require a model class that will update user data in the database
+3) Make sure that the session started in the login keeps going
+4) Send user to the profile page upon successful update
+*/
+?>
 <!DOCTYPE html>
+<!-- Carried over from the index -->
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -9,41 +18,67 @@
         <link rel="stylesheet" href="../css/footer.css">
         <link rel="stylesheet" href="../css/main.css">
     </head>
+    <style>
+        body {
+            background-color: #E0E0E0;
+        }
+        .edit {
+            text-align: center;
+        }
+    /*These line up the inputs neatly*/
+        #confirm {
+            margin-left: -90px;
+        }
+        #em {
+            margin-left: 30px;
+        }
+    </style>
     <body>
     	<?php require_once '../views/navbar.php'; ?>
-    	<br><br><br>
-    <!-- Once we have php, this will gray out certain fields -->
-    	<form>
-    		<p>What do you want to update?</p>
-    		<p>
-    		<label><input type = "checkbox" id = "update1" name="update[]" value = "email">Email</label>
-    		</p>
-    		<p>
-    		<label><input type = "checkbox" id = "update2" name = "update[]" value = "username">Username</label>
-    		</p>
-    		<p>
-    		<label><input type = "checkbox" id = "update3" name = "update[]" value = "password">Password</label>
-    		</p>
-    	</form>
-    	<br>
-    	<form>
-    		<p>
+        <!-- Puts text below the navbar -->
+    	<br><br><br><br>
+        <h5 class = "edit">Enter new information below (If you do not want to update a certain field, enter your old information in it)</h5>
+    <!-- The edit form -->
+    	<form class = "edit" method = "POST" action = "users.edit.php">
+        <!-- Update Email -->
+    		<p id = "em">
     			<label for "updatemail">Email</label>
-    			<input type = "text" name = "updatemail" id = "updatemail">
+    			<input type = "text"  name = "updatemail" id = "updatemail">
     		</p>
+        <!-- Update Username -->
     		<p>
     			<label for "updatename">Username</label>
     			<input type = "text" name = "updatename" id = "updatename">
     		</p>
+        <!-- Update Password -->
     		<p>
     			<label for "updatepassword">Password</label>
-    			<input type ="text" name = "updatepassword" id = "updatepassword">
+    			<input type ="password" name = "updatepassword" id = "updatepassword">
     		</p>
-    		<p>
+        <!-- Confirm Updated Password -->
+    		<p id = "confirm">
     			<label for "updateconfirm">Confirm New Password</label>
-    			<input type = "text" name = "updateconfirm" id = "updateconfirm">
+    			<input type = "password" name = "updateconfirm" id = "updateconfirm">
     		</p>
-    		<button type = "submit" value = "submit">Update</button>
+        <!-- Update Box Color -->
+            <p>
+                <label for "updatebox">Box Color</label>
+                <select id = "boxcolor" name = "boxcolor">
+                    <option selected disabled>Select a Color</option>
+                    <option value = "red">Red</option>
+                    <option value = "orange">Orange</option>
+                    <option value = "yellow">Yellow</option>
+                    <option value = "green">Green</option>
+                    <option value = "blue">Blue</option>
+                    <option value = "purple">Purple</option>
+                    <option value = "brown">Brown</option>
+                    <option value = "black">Black</option>
+                    <option value = "papayawhip">Papayawhip</option>
+                    <option value = "salmon">Salmon</option>
+                    <option value = "burlywood">Burlywood</option>
+                </select>
+            </p>
+    		<button class = "btn btn-primary" type = "submit" value = "submit">Update</button>
     	</form>
     </body>
      <?php require_once '../views/footer.php'; ?>
