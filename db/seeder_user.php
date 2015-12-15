@@ -17,7 +17,7 @@ $users = [
     ['username' => 'Tony', 'password' => 'tango', 'email' => 'tony@ztr.com', 'boxcolor' => 'green']
 ];
 
-$stmt = $dbc->prepare('INSERT INTO contacts (username, password, email, boxcolor) VALUES (:username, :password, :email, :boxcolor)');
+$stmt = $dbc->prepare('INSERT INTO users (username, password, email, boxcolor) VALUES (:username, :password, :email, :boxcolor)');
 
 foreach ($users as $user) {
     $stmt->bindValue(':username', $user['username'], PDO::PARAM_STR);
