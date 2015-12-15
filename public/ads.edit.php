@@ -12,6 +12,16 @@
             .clearthetop {
                 margin-top: 50px;
             }
+            .radiomargin {
+                margin-left: 10px;
+            }
+            .formmargin {
+                margin-bottom: 10px;
+            }
+            .methodmargin {
+                margin-top: 15px;
+                margin-bottom: 5px;
+            }
         </style>
     </head>
     <body>
@@ -29,7 +39,7 @@
                 </div> <!-- End col-md-2 -->
 
                 <div class="col-md-8">
-                    <h3>Edit</h3>
+                    <h3>Edit an Ad</h3>
                     <form method="POST" action="ads.create.php">
                         <div class="row formmargin">
                             <div class="col-xs-6">    
