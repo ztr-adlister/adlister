@@ -1,3 +1,24 @@
+<?PHP
+
+function pageController()
+{
+
+    $adArray = [
+    'adTitle' => 'washer',
+    'adPrice' => '200',
+    'adLocation' => 'Austin, TX',
+    'adDescrip' => 'Buy this washer!'
+    ];
+
+    return array(
+        'adArray' => $adArray
+    );   
+}
+
+extract(pageController());
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -36,23 +57,19 @@
                 <div class="col-md-8">
                     <div class="row">
                         <div class="col-md-6">
-                            <h3>Ad Title Here</h3>
+                            <h3><?= $adArray['adTitle'] ?></h3>
                         </div> <!-- End col-md-6 -->
                         <div class="col-md-3">
-                            <h3>Ad Price</h3>
+                            <h3><?= $adArray['adPrice'] ?></h3>
                         </div> <!-- End col-md-3 -->
                         <div class="col-md-3">
-                            <h3>Location</h3>
+                            <h3><?= $adArray['adLocation'] ?></h3>
                         </div> <!-- End col-md-3 -->
                     </div> <!-- End row. -->
                     <div class="row">
                         <div class="col-md-12">
                             <img src="..." class="img-responsive fakeimg" alt="Responsive image">
-                            <p>Write up about the item. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <p><?= $adArray['adDescrip'] ?></p>
                         </div> <!-- End col-md-12 -->
                     </div> <!-- End row. -->
                 </div> <!-- End col-md-8 -->
