@@ -49,27 +49,23 @@
 
         <div class="container login_container">
             <div class="row">
-                <div class="col-sm-5">
+                <div class="col-sm-4 text-center">
                     <form class= "form-horizontal" method="POST">
                         <div class="form-group">
-                            <label class="control-label col-sm-2">Username:</label>
-
-                            <div class="col-sm-4">
+                            <label class="control-label col-sm-5">Username:</label>
+                            <div class="col-sm-6">
                                 <input type="text" name="userName" autofocus><br>
                             </div>
                         </div>
                             
                         <div class="form-group">   
-                                <label class="control-label col-sm-2">Password:</label>
-
-                            <div class="col-sm-4">
+                                <label class="control-label col-sm-5">Password:</label>
+                            <div class="col-sm-6">
                                 <input type="password" name="password"><br>
                             </div>    
                         </div>
-                        <div class="form-group text-center">
-                            <button class="btn btn-default col-sm-2" type="submit">Submit</button>
-                        </div>
                         
+                        <button class="btn btn-default" type="submit">Submit</button>
                     </form>
                 </div>
             </div>        
