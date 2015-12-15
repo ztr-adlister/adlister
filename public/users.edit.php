@@ -17,22 +17,8 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/footer.css">
         <link rel="stylesheet" href="../css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/reagan.css">
     </head>
-    <style>
-        body {
-            background-color: #E0E0E0;
-        }
-        .edit {
-            text-align: center;
-        }
-    /*These line up the inputs neatly*/
-        #confirm {
-            margin-left: -90px;
-        }
-        #em {
-            margin-left: 30px;
-        }
-    </style>
     <body>
     	<?php require_once '../views/navbar.php'; ?>
         <!-- Puts text below the navbar -->
@@ -56,7 +42,7 @@
     			<input type ="password" name = "updatepassword" id = "updatepassword">
     		</p>
         <!-- Confirm Updated Password -->
-    		<p id = "confirm">
+    		<p id = "confirm2">
     			<label for "updateconfirm">Confirm New Password</label>
     			<input type = "password" name = "updateconfirm" id = "updateconfirm">
     		</p>
