@@ -7,11 +7,11 @@ require_once 'adlister_login.php';
 
 require_once 'db_connect.php';
 
-$clearout = 'TRUNCATE contacts';
+$clearout = 'TRUNCATE users';
 
 $dbc->exec($clearout);
 
-$contacts = [
+$users = [
     ['username' => 'Zee', 'password' => 'zebra', 'email' => 'zee@ztr.com', 'boxcolor' => 'red'],
     ['username' => 'Reagan', 'password' => 'romeo', 'email' => 'reagan@ztr.com', 'boxcolor' => 'blue'],
     ['username' => 'Tony', 'password' => 'tango', 'email' => 'tony@ztr.com', 'boxcolor' => 'green']
@@ -19,11 +19,11 @@ $contacts = [
 
 $stmt = $dbc->prepare('INSERT INTO contacts (username, password, email, boxcolor) VALUES (:username, :password, :email, :boxcolor)');
 
-foreach ($contacts as $contact) {
-    $stmt->bindValue(':username', $contact['username'], PDO::PARAM_STR);
-    $stmt->bindValue(':password', $contact['password'], PDO::PARAM_STR);
-    $stmt->bindValue(':email', $contact['email'], PDO::PARAM_STR);
-    $stmt->bindValue(':boxcolor', $contact['boxcolor'], PDO::PARAM_STR);
+foreach ($users as $user) {
+    $stmt->bindValue(':username', $user['username'], PDO::PARAM_STR);
+    $stmt->bindValue(':password', $user['password'], PDO::PARAM_STR);
+    $stmt->bindValue(':email', $user['email'], PDO::PARAM_STR);
+    $stmt->bindValue(':boxcolor', $user['boxcolor'], PDO::PARAM_STR);
     
     $stmt->execute();
 
