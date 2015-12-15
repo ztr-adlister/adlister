@@ -1,6 +1,6 @@
 <?php
-	require 'db_connect.php';
 	require 'adlister_login.php';
+	require 'db_connect.php';
 	$dbc->exec('DROP TABLE IF EXISTS users');
 
 	$query1 = 'CREATE TABLE users (
