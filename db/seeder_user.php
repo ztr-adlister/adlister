@@ -7,14 +7,16 @@ require_once 'adlister_login.php';
 
 require_once 'db_connect.php';
 
+require_once 'hashedpw.php';
+
 $clearout = 'TRUNCATE users';
 
 $dbc->exec($clearout);
 
 $users = [
-    ['username' => 'Zee', 'password' => 'zebra', 'email' => 'zee@ztr.com', 'boxcolor' => 'red'],
-    ['username' => 'Reagan', 'password' => 'romeo', 'email' => 'reagan@ztr.com', 'boxcolor' => 'blue'],
-    ['username' => 'Tony', 'password' => 'tango', 'email' => 'tony@ztr.com', 'boxcolor' => 'green']
+    ['username' => 'Zee', 'password' => $zeeHashed, 'email' => 'zee@ztr.com', 'boxcolor' => 'red'],
+    ['username' => 'Reagan', 'password' => $reaganHashed, 'email' => 'reagan@ztr.com', 'boxcolor' => 'blue'],
+    ['username' => 'Tony', 'password' => $tonyHashed, 'email' => 'tony@ztr.com', 'boxcolor' => 'green']
 ];
 
 $stmt = $dbc->prepare('INSERT INTO users (username, password, email, boxcolor) VALUES (:username, :password, :email, :boxcolor)');
