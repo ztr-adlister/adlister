@@ -5,6 +5,21 @@
 3) Make sure that the session started in the login keeps going
 4) Send user to the profile page upon successful update
 */
+require_once '../db/adlister_login.php';
+require_once '../db/db_connect.php';
+require_once '../models/Basemodel.php';
+require_once '../models/User.php';
+require_once '../utils/Auth.php';
+session_start();
+if (!Auth::check()) {
+    header('Location: auth.login.php', true, 307);
+    die();
+}
+$stmt = $dbc->prepare('SELECT * FROM users WHERE username = :username');
+$stmt->bindValue(':username', $_SESSION['Loggedinuser']);
+$stmt->execute();
+$userdata = $stmt->fetch(PDO::FETCH_ASSOC);
+
 ?>
 <!DOCTYPE html>
 <!-- Carried over from the index -->
@@ -29,12 +44,12 @@
         <!-- Update Email -->
     		<p id = "em">
     			<label for "updatemail">Email</label>
-    			<input type = "text"  name = "updatemail" id = "updatemail">
+    			<input type = "text"  name = "updatemail" id = "updatemail" value = "<?=$userdata['email'];?>">
     		</p>
         <!-- Update Username -->
     		<p>
     			<label for "updatename">Username</label>
-    			<input type = "text" name = "updatename" id = "updatename">
+    			<input type = "text" name = "updatename" id = "updatename" value = "<?=$_SESSION['Loggedinuser']?>">
     		</p>
         <!-- Update Password -->
     		<p>
