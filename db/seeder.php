@@ -22,7 +22,7 @@ $ads = [
 
     ['title' => 'bird\'s nest',   'price' => '0.50', 'location' =>  'San Antonio, TX', 'description' => 'Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway', 'image_url'=>'...'],
 
-    ['title' => 'Cat',   'price' => '0.00', 'location' =>  'Alamo Heights, TX', 'description' => 'Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway', 'image_url'=>'...']
+    ['title' => 'Cat',   'price' => '0.00', 'location' =>  'Alamo Heights, TX', 'description' => 'Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-https://github.com/ztr-adlister/adlisterscoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway', 'image_url'=>'...']
 ];
 
 $query = "INSERT INTO ads (title, price, location, description, image_url) 
