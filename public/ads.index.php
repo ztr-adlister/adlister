@@ -1,30 +1,11 @@
 <?php
 
+    require_once '../models/Ad.php';
+
     function pageController()
     {
-        $adsArray = [
-            'one' => [
-                'id' => 1,
-                'img' => '...',
-                'title' => 'Pencil, slightly used',
-                'price' => '100',
-                'location' => 'Alamo Heights'
-            ], 
-            'two' => [
-                'id' => 2,
-                'img' => '...',
-                'title' => 'Superman #75, near mint',
-                'price' => '200',
-                'location' => 'Lackland'
-            ],
-            'three' => [
-                'id' => 3,
-                'img' => '...',
-                'title' => 'Fish, small limp',
-                'price' => '5',
-                'location' => 'Sea World'
-            ]
-        ];
+
+        $adsArray = Ad::all();
 
         return array(
             'adsArray' => $adsArray
@@ -84,7 +65,7 @@
                         <?php foreach ($adsArray as $ad): ?>
                             <tr>
                                 <td><img src="{$ad['img']}" class="img-responsive fakeimg" alt="Responsive image"></td>
-                                <td><?= "{$ad['title']} in {$ad['location']}"; ?></td>
+                                <td><a href="ads.show.php"><?= "{$ad['title']} in {$ad['location']}"; ?></a></td>
                                 <td>$<?= "{$ad['price']}"; ?></td>
                             </tr>
                         <?php endforeach; ?>
