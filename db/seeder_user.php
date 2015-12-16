@@ -9,7 +9,7 @@ require_once 'db_connect.php';
 
 require_once 'hashedpw.php';
 
-$clearout = 'TRUNCATE users';
+$clearout = 'DELETE FROM users';
 
 $dbc->exec($clearout);
 

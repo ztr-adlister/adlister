@@ -25,8 +25,9 @@ $ads = [
     ['title' => 'Cat',   'price' => '0.00', 'location' =>  'Alamo Heights, TX', 'description' => 'Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-https://github.com/ztr-adlister/adlisterscoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway', 'image_url'=>'...']
 ];
 
-$query = "INSERT INTO ads (title, price, location, description, image_url) 
-			VALUES (:title, 
+$query = "INSERT INTO ads (user_id, title, price, location, description, image_url) 
+			VALUES (:user_id, 
+                :title, 
     			:price, 
     			:location, 
     			:description,
@@ -36,6 +37,7 @@ $query = "INSERT INTO ads (title, price, location, description, image_url)
 $stmt = $dbc->prepare($query);
 
 foreach ($ads as $ad) {
+    $stmt->bindValue(':user_id', rand(1, 3), PDO::PARAM_INT);
 	$stmt->bindValue(':title', $ad['title'], PDO::PARAM_STR);
 	$stmt->bindValue(':price', $ad['price'], PDO::PARAM_STR);
 	$stmt->bindValue(':location', $ad['location'], PDO::PARAM_STR);
