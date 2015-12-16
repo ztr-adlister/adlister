@@ -1,24 +1,30 @@
 <?php
-require_once '../utils/Log.php';
+// require_once '../utils/Log.php';
+require_once '../models/User.php';
 
 class Auth 
 {
-	public static $password = 'NEED PASSWORD KEY';
 
-	public static function attempt($userName, $password){ 
-		$log = new Log();
+	public static function attempt($username, $password){ 
+		// if(!empty($_REQUEST[$username]) && !empty($_REQUEST[$password]))
+		// {
+		$user = User::finduserbyusername($username);
+		if(empty($user)) {
+			return $user;
+		}
+			// foreach($database as $user) {
+		if($username == $user->username && $password == $user->password) {
+			$_SESSION['Loggedinuser'] = $username;
+		}
 
-		if ($userName == 'guest' && password_verify($password, self::$password))
-			{
-				$_SESSION['LOGGED_IN_USER'] = $userName;
-				$log->info("User {$userName} logged in.");
-			}
-				$log->error("User {$userName} failed to log in!");
+			
+		// } 
+		// return false;
 	}
 
 	public static function check()
 	{
-		if(isset($_SESSION['LOGGED_IN_USER']))
+		if(isset($_SESSION['Loggedinuser']))
 		{
 			return true;
 		} 
@@ -26,21 +32,29 @@ class Auth
 	}
 	public static function user()
 	{
-		return self::check($_SESSION['LOGGED_IN_USER']);
+		$user = $_SESSION['Loggedinuser'];
+		return $user;
 	} 
 	public static function logout()
 	{
-		// Unset all of the session variables.
-	    $_SESSION = array();
-	    if (ini_get("session.use_cookies")) 
-	    {
-	        $params = session_get_cookie_params();
-	        setcookie(session_name(), '', time() - 42000,
-	            $params["path"], $params["domain"],
-	            $params["secure"], $params["httponly"]
-	        );
-    	}	
-	    session_destroy();
+			    // Unset all of the session variables.
+		$_SESSION = array();
+
+		    // If it's desired to kill the session, also delete the session cookie.
+		    // Note: This will destroy the session, and not just the session data!
+		if (ini_get("session.use_cookies")) {
+		    $params = session_get_cookie_params();
+		    setcookie(session_name(), '', time() - 42000,
+		        $params["path"], $params["domain"],
+		        $params["secure"], $params["httponly"]
+		    );
+		}
+
+		    // Finally, destroy the session.
+		session_destroy();
+		// header('location: auth.login.php');
+		// die();
+		
 	}
 }
 

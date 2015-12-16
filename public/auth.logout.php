@@ -1,15 +1,19 @@
 <?php
-// require_once '../utils/Auth.php';
+require_once '../utils/Auth.php';
 
-// session_start();
+session_start();
 
-// Auth::logout();
-// header("Location: login.php");
-// die();
+if (Auth::check() || Auth::user()) {
+    $user = Auth::user();
+    Auth::logout();
+    header("Location: auth.login.php", true, 307);
+    die();
+}
+
 
 ?>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -21,12 +25,7 @@
         <link rel="stylesheet" href="../css/main.css">
     </head>
     <body>
-        <?php require_once '../views/navbar.php'; ?>
+        <?php ; ?>
 
         <div class="container">
-            
-        </div> <!-- End container. -->
-
-        <?php require_once '../views/footer.php'; ?>
-    </body>
-</html>
+         
