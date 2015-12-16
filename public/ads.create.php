@@ -34,7 +34,6 @@
                         <li><a href ="ads.index.php">Ads Index</a></li>
                         <li><a href="ads.create.php">Post an Ad</a></li>
                         <li><a href = "ads.edit.php">Edit an Ad</a></li>
-                        <li><a href="ads.show.php">Show one Ad</a></li>
                     </ul>
                 </div> <!-- End col-md-2 -->
 
