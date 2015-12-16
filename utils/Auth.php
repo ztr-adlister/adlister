@@ -13,7 +13,7 @@ class Auth
 			return $user;
 		}
 			// foreach($database as $user) {
-		if($username == $user->username && $password == $user->password) {
+		if($username == $user->username && $password == password_verify($password, $user->password)) {
 			$_SESSION['Loggedinuser'] = $username;
 		}
 
