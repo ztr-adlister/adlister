@@ -1,5 +1,5 @@
 <?php
-require_once '../../user_table_login.php';
+require_once '../db/adlister_login.php';
 class Model
 {
 	public $attributes = array();
@@ -16,7 +16,7 @@ class Model
 	{
 		if (!self::$dbc)
 		{
-			require '../../db_connect.php';
+			require '../db/db_connect.php';
 			self::$dbc = $dbc;
 		} 
 
