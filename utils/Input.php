@@ -78,9 +78,9 @@ class Input
         $date = self::get($key);
         if(!strtotime($date)){
             throw new Exception ("The date must be a in format: yyyy-mm-dd!");
-        } else ($min > $date || $max < $date){
+        } elseif ($min > $date || $max < $date){
             throw new DateRangeException ("
-                {$key} must be between " . $min->format('F-d-Y') and $max->format('F-d-Y'))
+                {$key} must be between " . $min->format('F-d-Y') and $max->format('F-d-Y'));
             return date("y-m-d", strtotime($date));
         }          
     }
