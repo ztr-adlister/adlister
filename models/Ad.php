@@ -6,3 +6,7 @@ class Ad extends Model
 {
 	protected static $table= 'ads';
 }
+
+
+
+

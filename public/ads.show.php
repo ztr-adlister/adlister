@@ -1,21 +1,21 @@
 <?PHP
 
-function pageController()
-{
+    require_once '../models/Ad.php';
+    require_once '../utils/Input.php';
 
-    $adArray = [
-    'adTitle' => 'washer',
-    'adPrice' => '200',
-    'adLocation' => 'Austin, TX',
-    'adDescrip' => 'Buy this washer!'
-    ];
+    function pageController()
+    {
 
-    return array(
-        'adArray' => $adArray
-    );   
-}
+        $adId = Input::has('id') ? Input::get('id') : 1 ;
+        $ad = Ad::find($adId);
 
-extract(pageController());
+        return array(
+            'ad' => $ad,
+            'adId' => $adId
+        );   
+    }
+
+    extract(pageController());
 
 ?>
 
@@ -50,26 +50,25 @@ extract(pageController());
                         <li><a href ="ads.index.php">Ads Index</a></li>
                         <li><a href="ads.create.php">Post an Ad</a></li>
                         <li><a href = "ads.edit.php">Edit an Ad</a></li>
-                        <li><a href="ads.show.php">Show one Ad</a></li>
                     </ul>
                 </div> <!-- End col-md-2 -->
 
                 <div class="col-md-8">
                     <div class="row">
                         <div class="col-md-6">
-                            <h3><?= $adArray['adTitle'] ?></h3>
+                            <h3><?= $ad->title ?></h3>
                         </div> <!-- End col-md-6 -->
                         <div class="col-md-3">
-                            <h3><?= $adArray['adPrice'] ?></h3>
+                            <h3><?= $ad->price ?></h3>
                         </div> <!-- End col-md-3 -->
                         <div class="col-md-3">
-                            <h3><?= $adArray['adLocation'] ?></h3>
+                            <h3><?= $ad->location ?></h3>
                         </div> <!-- End col-md-3 -->
                     </div> <!-- End row. -->
                     <div class="row">
                         <div class="col-md-12">
-                            <img src="..." class="img-responsive fakeimg" alt="Responsive image">
-                            <p><?= $adArray['adDescrip'] ?></p>
+                            <img src="$ad->img_url" class="img-responsive fakeimg" alt="Responsive image">
+                            <p><?= $ad->description ?></p>
                         </div> <!-- End col-md-12 -->
                     </div> <!-- End row. -->
                 </div> <!-- End col-md-8 -->

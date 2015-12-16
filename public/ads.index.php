@@ -1,14 +1,18 @@
 <?php
 
     require_once '../models/Ad.php';
+    require_once '../utils/Input.php';
 
     function pageController()
     {
 
         $adsArray = Ad::all();
 
+        $adId = Input::has('id') ? Input::get('id') : 1 ;
+
         return array(
-            'adsArray' => $adsArray
+            'adsArray' => $adsArray,
+            'adId' => $adId
         );    
     }
 
@@ -50,7 +54,6 @@
                         <li><a href ="ads.index.php">Ads Index</a></li>
                         <li><a href="ads.create.php">Post an Ad</a></li>
                         <li><a href = "ads.edit.php">Edit an Ad</a></li>
-                        <li><a href="ads.show.php">Show one Ad</a></li>
                     </ul>
                 </div> <!-- End col-md-2 -->
 
@@ -65,7 +68,7 @@
                         <?php foreach ($adsArray as $ad): ?>
                             <tr>
                                 <td><img src="{$ad['img']}" class="img-responsive fakeimg" alt="Responsive image"></td>
-                                <td><a href="ads.show.php"><?= "{$ad['title']} in {$ad['location']}"; ?></a></td>
+                                <td><a href="ads.show.php?id=<?=$ad['id'];?>"><?= "{$ad['title']} in {$ad['location']}"; ?></a></td>
                                 <td>$<?= "{$ad['price']}"; ?></td>
                             </tr>
                         <?php endforeach; ?>
