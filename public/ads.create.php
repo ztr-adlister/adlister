@@ -172,7 +172,6 @@
             <div class="row">
                 <div class="col-md-2">
                     <ul class="nav navbar-nav">
-                        <li><a href ="ads.index.php">Ads Index</a></li>
                         <li><a href="ads.create.php">Post an Ad</a></li>
                         <li><a href = "ads.edit.php">Edit an Ad</a></li>
                     </ul>
