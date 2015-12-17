@@ -11,15 +11,17 @@ require_once '../models/Basemodel.php';
 require_once '../models/User.php';
 require_once '../utils/Auth.php';
 require_once '../models/Ad.php';
+require_once 'css/userbox.php';
 if (!Auth::check()) {
     header('Location: auth.login.php', true, 307);
     die();
 }
 
+User::dbConnect();
 $stmt = $dbc->prepare('SELECT username FROM users WHERE username = :username');
 $stmt->bindValue(':username', $_SESSION['Loggedinuser'], PDO::PARAM_STR);
 $stmt->execute();
-$user = $stmt;
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 $stmt1 = $dbc->prepare('SELECT * FROM ads WHERE id <= :id');
 $stmt1->bindValue(':id', 4, PDO::PARAM_INT);
@@ -44,12 +46,13 @@ $chosenads = $stmt2;
         <link rel="stylesheet" href="../css/footer.css">
         <link rel="stylesheet" href="../css/main.css">
         <link rel="stylesheet" type="text/css" href="/css/reagan.css">
+        <style type="text/css">
+
+        </style>
     </head>
     <?php require_once '../views/navbar.php'; ?>
     <body>
-        <?php foreach($user as $userdata) {?>
-    	<h2 class = "show">Hello, <?=$userdata['username']?>!</h2>
-        <?php } ?>
+    	<h2 class = "show">Hello, <?=$user['username'] ?>!</h2>
         <div id = "box"></div>
 
 <!-- Ads the user has posted -->
@@ -79,5 +82,6 @@ $chosenads = $stmt2;
         <br><br>
 <!-- Logs you out -->
         <a class="show" id = "logout" href = "auth.logout.php">Log Out</a>
+        <br><br>
     </body>
     <?php require_once '../views/footer.php'; ?>
