@@ -1,11 +1,18 @@
 <?php
+require_once '../models/Ad.php';
 
-    // function pageController()
-    // {
-        // PHP code goes here.    
-    // }
+    function pageController()
+    {
+        $ads = Ad::getNewest();
 
-    // extract(pageController());
+        return [
+            'ads' => $ads
+        ];
+    }
+
+    extract(pageController());
+
+    // var_dump($ads);
 
 ?>
 
@@ -23,8 +30,9 @@
     <body>
         <?php require_once '../views/navbar.php'; ?>
 
-        <div class="container">
+        <!-- <div id= "demo"></div> -->
 
+        <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <h2>The ZTR Industries Ad Lister 3000</h2>
@@ -47,9 +55,12 @@
                 <div class="col-md-8">
                     <h3>Newest Ads</h3>
                     <ul class="list-group">
-                        <li class="list-group-item"><img src="..." class="img-responsive" alt="Responsive image"><p>stuff and things.</p></li>
-                        <li class="list-group-item"><img src="..." class="img-responsive" alt="Responsive image"><p>stuff and things.</p></li>
-                        <li class="list-group-item"><img src="..." class="img-responsive" alt="Responsive image"><p>stuff and things.</p></li>
+                        <?php foreach($ads as $ad): ?>
+                            <li class="list-group-item">
+                                <img src="<?= $ad['image_url'] ?>" class="img-responsive" alt="Responsive image">
+                                <p><?= $ad['description'] ?></p>
+                            </li> 
+                        <?php endforeach ?>
                     </ul>    
 
                 </div> <!-- End col-md-12 -->
@@ -58,17 +69,13 @@
             <div class="row">
                 <div class="col-md-12">
                     <h4>Other Stuff of Some Import</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 </div> <!-- End col-md-12 -->
             </div> <!-- End row. --> 
-
         </div> <!-- End container. -->
 
         <?php require_once '../views/footer.php'; ?>
+
+        <!-- // <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTKLDdO9qbuZq4TSgKhyiuP8R-jrMo5uU"></script>
+        // <script src="../js/geolocation.js"></script> -->
     </body>
 </html>
