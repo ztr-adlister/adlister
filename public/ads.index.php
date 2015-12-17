@@ -5,7 +5,6 @@
 
     function pageController()
     {
-
         $adsArray = Ad::all();
 
         $adId = Input::has('id') ? Input::get('id') : 1 ;
