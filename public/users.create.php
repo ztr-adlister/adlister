@@ -5,6 +5,26 @@
 3) Redirect to the profile page if the user is already logged in
 4) Send user either to the home page or to the profile page upon successful submission.
 */
+require_once '../utils/Input.php';
+require_once '../models/User.php';
+require_once '../models/Basemodel.php';
+$newuser = new User;
+$newuser->email = Input::get('signupemail');
+$newuser->username = Input::get('username');
+$newuser->password = Input::get('password');
+$newuser->boxcolor = Input::get('boxcolor');
+if($newuser->email != null) {
+    if($newuser->username != null) {
+        if($newuser->password != null) {
+            if($newuser->password == Input::get('confirmpassword')) {
+                $newuser->password = password_hash($newuser->password, PASSWORD_DEFAULT);
+                $newuser->save();
+                header('location: auth.login.php');
+                die();
+            } 
+        } 
+    } 
+} 
 ?>
 <!DOCTYPE html>
 <!-- Carried over from the index -->
@@ -29,42 +49,40 @@
     <!-- Email -->
         <p id = "em">
             <label for "signupemail">Email</label>
-            <input type = "text" name = "signupemail" id = "signupemail">
+            <input type = "text" name = "signupemail" id = "signupemail" required>
         </p>
     <!-- Username -->
         <p>
             <label for "username">Username</label>
-            <input type = "text" name = "username" id = "username">
+            <input type = "text" name = "username" id = "username" required>
         </p>
     <!-- Password -->
         <p>
             <label for "password">Password</label>
-            <input type = "password" name = "password" id = "password">
+            <input type = "password" name = "password" id = "password" required>
         </p>
     <!-- Confirm Password -->
         <p id = "confirm1">
             <label for "confirmpassword">Confirm Password</label>
-            <input type = "password" name = "confirmpassword" id = "confirmpassword">
+            <input type = "password" name = "confirmpassword" id = "confirmpassword" required>
         </p>
     <!-- Box Color -->
         <p id = "select">
             <label for "boxcolor">What color do you want your box to be?</label>
-            <select id = "boxcolor" name = "boxcolor">
-                <option selected disabled>Select a Color</option>
-                <option value = "red">Red</option>
-                <option value = "orange">Orange</option>
-                <option value = "yellow">Yellow</option>
-                <option value = "green">Green</option>
-                <option value = "blue">Blue</option>
-                <option value = "purple">Purple</option>
-                <option value = "brown">Brown</option>
-                <option value = "black">Black</option>
-                <option value = "papayawhip">Papayawhip</option>
-                <option value = "salmon">Salmon</option>
-                <option value = "burlywood">Burlywood</option>
+            <select id = "boxcolor" name = "boxcolor" required>
+                <option id = "red">Red</option>
+                <option id = "orange">Orange</option>
+                <option id = "yellow">Yellow</option>
+                <option id = "green">Green</option>
+                <option id = "blue">Blue</option>
+                <option id = "purple">Purple</option>
+                <option id = "brown">Brown</option>
+                <option id = "black">Black</option>
+                <option id = "papayawhip">Papayawhip</option>
+                <option id = "salmon">Salmon</option>
+                <option id = "burlywood">Burlywood</option>
             </select>
         </p>
         <button class = "btn btn-primary" type = "submit" value = "Sign Up!">Sign Up!</button>
     </form>
-
     <?php require_once '../views/footer.php'; ?>
