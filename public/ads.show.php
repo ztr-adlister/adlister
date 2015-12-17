@@ -1,4 +1,4 @@
-<?PHP
+<?php
 
     require_once '../models/Ad.php';
     require_once '../utils/Input.php';
@@ -59,7 +59,7 @@
                             <h3><?= $ad->title ?></h3>
                         </div> <!-- End col-md-6 -->
                         <div class="col-md-3">
-                            <h3><?= $ad->price ?></h3>
+                            <h3>$<?= $ad->price ?></h3>
                         </div> <!-- End col-md-3 -->
                         <div class="col-md-3">
                             <h3><?= $ad->location ?></h3>

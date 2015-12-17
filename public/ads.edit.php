@@ -1,3 +1,25 @@
+<?php 
+
+    require_once '../utils/Auth.php';
+    require_once '../utils/Input.php';
+    require_once '../db/adlister_login.php';
+    require_once '../db/db_connect.php';
+    
+    function pageController()
+    {
+        session_start();
+        // get the current session id
+        $sessionId = session_id();
+
+        return array(
+            
+        );
+    }
+
+    extract(pageController());    
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -39,7 +61,22 @@
 
                 <div class="col-md-8">
                     <h3>Edit an Ad</h3>
-                    <form method="POST" action="ads.create.php">
+
+                    <form method="POST" action="ads.edit.php" class="form-inline">
+                        <div class="form-group">
+                            <label class="control-label"><?= Auth::user(); ?>'s Ads</label>
+                            <!-- This foreach makes a list of all parks to display, without limit and offset that shows the park name but deletes by the park's id. -->
+                            <select id="ad_to_edit" name="ad_to_edit" class="form-control">
+                                <option value="" disabled selected> Select an Ad </option>
+                                <?php foreach ($adsAllArray as $ad): ?>
+                                    <option value="<?= "{$ad['id']}"; ?>"> <?= "{$ad['name']}"; ?> </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <button class="btn btn-default" type="submit">Load for Editing</button>
+                    </form>
+
+                    <form method="POST" action="ads.edit.php">
                         <div class="row formmargin">
                             <div class="col-xs-6">    
                                 <label >Email</label>
@@ -89,6 +126,9 @@
                         </div>
                         <button class="btn btn-default" type="submit">Submit</button>
                     </form> 
+                    <form method="POST" action="ads.edit.php">
+                        <button class="btn btn-danger" type="submit">Cancel</button>
+                    </form>
                 </div> <!-- End col-md-8 -->
             </div> <!-- End row. -->
 
