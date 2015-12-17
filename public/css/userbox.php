@@ -11,5 +11,6 @@ $boxcolor = $boxdata->fetch(PDO::FETCH_ASSOC);
 		height: 200px;
 		margin-left: 42%;
 		border: 5px solid black;
+		text-align: center;
 	}
 </style>

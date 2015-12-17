@@ -13,6 +13,14 @@
         session_start();
         // get the current session id
         $sessionId = session_id();
+        if(!isset($_SESSION['Loggedinuser'])) {
+            header('location: auth.login.php');
+            die();
+        }
+        $loginstatus = $_SESSION['Loggedinuser'] . " is logged in!";
+
+
+        
 
         $username = Auth::user();
 
@@ -151,7 +159,8 @@
             'formPrice' => $formPrice,
             'formLoc' => $formLoc,
             'formDes' => $formDes,
-            'formAdId' => $formAdId
+            'formAdId' => $formAdId,
+            'loginstatus' => $loginstatus
         );    
     }
 
@@ -169,6 +178,7 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/footer.css">
         <link rel="stylesheet" href="../css/main.css">
+        
         <style type="text/css">
             .clearthetop {
                 margin-top: 50px;

@@ -12,7 +12,11 @@
         session_start();
         // get the current session id
         $sessionId = session_id();
-
+        if(!isset($_SESSION['Loggedinuser'])) {
+            header('location: auth.login.php');
+            die();
+        }
+        $loginstatus = $_SESSION['Loggedinuser'] . " is logged in!";
         $username = Auth::user();
 
         $user = User::finduserbyusername($username);
@@ -121,7 +125,8 @@
             'formTitle' => $formTitle,
             'formPrice' => $formPrice,
             'formLoc' => $formLoc,
-            'formDes' => $formDes
+            'formDes' => $formDes,
+            'loginstatus' => $loginstatus
         );    
     }
 
