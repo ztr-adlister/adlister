@@ -19,11 +19,12 @@
 	$query2 = 'CREATE TABLE ads (
 		id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 		user_id INT UNSIGNED NOT NULL,
+		method VARCHAR(25) NOT NULL,
 		image_url VARCHAR(1000) NOT NULL,
 		title VARCHAR(100) NOT NULL,
-		description TEXT NOT NULL,
 		price DOUBLE NOT NULL,
 		location VARCHAR(100),
+		description TEXT NOT NULL,
 		PRIMARY KEY (id),
 		FOREIGN KEY (user_id) REFERENCES users (id)
 	)';

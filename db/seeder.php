@@ -8,41 +8,43 @@ $clearData = 'TRUNCATE ads';
 $dbc->exec($clearData);
 
 $ads = [
-    ['title' => 'Dryer',   'price' => '50', 'location' =>  'Austin, TX', 'description' => 'Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway', 'image_url'=>'...', ],
+    ['title' => 'Dryer', 'price' => '50', 'location' => 'Austin, TX', 'description' => 'This dryer is amazing. It dries and folds your laundry!', 'image_url' => '...', 'method' => 'phone'],
     
-    ['title' => 'hanger',   'price' => '70', 'location' =>  'Bucktown, TX', 'description' => 'Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway', 'image_url'=>'...'],
+    ['title' => 'hanger', 'price' => '70', 'location' => 'Bucktown, TX', 'description' => 'One hanger, plastic and in mint condition.', 'image_url' => '...', 'method' => 'email'],
 
-    ['title' => 'used sock',   'price' => '60', 'location' =>  'Dee Eff Dub, TX', 'description' => 'Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway', 'image_url'=>'...'],
+    ['title' => 'used sock', 'price' => '60', 'location' => 'Dee Eff Dub, TX', 'description' => 'One used sock, missing its partner, but still useful. Condition is pretty darn good. Wash first.', 'image_url' => '...', 'method' => 'text'],
 
-    ['title' => 'Fake Jays',   'price' => '53.27', 'location' =>  'Austin, TX', 'description' => 'Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway', 'image_url'=>'...'],
+    ['title' => 'Fake Jays', 'price' => '53.27', 'location' => 'Austin, TX', 'description' => 'I have no idea what these are. Call Zee at 555-123-4567.', 'image_url' => '...', 'method' => 'phone'],
 
-    ['title' => 'Bbq pit',   'price' => '250', 'location' =>  'Lockhart, TX', 'description' => 'Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway', 'image_url'=>'...'],
+    ['title' => 'Bbq pit', 'price' => '250', 'location' => 'Lockhart, TX', 'description' => 'This is Texas! You need a bbq. Do yourself a favor and buy this one!', 'image_url' => '...', 'method' => 'phone'],
 
-    ['title' => 'Dryer',   'price' => '2.50', 'location' =>  'Austin, TX', 'description' => 'Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway', 'image_url'=>'...'],
+    ['title' => 'Dryer', 'price' => '2.50', 'location' => 'Austin, TX', 'description' => 'Dryer, is great condition. Still works! Universal plug!', 'image_url' => '...', 'method' => 'email'],
 
-    ['title' => 'bird\'s nest',   'price' => '0.50', 'location' =>  'San Antonio, TX', 'description' => 'Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-scoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway', 'image_url'=>'...'],
+    ['title' => 'bird\'s nest', 'price' => '0.50', 'location' => 'San Antonio, TX', 'description' => 'Need a home for your pet bird? Or how about a home for that pesky neighborhood raven?', 'image_url' => '...', 'method' => 'phone'],
 
-    ['title' => 'Cat',   'price' => '0.00', 'location' =>  'Alamo Heights, TX', 'description' => 'Acadia National Park is a 47,000-acre Atlantic coast recreation area primarily on Maine\'s Mount Desert Island. Its landscape is marked by woodland, rocky beaches and glacier-https://github.com/ztr-adlister/adlisterscoured granite peaks like Cadillac Mountain, the highest point on the United States’ East Coast. Among the wildlife are moose, bear, whales and seabirds. The bayside town of Bar Harbor, with restaurants and shops, is a popular gateway', 'image_url'=>'...']
+    ['title' => 'Cat', 'price' => '0.00', 'location' => 'Alamo Heights, TX', 'description' => 'Cat, slight limp, one eye. Still purrs!', 'image_url'=>'...', 'method' => 'phone']
 ];
 
-$query = "INSERT INTO ads (user_id, title, price, location, description, image_url) 
+$query = "INSERT INTO ads (user_id, method, image_url, title, price, location, description) 
 			VALUES (:user_id, 
+                :method,
+                :image_url,
                 :title, 
     			:price, 
     			:location, 
-    			:description,
-                :image_url)";
+    			:description)";
 
 
 $stmt = $dbc->prepare($query);
 
 foreach ($ads as $ad) {
     $stmt->bindValue(':user_id', rand(1, 3), PDO::PARAM_INT);
-	$stmt->bindValue(':title', $ad['title'], PDO::PARAM_STR);
-	$stmt->bindValue(':price', $ad['price'], PDO::PARAM_STR);
-	$stmt->bindValue(':location', $ad['location'], PDO::PARAM_STR);
-	$stmt->bindValue(':description', $ad['description'], PDO::PARAM_STR);
+    $stmt->bindValue(':method', $ad['method'], PDO::PARAM_STR);
     $stmt->bindValue(':image_url', $ad['image_url'], PDO::PARAM_STR);
+    $stmt->bindValue(':title', $ad['title'], PDO::PARAM_STR);
+    $stmt->bindValue(':price', $ad['price'], PDO::PARAM_STR);
+    $stmt->bindValue(':location', $ad['location'], PDO::PARAM_STR);
+    $stmt->bindValue(':description', $ad['description'], PDO::PARAM_STR);
 	$stmt->execute();
 
     echo "Inserted ID: " . $dbc->lastInsertId() . PHP_EOL;
