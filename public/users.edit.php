@@ -10,16 +10,48 @@ require_once '../db/db_connect.php';
 require_once '../models/Basemodel.php';
 require_once '../models/User.php';
 require_once '../utils/Auth.php';
+require_once '../utils/Input.php';
 session_start();
-if (!Auth::check()) {
-    header('Location: auth.login.php', true, 307);
-    die();
-}
+User::dbConnect();
+$loginstatus = $_SESSION['Loggedinuser'] . " is logged in!";
 $stmt = $dbc->prepare('SELECT * FROM users WHERE username = :username');
 $stmt->bindValue(':username', $_SESSION['Loggedinuser']);
 $stmt->execute();
 $userdata = $stmt->fetch(PDO::FETCH_ASSOC);
 
+$email = Input::get('updatemail') ? Input::get('updatemail') : $userdata['email'];
+$username = Input::get('updatename') ? Input::get('updatename') : $userdata['username'];
+$password = Input::get('updatepassword') ? Input::get('updatepassword') : $userdata['password'];
+$boxcolor = Input::get('boxcolor') ? Input::get('boxcolor') : $userdata['boxcolor'];
+$confirmpassword = Input::get('updateconfirm') ? Input::get('updateconfirm') : "";
+$message = "hello";
+$newuser = User::find($userdata['id']);
+$newuser->email = $email;
+$newuser->username = $username;
+$newuser->password = $password;
+$newuser->boxcolor = $boxcolor;
+if($newuser->email != null) {
+    if($newuser->username != null) {
+        if($newuser->password != null) {
+            if($newuser->password == $confirmpassword && $confirmpassword != null) {
+                $newuser->password = password_hash($newuser->password, PASSWORD_DEFAULT);
+                $newuser->save();
+                $_SESSION['Loggedinuser'] = $newuser->username;
+                // $userdata['email'] = $email;
+                // $userdata['username'] = $username;
+                // $userdata['password'] = $password;
+                header('location: users.show.php');
+                die();
+            } 
+        } 
+    } 
+} 
+
+Auth::attempt($username, $password);
+if (!Auth::check()) {
+    header('Location: auth.login.php', true, 307);
+    die();
+}
 ?>
 <!DOCTYPE html>
 <!-- Carried over from the index -->
@@ -33,6 +65,7 @@ $userdata = $stmt->fetch(PDO::FETCH_ASSOC);
         <link rel="stylesheet" href="../css/footer.css">
         <link rel="stylesheet" href="../css/main.css">
         <link rel="stylesheet" type="text/css" href="css/reagan.css">
+        <link rel="stylesheet" type="text/css" href="/css/font-awesome-4.5.0/css/font-awesome.min.css">
     </head>
     <body>
     	<?php require_once '../views/navbar.php'; ?>
@@ -49,7 +82,7 @@ $userdata = $stmt->fetch(PDO::FETCH_ASSOC);
         <!-- Update Username -->
     		<p>
     			<label for "updatename">Username</label>
-    			<input type = "text" name = "updatename" id = "updatename" value = "<?=$_SESSION['Loggedinuser']?>">
+    			<input type = "text" name = "updatename" id = "updatename" value = "<?=$username?>">
     		</p>
         <!-- Update Password -->
     		<p>
@@ -65,21 +98,32 @@ $userdata = $stmt->fetch(PDO::FETCH_ASSOC);
             <p>
                 <label for "updatebox">Box Color</label>
                 <select id = "boxcolor" name = "boxcolor">
-                    <option selected disabled>Select a Color</option>
-                    <option value = "red">Red</option>
-                    <option value = "orange">Orange</option>
-                    <option value = "yellow">Yellow</option>
-                    <option value = "green">Green</option>
-                    <option value = "blue">Blue</option>
-                    <option value = "purple">Purple</option>
-                    <option value = "brown">Brown</option>
-                    <option value = "black">Black</option>
-                    <option value = "papayawhip">Papayawhip</option>
-                    <option value = "salmon">Salmon</option>
-                    <option value = "burlywood">Burlywood</option>
+                    <option id = "red">Red</option>
+                    <option id = "orange">Orange</option>
+                    <option id = "yellow">Yellow</option>
+                    <option id = "green">Green</option>
+                    <option id = "blue">Blue</option>
+                    <option id = "purple">Purple</option>
+                    <option id = "brown">Brown</option>
+                    <option id = "black">Black</option>
+                    <option id = "gray">Gray</option>
+                    <option id = "papayawhip">Papayawhip</option>
+                    <option id = "salmon">Salmon</option>
+                    <option id = "burlywood">Burlywood</option>
+                    <option id = "skyblue">Skyblue</option>
+                    <option id = "chartreuse">Chartreuse</option>
+                    <option id = "darkmagenta">Darkmagenta</option>
+                    <option id = "tomato">Tomato</option>
+                    <option id = "turquoise">Turquoise</option>
+                    <option id = "yellowgreen">Yellowgreen</option>
+                    <option id = "teal">Teal</option>
+                    <option id = "goldenrod">Goldenrod</option>
+                    <option id = "gold">Gold</option>
                 </select>
             </p>
-    		<button class = "btn btn-primary" type = "submit" value = "submit">Update</button>
+    		<button class = "btn btn-primary" type = "submit" value = "submit"><i class = "fa fa-check"></i>Update</button>
     	</form>
+            <a id = "cancel" href="users.show.php"><i class = "fa fa-times"></i>Cancel</a>
+        
     </body>
      <?php require_once '../views/footer.php'; ?>

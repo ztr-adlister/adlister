@@ -11,11 +11,11 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-          	<li><a href="ads.create.php">Post an Ad</a></li>
+          	<li><a href="ads.index.php">Ad Index</a></li>
             <li><a href = "users.show.php">Your Profile</a></li>
-            <li><a href ="auth.login.php">Members, Log In!</a></li>
+            <li><a href ="auth.login.php"><?=$loginstatus?></a></li>
             <li><a href="users.create.php">Sign Up</a></li>
-            <li><a href="#contact">Contact ZTR</a></li>
+            <li><a href="meet.php">About ZTR</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

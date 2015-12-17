@@ -6,8 +6,15 @@
 4) Send user either to the home page or to the profile page upon successful submission.
 */
 require_once '../utils/Input.php';
+require_once '../utils/Auth.php';
 require_once '../models/User.php';
 require_once '../models/Basemodel.php';
+session_start();
+if (Auth::check()) {
+    header('location: users.show.php');
+    die();
+}
+$loginstatus = "Members, Log In!";
 $newuser = new User;
 $newuser->email = Input::get('signupemail');
 $newuser->username = Input::get('username');
@@ -19,7 +26,7 @@ if($newuser->email != null) {
             if($newuser->password == Input::get('confirmpassword')) {
                 $newuser->password = password_hash($newuser->password, PASSWORD_DEFAULT);
                 $newuser->save();
-                header('location: auth.login.php');
+                header('location: users.show.php');
                 die();
             } 
         } 
@@ -78,9 +85,19 @@ if($newuser->email != null) {
                 <option id = "purple">Purple</option>
                 <option id = "brown">Brown</option>
                 <option id = "black">Black</option>
+                <option id = "gray">Gray</option>
                 <option id = "papayawhip">Papayawhip</option>
                 <option id = "salmon">Salmon</option>
                 <option id = "burlywood">Burlywood</option>
+                <option id = "skyblue">Sky Blue</option>
+                <option id = "chartreuse">Chartreuse</option>
+                <option id = "darkmagenta">Dark Magenta</option>
+                <option id = "tomato">Tomato</option>
+                <option id = "turquoise">Turquoise</option>
+                <option id = "yellowgreen">Yellow Green</option>
+                <option id = "teal">Teal</option>
+                <option id = "goldenrod">Goldenrod</option>
+                <option id = "gold">Gold</option>
             </select>
         </p>
         <button class = "btn btn-primary" type = "submit" value = "Sign Up!">Sign Up!</button>

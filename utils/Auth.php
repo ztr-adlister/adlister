@@ -12,6 +12,8 @@ class Auth
 		if(empty($user)) {
 			return $user;
 		}
+		// var_dump($user->username);
+		// var_dump(password_hash($password, PASSWORD_DEFAULT));
 			// foreach($database as $user) {
 		if($username == $user->username && $password == password_verify($password, $user->password)) {
 			$_SESSION['Loggedinuser'] = $username;

@@ -5,13 +5,19 @@
 
     function pageController()
     {
-
+        session_start();
+        if(!isset($_SESSION['Loggedinuser'])) {
+            $loginstatus = "Members, Log In!";
+        } else {
+            $loginstatus = $_SESSION['Loggedinuser'] . " is logged in!";
+        }
         $adId = Input::has('id') ? Input::get('id') : 1 ;
         $ad = Ad::find($adId);
 
         return array(
             'ad' => $ad,
-            'adId' => $adId
+            'adId' => $adId,
+            'loginstatus' =>$loginstatus
         );   
     }
 

@@ -6,7 +6,12 @@
     // }
 
     // extract(pageController());
-
+session_start();
+if(!isset($_SESSION['Loggedinuser'])) {
+    $loginstatus = "Members, Log In!";
+} else {
+    $loginstatus = $_SESSION['Loggedinuser'] . " is logged in!";
+}
 ?>
 
 <!DOCTYPE html>

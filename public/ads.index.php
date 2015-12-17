@@ -3,15 +3,23 @@
     require_once '../models/Ad.php';
     require_once '../utils/Input.php';
 
+
     function pageController()
     {
+        session_start();
         $adsArray = Ad::all();
 
+        if(!isset($_SESSION['Loggedinuser'])) {
+            $loginstatus = "Members, Log In!";
+        } else {
+            $loginstatus = $_SESSION['Loggedinuser'] . " is logged in!";
+        }
         $adId = Input::has('id') ? Input::get('id') : 1 ;
 
         return array(
             'adsArray' => $adsArray,
-            'adId' => $adId
+            'adId' => $adId,
+            'loginstatus' => $loginstatus
         );    
     }
 

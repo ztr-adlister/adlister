@@ -3,10 +3,10 @@ require_once '../utils/Auth.php';
 require_once '../utils/Input.php';
 require_once '../db/adlister_login.php';
 require_once '../db/db_connect.php';
-
-// $stmt = $dbc->query('SELECT * FROM users');
-// $stmt->execute();
-// $database = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$loginstatus = "Members, Log In!";
+$stmt = $dbc->query('SELECT * FROM users');
+$stmt->execute();
+$database = $stmt->fetchAll(PDO::FETCH_ASSOC);
 session_start();
 // get the current session id
 $sessionId = session_id();
@@ -45,6 +45,7 @@ if(Auth::check()) {
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/footer.css">
         <link rel="stylesheet" href="../css/main.css">
+        <link rel="stylesheet" type="text/css" href="/css/font-awesome-4.5.0/css/font-awesome.min.css">
         
         <style type="text/css">
             .login_container{
@@ -75,7 +76,7 @@ if(Auth::check()) {
                             </div>    
                         </div>
                         
-                        <button class="btn btn-default" type="submit">Submit</button>
+                        <button class="btn btn-default" type="submit"><i class="fa fa-check"></i></span>Submit</button>
                     </form>
                 </div>
             </div>        

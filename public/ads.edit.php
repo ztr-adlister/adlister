@@ -10,9 +10,14 @@
         session_start();
         // get the current session id
         $sessionId = session_id();
+        if(!isset($_SESSION['Loggedinuser'])) {
+            header('location: auth.login.php');
+            die();
+        }
 
+        $loginstatus = $_SESSION['Loggedinuser'] . " is logged in!";
         return array(
-            
+            'loginstatus' => $loginstatus
         );
     }
 
@@ -30,6 +35,7 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/footer.css">
         <link rel="stylesheet" href="../css/main.css">
+        
         <style type="text/css">
             .clearthetop {
                 margin-top: 50px;
