@@ -25,7 +25,7 @@
 		price DOUBLE NOT NULL,
 		location VARCHAR(100),
 		PRIMARY KEY (id),
-		FOREIGN KEY (user_id) REFERENCES users(id)
+		FOREIGN KEY (user_id) REFERENCES users (id)
 	)';
 
 	$dbc->exec($query2);
