@@ -43,7 +43,7 @@
                 $errorArray['errTitle'] = $error;
             }
             try {
-                $price = Input::getNumber('price', 0, 50);
+                $price = Input::getNumber('price', 0, 25000);
             } catch (Exception $e) {
                 $error = $e->getMessage();
                 $errorArray['errPrice'] = $error;
@@ -125,12 +125,7 @@
         );    
     }
 
-    extract(pageController());    
-
-    var_dump($_POST);
-    var_dump($errorArray);
-    var_dump($formImage);
-
+    extract(pageController());
 ?>
 
 <!DOCTYPE html>
@@ -166,7 +161,7 @@
         </style>
     </head>
     <body>
-        <!-- <?php require_once '../views/navbar.php'; ?> -->
+        <?php require_once '../views/navbar.php'; ?>
 
         <div class="container clearthetop">
             <div class="row">
@@ -199,15 +194,18 @@
                                 <label >Method of Contact</label><br>
                                 <div <?php if (isset($errorArray['errMethod']) || $yellow): ?> class="text-center yellow" <?php else: ?> class="text-center" <?php endif; ?>>
                                     <label class="radiomargin">
-                                        <input type="radio" name="method" id="optionsRadio1" value="email" <?php if (isset($errorArray['errMethod']) || $yellow): ?> autofocus <?php else: ?> <?php endif; ?>>
+                                        <input type="radio" name="method" id="optionsRadio1" value="email"
+                                            <?php if (isset($errorArray['errMethod']) || $yellow): ?> autofocus <?php endif; ?> 
+                                            <?php if ($formMethod == 'email'): ?> checked <?php endif; ?>
+                                        >
                                          By Email
                                     </label>
                                     <label class="radiomargin">
-                                        <input type="radio" name="method" id="optionsRadio2" value="phone">
+                                        <input type="radio" name="method" id="optionsRadio2" value="phone" <?php if ($formMethod == 'phone'): ?> checked <?php endif; ?>>
                                          By Phone
                                     </label>
                                     <label class="radiomargin">
-                                        <input type="radio" name="method" id="optionsRadio3" value="text">
+                                        <input type="radio" name="method" id="optionsRadio3" value="text" <?php if ($formMethod == 'text'): ?> checked <?php endif; ?>>
                                          By Text
                                     </label>
                                 </div>
