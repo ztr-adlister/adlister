@@ -23,6 +23,7 @@ $email = Input::get('updatemail') ? Input::get('updatemail') : $userdata['email'
 $username = Input::get('updatename') ? Input::get('updatename') : $userdata['username'];
 $password = Input::get('updatepassword') ? Input::get('updatepassword') : $userdata['password'];
 $boxcolor = Input::get('boxcolor') ? Input::get('boxcolor') : $userdata['boxcolor'];
+$icon = Input::get('icontype') ? Input::get('icontype') : $userdata['icon'];
 $confirmpassword = Input::get('updateconfirm') ? Input::get('updateconfirm') : "";
 $message = "hello";
 $newuser = User::find($userdata['id']);
@@ -30,6 +31,7 @@ $newuser->email = $email;
 $newuser->username = $username;
 $newuser->password = $password;
 $newuser->boxcolor = $boxcolor;
+$newuser->icon = $icon;
 if($newuser->email != null) {
     if($newuser->username != null) {
         if($newuser->password != null) {
@@ -105,7 +107,6 @@ if (!Auth::check()) {
                     <option id = "blue">Blue</option>
                     <option id = "purple">Purple</option>
                     <option id = "brown">Brown</option>
-                    <option id = "black">Black</option>
                     <option id = "gray">Gray</option>
                     <option id = "papayawhip">Papayawhip</option>
                     <option id = "salmon">Salmon</option>
@@ -119,6 +120,25 @@ if (!Auth::check()) {
                     <option id = "teal">Teal</option>
                     <option id = "goldenrod">Goldenrod</option>
                     <option id = "gold">Gold</option>
+                </select>
+            </p>
+            <p id = "select">
+                <label for "icontype">What icon do you want to represent you?</label>
+                <select id = "icontype" name = "icontype" required>
+                    <option>university</option>
+                    <option>beer</option>
+                    <option>bug</option>
+                    <option>bullseye</option>
+                    <option>car</option>
+                    <option>anchor</option>
+                    <option>bomb</option>
+                    <option>birthday-cake</option>
+                    <option>bed</option>
+                    <option>diamond</option>
+                    <option>female</option>
+                    <option>male</option>
+                    <option>plane</option>
+                    <option>paper-plane</option>
                 </select>
             </p>
     		<button class = "btn btn-primary" type = "submit" value = "submit"><i class = "fa fa-check"></i>Update</button>

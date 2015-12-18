@@ -19,7 +19,7 @@ if (!Auth::check()) {
 }
 
 User::dbConnect();
-$stmt = $dbc->prepare('SELECT username, id FROM users WHERE username = :username');
+$stmt = $dbc->prepare('SELECT username, id, icon FROM users WHERE username = :username');
 $stmt->bindValue(':username', $_SESSION['Loggedinuser'], PDO::PARAM_STR);
 $stmt->execute();
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -50,7 +50,7 @@ $userads = $stmt1;
     <?php require_once '../views/navbar.php'; ?>
     <body>
     	<h2 class = "show">Hello, <?=$user['username'] ?>!</h2>
-        <div id = "box"><br><br><i class = "fa fa-commenting-o fa-5x"></i></div>
+        <div id = "box"><br><br><i class = "fa fa-<?=$user['icon']?> fa-5x"></i></div>
 
 <!-- Ads the user has posted -->
     	<h3 class = "show">Your Ads:</h3>
