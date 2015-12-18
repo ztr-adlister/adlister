@@ -10,6 +10,7 @@
 		password VARCHAR(100) NOT NULL,
 		email VARCHAR(100) NOT NULL,
 		boxcolor VARCHAR(15) NOT NULL,
+		icon VARCHAR(50) NOT NULL,
 		PRIMARY KEY (id)
 	)';
 
