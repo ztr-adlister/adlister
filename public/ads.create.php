@@ -172,7 +172,6 @@
             <div class="row">
                 <div class="col-md-2">
                     <ul class="nav navbar-nav">
-                        <li><a href ="ads.index.php">Ads Index</a></li>
                         <li><a href="ads.create.php">Post an Ad</a></li>
                         <li><a href = "ads.edit.php">Edit an Ad</a></li>
                     </ul>
@@ -244,7 +243,7 @@
                                 <textarea rows="7" name="description" <?php if (isset($errorArray['errDes']) || $yellow): ?> class="form-control yellow" autofocus<?php else: ?> class="form-control" <?php endif; ?>><?= $formDes; ?></textarea>
                             </div>
                         </div>
-                        <button class="btn btn-default" type="submit">Submit</button>
+                        <button class="btn btn-default formmargin" type="submit">Submit</button>
                     </form> 
                 </div> <!-- End col-md-8 -->
             </div> <!-- End row. -->

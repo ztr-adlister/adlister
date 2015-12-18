@@ -211,7 +211,6 @@
             <div class="row">
                 <div class="col-md-2">
                     <ul class="nav navbar-nav">
-                        <li><a href ="ads.index.php">Ads Index</a></li>
                         <li><a href="ads.create.php">Post an Ad</a></li>
                         <li><a href = "ads.edit.php">Edit an Ad</a></li>
                     </ul>
@@ -223,7 +222,7 @@
                         <h4 class="red"><?= $err; ?></h4>
                     <?php endforeach; ?>
 
-                    <form method="POST" action="ads.edit.php" class="form-inline">
+                    <form method="POST" action="ads.edit.php" class="form-inline formmargin">
                         <div class="form-group">
                             <label class="control-label"><?= $user->username; ?>'s Ads</label>
                             <!-- This foreach makes a list of all parks to display, without limit and offset that shows the park name but deletes by the park's id. -->
@@ -302,12 +301,9 @@
                                 <textarea rows="7" name="description" <?php if (isset($errorArray['errDes']) || $yellow): ?> class="form-control yellow" autofocus<?php else: ?> class="form-control" <?php endif; ?>><?= $formDes; ?></textarea>
                             </div>
                         </div>
-                        <button class="btn btn-default" type="submit">Submit</button>
+                        <button class="btn btn-default formmargin" type="submit">Submit</button>
                     </form>
 
-                    <form method="POST" action="ads.edit.php">
-                        <button class="btn btn-danger" type="submit">Cancel</button>
-                    </form>
                 </div> <!-- End col-md-8 -->
             </div> <!-- End row. -->
 
