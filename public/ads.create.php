@@ -243,7 +243,7 @@
                                 <textarea rows="7" name="description" <?php if (isset($errorArray['errDes']) || $yellow): ?> class="form-control yellow" autofocus<?php else: ?> class="form-control" <?php endif; ?>><?= $formDes; ?></textarea>
                             </div>
                         </div>
-                        <button class="btn btn-default" type="submit">Submit</button>
+                        <button class="btn btn-default formmargin" type="submit">Submit</button>
                     </form> 
                 </div> <!-- End col-md-8 -->
             </div> <!-- End row. -->
