@@ -54,22 +54,22 @@ class Input
         return $value;
     }    
 
-    public static function getNumber($key, $min, $max)
+    public static function getNumber($key)
     {
         $value = trim(str_replace(",", "", self::get($key)));
-        if (!is_numeric ($value)){
-            throw new Exception ("{$key} must be a number!");
+        // if (!is_numeric ($value)){
+        //     throw new Exception ("{$key} must be a number!");
 
-        } else if ($value < $min || $value > $max){
-            throw new RangeException ("{$key} must be between $min and $max!");   
+        // } else if ($value < $min || $value > $max){
+        //     throw new RangeException ("{$key} must be between $min and $max!");   
         
-        } else if (!Input::has($key)){
-            throw new OutOfRangeException ("{$key} must have a value!");
+        // } else if (!Input::has($key)){
+        //     throw new OutOfRangeException ("{$key} must have a value!");
 
-        } else if ($value < $min && $value > $max){
-            throw new InvalidArgumentException(
-                "{$key} must be in range of {$min} to {$max}!");   
-        } 
+        // } else if ($value < $min && $value > $max){
+        //     throw new InvalidArgumentException(
+        //         "{$key} must be in range of {$min} to {$max}!");   
+        // } 
         return $value;
     }
 

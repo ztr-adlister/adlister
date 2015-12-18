@@ -1,9 +1,4 @@
 <?php
-/* TODO:
-1) Redirect to login if user isn't logged in.
-2) Feed in user info from database.
-3) Make sure that the session that started on the login page is still running
-*/
 session_start();
 require_once '../db/adlister_login.php';
 require_once '../db/db_connect.php';
@@ -12,6 +7,7 @@ require_once '../models/User.php';
 require_once '../utils/Auth.php';
 require_once '../models/Ad.php';
 require_once 'css/userbox.php';
+
 $loginstatus = $_SESSION['Loggedinuser'] . " is logged in!";
 if (!Auth::check()) {
     header('Location: auth.login.php', true, 307);
@@ -29,6 +25,22 @@ $stmt1->bindValue(':id', $user['id'], PDO::PARAM_INT);
 $stmt1->execute();
 $userads = $stmt1;
 
+function deleteprofile($dbc)
+{
+    $deleteid = Input::getNumber('id');
+    $deletequery2 = $dbc->prepare('DELETE FROM ads WHERE user_id = :user_id');
+    $deletequery = $dbc->prepare('DELETE FROM users WHERE id = :id');
+    $deletequery->bindValue(':id', $deleteid, PDO::PARAM_INT);
+    $deletequery2->bindValue(':user_id', $deleteid, PDO::PARAM_INT);
+    $deletequery2->execute();
+    $deletequery->execute();
+    header("location: auth.logout.php");
+    die();
+}
+
+if(Input::notempty('id')) {
+    deleteprofile($dbc);
+}
 ?>
 <!DOCTYPE html>
 <!-- Carried over from the index -->
@@ -56,7 +68,7 @@ $userads = $stmt1;
     	<h3 class = "show">Your Ads:</h3>
     	<ul class = "show">
     		<?php foreach($userads as $advalue) {?>
-            <li><strong>Title:</strong> <?=$advalue['title']?></li>
+            <li><strong>Title:</strong> <a href="ads.show.php?id=<?=$advalue['id']?>"><?=$advalue['title']?></a></li>
             <li><strong>Description:</strong> <?=$advalue['description']?></li>
             <li><strong>Price:</strong> $<?=$advalue['price']?></li>
             <br>
@@ -72,6 +84,24 @@ $userads = $stmt1;
         <br><br>
 <!-- Logs you out -->
         <a class="show" id = "logout" href = "auth.logout.php"><i class = "fa fa-sign-out"></i>Log Out</a>
-        <br><br>
+        <br><br><br><br><br>
+<!-- Deletes your profile -->
+        <a class="show" id="deleteprofile" data-id="<?=$user['id']?>" data-name="<?=$user['username']?>"><i class = "fa fa-trash"></i>Delete Profile</a>
+        <br><br><br>
     </body>
     <?php require_once '../views/footer.php'; ?>
+    <form method="POST" id="deletion">
+        <input type = "hidden" name = "id" id="delete-id">
+    </form>
+    <script src = "js/jquery.js"></script>
+    <script>
+    "Use Strict";
+    $("#deleteprofile").click(function() {
+        var profileid = $(this).data("id");
+        var profilename = $(this).data("name");
+        if (confirm("Are you sure you want to delete your profile, " + profilename + "?")) {
+            $("#delete-id").val(profileid);
+            $("#deletion").submit();
+        }
+    });
+    </script>
