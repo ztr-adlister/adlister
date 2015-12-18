@@ -20,6 +20,7 @@ $newuser->email = Input::get('signupemail');
 $newuser->username = Input::get('username');
 $newuser->password = Input::get('password');
 $newuser->boxcolor = Input::get('boxcolor');
+$newuser->icon = Input::get('icontype');
 if($newuser->email != null) {
     if($newuser->username != null) {
         if($newuser->password != null) {
@@ -84,7 +85,6 @@ if($newuser->email != null) {
                 <option id = "blue">Blue</option>
                 <option id = "purple">Purple</option>
                 <option id = "brown">Brown</option>
-                <option id = "black">Black</option>
                 <option id = "gray">Gray</option>
                 <option id = "papayawhip">Papayawhip</option>
                 <option id = "salmon">Salmon</option>
@@ -98,6 +98,25 @@ if($newuser->email != null) {
                 <option id = "teal">Teal</option>
                 <option id = "goldenrod">Goldenrod</option>
                 <option id = "gold">Gold</option>
+            </select>
+        </p>
+        <p id = "select">
+            <label for "icontype">What icon do you want to represent you?</label>
+            <select id = "icontype" name = "icontype" required>
+                <option>university</option>
+                <option>beer</option>
+                <option>bug</option>
+                <option>bullseye</option>
+                <option>car</option>
+                <option>anchor</option>
+                <option>bomb</option>
+                <option>birthday-cake</option>
+                <option>bed</option>
+                <option>diamond</option>
+                <option>female</option>
+                <option>male</option>
+                <option>plane</option>
+                <option>paper-plane</option>
             </select>
         </p>
         <button class = "btn btn-primary" type = "submit" value = "Sign Up!">Sign Up!</button>
