@@ -1,5 +1,6 @@
 <?php
 require_once '../models/Ad.php';
+require_once '../utils/Input.php';
 
     function pageController()
     {
@@ -7,11 +8,14 @@ require_once '../models/Ad.php';
 
     // extract(pageController());
         session_start();
+
         if(!isset($_SESSION['Loggedinuser'])) {
             $loginstatus = "Members, Log In!";
         } else {
             $loginstatus = $_SESSION['Loggedinuser'] . " is logged in!";
         }
+
+        $adId = Input::has('id') ? Input::get('id') : 1 ;
         return [
             'ads' => $ads,
             'loginstatus' => $loginstatus
@@ -34,11 +38,39 @@ require_once '../models/Ad.php';
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/footer.css">
         <link rel="stylesheet" href="../css/main.css">
+        <style type="text/css">
+
+            .adSquare {
+                width: 300px;
+                height: 300px;
+                border: 1px solid gray;
+                display: inline-block;
+                margin: 0 0 10px 10px;
+                /*overflow: auto;*/
+            }
+            .squareText {
+                width: 290px;
+                height: 290px;
+                /*border: 1px solid gray;*/
+                display: table-cell;
+                vertical-align: bottom;
+                /*margin: 0 0 10px 10px;*/
+          /*      overflow: auto;*/
+            }
+            .priceTag {
+                background-color: #007bff;
+                color:white;
+            }
+            .fakeimg {
+                width: 270px;
+                height: 210px;
+                background-color: gray;
+                margin: 10px auto;
+            }  
+        </style>
     </head>
     <body>
         <?php require_once '../views/navbar.php'; ?>
-
-        <!-- <div id= "demo"></div> -->
 
         <div class="container">
             <div class="row">
@@ -60,30 +92,30 @@ require_once '../models/Ad.php';
                         <button class="btn btn-default" type="submit">Submit</button>
                     </form>
                 </div> <!-- End col-md-12 -->
-                <div class="col-md-8">
+                <div class="col-md-10 text-center">
                     <h3>Newest Ads</h3>
-                    <ul class="list-group">
-                        <?php foreach($ads as $ad): ?>
-                            <li class="list-group-item">
-                                <img src="<?= $ad['image_url'] ?>" class="img-responsive" alt="Responsive image">
-                                <p><?= $ad['description'] ?></p>
-                            </li> 
-                        <?php endforeach ?>
-                    </ul>    
+
+                    <?php foreach($ads as $ad): ?>
+                        <div class="adSquare">
+                                <img src="<?= $ad['image_url'] ?>" class="img-responsive fakeimg" alt="Responsive image">
+                                <div class="squareText">
+                                    <a href="ads.show.php?id=<?=$ad['id'];?>"><?= "{$ad['title']} in {$ad['location']}"; ?></a>
+                                    <p class="priceTag"><?= $ad['price'] ?></p>
+                                </div>
+                        </div>    
+                    <?php endforeach ?>   
 
                 </div> <!-- End col-md-12 -->
             </div> <!-- End row. --> 
 
             <div class="row">
                 <div class="col-md-12">
-                    <h4>Other Stuff of Some Import</h4>
+                    <h4>Categories</h4>
                 </div> <!-- End col-md-12 -->
             </div> <!-- End row. --> 
         </div> <!-- End container. -->
 
         <?php require_once '../views/footer.php'; ?>
 
-        <!-- // <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTKLDdO9qbuZq4TSgKhyiuP8R-jrMo5uU"></script>
-        // <script src="../js/geolocation.js"></script> -->
     </body>
 </html>
