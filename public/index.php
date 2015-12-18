@@ -40,6 +40,10 @@ require_once '../utils/Input.php';
         <link rel="stylesheet" href="../css/main.css">
         <style type="text/css">
 
+            .clearthetop {
+                margin-top: 50px;
+            }
+
             .adSquare {
                 width: 300px;
                 height: 300px;
@@ -48,31 +52,23 @@ require_once '../utils/Input.php';
                 margin: 0 0 10px 10px;
                 /*overflow: auto;*/
             }
-            .squareText {
-                width: 290px;
-                height: 290px;
-                /*border: 1px solid gray;*/
-                display: table-cell;
-                vertical-align: bottom;
-                /*margin: 0 0 10px 10px;*/
-          /*      overflow: auto;*/
+            .forimages {
+                width: 270px;
+                height: 210px;
+                margin: 10px auto;
+                overflow: hidden;
+                background-color: gray;
             }
             .priceTag {
                 background-color: #007bff;
                 color:white;
             }
-            .fakeimg {
-                width: 270px;
-                height: 210px;
-                background-color: gray;
-                margin: 10px auto;
-            }  
         </style>
     </head>
     <body>
         <?php require_once '../views/navbar.php'; ?>
 
-        <div class="container">
+        <div class="container clearthetop">
             <div class="row">
                 <div class="col-md-12">
                     <h2>The ZTR Industries Ad Lister 3000</h2>
@@ -96,12 +92,19 @@ require_once '../utils/Input.php';
                     <h3>Newest Ads</h3>
 
                     <?php foreach($ads as $ad): ?>
-                        <div class="adSquare">
-                                <img src="<?= $ad['image_url'] ?>" class="img-responsive fakeimg" alt="Responsive image">
-                                <div class="squareText">
-                                    <a href="ads.show.php?id=<?=$ad['id'];?>"><?= "{$ad['title']} in {$ad['location']}"; ?></a>
-                                    <p class="priceTag"><?= $ad['price'] ?></p>
-                                </div>
+                            <?php $fullTitle = $ad['title'] . ' in ' . $ad['location']; ?>
+                            <?php if ( strlen($fullTitle) > 34 ): ?>                              
+                            <?php $adEllipsedTitle = substr_replace($fullTitle, '...', 34); ?> 
+                            <?php else: ?>
+                            <?php $adEllipsedTitle = $fullTitle; ?>
+                            <?php endif; ?>
+
+                        <div class="adSquare" title="<?= $fullTitle ?>">
+                            <div class="forimages">
+                                <img src="<?= $ad['image_url'] ?>" class="img-responsive" alt="Responsive image">
+                            </div>    
+                            <a href="ads.show.php?id=<?=$ad['id'];?>"><?= $adEllipsedTitle; ?></a>
+                            <p class="priceTag"><?= $ad['price'] ?></p>
                         </div>    
                     <?php endforeach ?>   
 
