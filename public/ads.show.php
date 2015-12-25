@@ -68,7 +68,7 @@
                     </div> <!-- End row. -->
                     <div class="row">
                         <div class="col-md-12">
-                            <img src="$ad->img_url" class="img-responsive fakeimg" alt="Responsive image">
+                            <img src="img/<?= $ad->image_url ?>" class="img-responsive fakeimg" alt="Responsive image">
                             <p><?= $ad->description ?></p>
                         </div> <!-- End col-md-12 -->
                     </div> <!-- End row. -->
