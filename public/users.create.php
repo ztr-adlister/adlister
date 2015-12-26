@@ -34,10 +34,11 @@ if($newuser->email != null) {
                     if(empty($emailcheck)) {
                         $newuser->password = password_hash($newuser->password, PASSWORD_DEFAULT);
                         $newuser->save();
-                        // $to = $newuser->email;
-                        // $subject = "Welcome to ZTR-Adlister!";
-                        // $message = wordwrap("Greetings, " . $newuser->username . ",\r\nWelcome to ZTR-Adlister, the web's premium advertisement listing forum by Reagan Wilkins, Tony Burns, and Zeshan Segal! At this time you will not be able to log in, as the site is still in testing. This was merely a test of Reagan Wilkins's email code!\r\nHave a pleasant day!\r\n-Reagan Wilkins, Tony Burns, and Zeshan Segal.", 70, "\r\n");
-                        // mail($to, $subject, $message);
+                        $to = $newuser->email;
+                        $subject = "Welcome to ZTR-Adlister!";
+                        $emmessage = wordwrap("Greetings, " . $newuser->username . ",\r\nWelcome to ZTR-Adlister, the web's premium advertisement listing forum by Reagan Wilkins, Tony Burns, and Zeshan Segal! At this time you will not be able to log in, as the site is still in testing. This was merely a test of Reagan Wilkins's email code!\r\nHave a pleasant day!\r\n-Reagan Wilkins, Tony Burns, and Zeshan Segal.", 70, "\r\n");
+                        $headers = "From: ZTR-Adlister" . "\r\n";
+                        mail($to, $subject, $emmessage, $headers);
                         header('location: users.show.php');
                         die(); 
                     } else {

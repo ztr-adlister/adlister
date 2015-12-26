@@ -39,8 +39,21 @@ function deleteprofile($dbc)
     die();
 }
 
+function deletead($dbc)
+{
+    $deleteid = Input::getNumber('adid');
+    $deletequery = $dbc->prepare('DELETE FROM ads WHERE id = :id');
+    $deletequery->bindValue(':id', $deleteid, PDO::PARAM_INT);
+    $deletequery->execute();
+    header("location: users.show.php");
+    die();
+}
+
 if(Input::notempty('id')) {
     deleteprofile($dbc);
+}
+if(Input::notempty('adid')) {
+    deletead($dbc);
 }
 ?>
 <!DOCTYPE html>
@@ -72,6 +85,7 @@ if(Input::notempty('id')) {
             <li><strong>Title:</strong> <a href="ads.show.php?id=<?=$advalue['id']?>"><?=$advalue['title']?></a></li>
             <li><strong>Description:</strong> <?=$advalue['description']?></li>
             <li><strong>Price:</strong> $<?=$advalue['price']?></li>
+            <li><button class = "deleter" data-id="<?=$advalue['id']?>" data-name = "<?=$advalue['title']?>">Delete this Ad</button></li>
             <br>
             <?php } ?>
         <a href="ads.create.php" id = "createads"><i class = "fa fa-commenting-o"></i>Post a new Ad</a>
@@ -94,13 +108,24 @@ if(Input::notempty('id')) {
     <form method="POST" id="deletion">
         <input type = "hidden" name = "id" id="delete-id">
     </form>
+    <form method="POST" id = "addelete">
+        <input type = "hidden" name = "adid" id ="delete-ad">
+    </form>
     <script src = "js/jquery.js"></script>
     <script>
     "Use Strict";
+    $(".deleter").click(function() {
+        var adid = $(this).data("id");
+        var adtitle = $(this).data("name");
+        if (confirm("Are you sure you want to delete this ad: " + adtitle + "?")) {
+            $("#delete-ad").val(adid);
+            $("#addelete").submit();
+        }
+    });
     $("#deleteprofile").click(function() {
         var profileid = $(this).data("id");
         var profilename = $(this).data("name");
-        if (confirm("Are you sure you want to delete your profile, " + profilename + "?")) {
+        if (confirm("Are you sure you want to delete your profile, " +profilename + "?")) {
             $("#delete-id").val(profileid);
             $("#deletion").submit();
         }
