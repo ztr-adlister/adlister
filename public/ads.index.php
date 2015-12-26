@@ -24,7 +24,7 @@
             // print_r($value['categories']);
             array_push($justCategories, $value['categories']);
         }
-        print_r($justCategories);
+        // print_r($justCategories);
 
         return array(
             'adsArray' => $adsArray,
