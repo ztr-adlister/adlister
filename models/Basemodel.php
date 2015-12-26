@@ -1,5 +1,6 @@
 <?php
 require_once '../db/adlister_login.php';
+require_once '../utils/Input.php';
 class Model
 {
 	public $attributes = array();
@@ -88,6 +89,8 @@ class Model
             $stmt->bindValue(':' . $key, $value, PDO::PARAM_STR);
         }
         $stmt->execute();
+
+
 	}
 
 // Deletes all data with a set id
