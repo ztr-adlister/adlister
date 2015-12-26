@@ -40,6 +40,7 @@
         <link rel="stylesheet" href="../css/footer.css">
         <link rel="stylesheet" href="../css/main.css">
         <link rel="stylesheet" type="text/css" href="/css/font-awesome-4.5.0/css/font-awesome.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Fugaz+One|Playball' rel='stylesheet' type='text/css'>
         <style type="text/css">
             body {
                 background-color: #F5F5F1;
@@ -47,8 +48,8 @@
             .bluetop {
                 width: 100%;
                 height: 120px;
-                background-color: #007bff;
-                color: #ffffff;
+                background-color: #ffffff;
+                color: #0062cc;
                 position: relative;
             }
             .clearthetop {
@@ -61,14 +62,26 @@
                 height: 70px;
                 border-top: 2px solid #0062cc;
                 border-bottom: 2px solid #0062cc;
+                background-color: #ffffff;
+                color: #0062cc;
+            }
+            .sclogo {
                 background-color: #007bff;
-                color: #ffffff;
+                height: 50px;
+                width: 220px;
+                display: inline-block;
+                border: 5px double #0062cc;
+                margin-top: 8px;
             }
             .lineheight1 {
-                line-height: 28px;
+                line-height: 5px;
+                font-family: 'Fugaz One', cursive;
+                color: #ffffff;
+                text-shadow: 4px -3px 0px #0062cc;
             }
             .lineheight2 {
                 line-height: 47px;
+                font-family: 'Playball', cursive;
             }
             .lineheight3 {
                 line-height: 68px;
@@ -154,7 +167,9 @@
             <div class="titlespace">
                 <div class="row">
                     <div class="col-md-3 text-center">
-                        <h2 class="lineheight1">Spatula City</h2>
+                        <div class="sclogo">
+                            <h2 class="lineheight1">Spatula City</h2>
+                        </div>
                     </div> <!-- End col-md-3 -->
                     <div class="col-md-7 text-center hidden-xs hidden-sm">
                         <h4 class="lineheight2"><em>"We sell spatulas, and that's all!"</em></h4>
