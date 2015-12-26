@@ -11,6 +11,7 @@
 		email VARCHAR(100) NOT NULL,
 		boxcolor VARCHAR(15) NOT NULL,
 		icon VARCHAR(50) NOT NULL,
+		phone VARCHAR(20) NOT NULL,
 		PRIMARY KEY (id)
 	)';
 
@@ -26,6 +27,7 @@
 		price DOUBLE NOT NULL,
 		location VARCHAR(100),
 		description TEXT NOT NULL,
+		categories VARCHAR(100) NOT NULL,
 		PRIMARY KEY (id),
 		FOREIGN KEY (user_id) REFERENCES users (id)
 	)';
