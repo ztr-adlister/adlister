@@ -18,6 +18,14 @@
 
         $adId = Input::has('id') ? Input::get('id') : 1 ;
 
+        $arrayCategories = Ad::showJustCategories();
+        $justCategories = [];
+        foreach ($arrayCategories as $key => $value) {
+            // print_r($value['categories']);
+            array_push($justCategories, $value['categories']);
+        }
+        print_r($justCategories);
+
         return array(
             'adsArray' => $adsArray,
             'adId' => $adId,
