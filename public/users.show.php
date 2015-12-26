@@ -33,7 +33,7 @@ $userads = $stmt1;
 // Deletes your profile and all of your ads from the database
 function deleteprofile($dbc)
 {
-    $deleteid = Input::getNumber('id');
+    $deleteid = Input::get('id');
     $deletequery2 = $dbc->prepare('DELETE FROM ads WHERE user_id = :user_id');
     $deletequery = $dbc->prepare('DELETE FROM users WHERE id = :id');
     $deletequery->bindValue(':id', $deleteid, PDO::PARAM_INT);
@@ -47,7 +47,7 @@ function deleteprofile($dbc)
 // Deletes the specific ad you chose
 function deletead($dbc)
 {
-    $deleteid = Input::getNumber('adid');
+    $deleteid = Input::get('adid');
     $deletequery = $dbc->prepare('DELETE FROM ads WHERE id = :id');
     $deletequery->bindValue(':id', $deleteid, PDO::PARAM_INT);
     $deletequery->execute();
@@ -122,7 +122,7 @@ if(Input::notempty('adid')) {
     <form method="POST" id = "addelete">
         <input type = "hidden" name = "adid" id ="delete-ad">
     </form>
-    
+
     <script src = "js/jquery.js"></script>
     <script>
     "Use Strict";
