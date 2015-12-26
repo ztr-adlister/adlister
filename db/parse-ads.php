@@ -1,7 +1,7 @@
 <?php
 
-require_once '../db/adlister_login.php';
-require_once '../db/db_connect.php';
+require_once 'adlister_login.php';
+require_once 'db_connect.php';
 
 $clearData = 'TRUNCATE ads';
 
@@ -47,7 +47,17 @@ $contentsArray = readTheFile('data_ads1.txt');
 $contentsArray = cutOne($contentsArray);
 $contentsArray = reorderArray($contentsArray);
 
-print_r($contentsArray);
+$contentsArray2 = readTheFile('reagan_spatulas.txt');
+$contentsArray2 = cutOne($contentsArray2);
+$contentsArray2 = reorderArray($contentsArray2);
+
+$contentsArray3 = readTheFile('database_ads.txt');
+$contentsArray3 = cutOne($contentsArray3);
+$contentsArray3 = reorderArray($contentsArray3);
+
+$masterArray = array_merge($contentsArray, $contentsArray2, $contentsArray3);
+
+// print_r($contentsArray);
 
 $query = "INSERT INTO ads (user_id, method, image_url, title, price, location, description) 
             VALUES (:user_id, 
@@ -60,7 +70,7 @@ $query = "INSERT INTO ads (user_id, method, image_url, title, price, location, d
 
 $stmt = $dbc->prepare($query);
 
-foreach ($contentsArray as $ad) {
+foreach ($masterArray as $ad) {
     $stmt->bindValue(':user_id', rand(1, 3), PDO::PARAM_INT);
     $stmt->bindValue(':method', $ad['method'], PDO::PARAM_STR);
     $stmt->bindValue(':image_url', $ad['image_url'], PDO::PARAM_STR);

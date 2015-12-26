@@ -135,7 +135,7 @@
                             </div>
                         </div> <!-- End col-md-6 -->
                         <div class="col-md-6">
-                            <h3>$<?= $ad->price ?> <span class="smallertext">More in Canada</span> <span class="saletext">ON SALE</span></h3>
+                            <h3>$<?= $ad->price ?> <span class="smallertext">List Price: $<?= round(($ad->price * 0.10) + $ad->price, 2); ?></span> <span class="saletext">ON SALE</span></h3>
                             <div class="twolines text-left">
                                 <?php $randNum = rand(1, 15); ?>
 
