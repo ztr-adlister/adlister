@@ -48,12 +48,11 @@
             .titlemargin {
                 margin-bottom: 25px;
             }
-            .forimages {
-                width: 350px;
-                height: 100%;
+            img {
                 border: 1px solid #d9d9d9;
                 box-shadow: 5px 5px 5px #d9d9d9;
                 margin-bottom: 20px;
+                margin: 0 auto;
             }
             .smallertext {
                 font-size: 13px;
@@ -130,9 +129,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <h3 class="titlemargin"><?= $ad->title ?></h3>
-                            <div class="forimages">
-                                <img src="img/<?= $ad->image_url ?>" class="img-responsive" alt="Responsive image">
-                            </div>
+                            <img src="img/<?= $ad->image_url ?>" class="img-responsive" alt="Responsive image">
                         </div> <!-- End col-md-6 -->
                         <div class="col-md-6">
                             <h3>$<?= $ad->price ?> <span class="smallertext">List Price: $<?= round(($ad->price * 0.10) + $ad->price, 2); ?></span> <span class="saletext">ON SALE</span></h3>
