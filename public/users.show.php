@@ -9,12 +9,16 @@ require_once '../utils/Input.php';
 require_once '../models/Ad.php';
 require_once 'css/userbox.php';
 
+// Sets the navbar status
 $loginstatus = $_SESSION['Loggedinuser'] . " is logged in!";
+
+// Redirects you to the login page if you aren't logged in
 if (!Auth::check()) {
     header('Location: auth.login.php', true, 307);
     die();
 }
 
+// Grabs the necessary data from the database
 User::dbConnect();
 $stmt = $dbc->prepare('SELECT username, id, icon FROM users WHERE username = :username');
 $stmt->bindValue(':username', $_SESSION['Loggedinuser'], PDO::PARAM_STR);
@@ -26,6 +30,7 @@ $stmt1->bindValue(':id', $user['id'], PDO::PARAM_INT);
 $stmt1->execute();
 $userads = $stmt1;
 
+// Deletes your profile and all of your ads from the database
 function deleteprofile($dbc)
 {
     $deleteid = Input::getNumber('id');
@@ -39,6 +44,7 @@ function deleteprofile($dbc)
     die();
 }
 
+// Deletes the specific ad you chose
 function deletead($dbc)
 {
     $deleteid = Input::getNumber('adid');
@@ -49,6 +55,7 @@ function deletead($dbc)
     die();
 }
 
+// Decides when to run the deletion functions
 if(Input::notempty('id')) {
     deleteprofile($dbc);
 }
@@ -105,15 +112,22 @@ if(Input::notempty('adid')) {
         <br><br><br>
     </body>
     <?php require_once '../views/footer.php'; ?>
+
+    <!-- Stores the profile you want to delete -->
     <form method="POST" id="deletion">
         <input type = "hidden" name = "id" id="delete-id">
     </form>
+
+    <!-- Stores the ad you want to delete -->
     <form method="POST" id = "addelete">
         <input type = "hidden" name = "adid" id ="delete-ad">
     </form>
+    
     <script src = "js/jquery.js"></script>
     <script>
     "Use Strict";
+
+    // The "Delete this Ad" button
     $(".deleter").click(function() {
         var adid = $(this).data("id");
         var adtitle = $(this).data("name");
@@ -122,6 +136,8 @@ if(Input::notempty('adid')) {
             $("#addelete").submit();
         }
     });
+
+    // The "Delete Profile" button
     $("#deleteprofile").click(function() {
         var profileid = $(this).data("id");
         var profilename = $(this).data("name");
