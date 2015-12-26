@@ -18,6 +18,14 @@
 
         $adId = Input::has('id') ? Input::get('id') : 1 ;
 
+        $arrayCategories = Ad::showJustCategories();
+        $justCategories = [];
+        foreach ($arrayCategories as $key => $value) {
+            // print_r($value['categories']);
+            array_push($justCategories, $value['categories']);
+        }
+        // print_r($justCategories);
+
         return array(
             'adsArray' => $adsArray,
             'adId' => $adId,
@@ -44,47 +52,6 @@
         <style type="text/css">
             body {
                 background-color: #F5F5F1;
-            }
-            .bluetop {
-                width: 100%;
-                height: 120px;
-                background-color: #ffffff;
-                color: #0062cc;
-                position: relative;
-            }
-            .clearthetop {
-                margin-top: 14px;
-            }
-            .titlespace {
-                position: absolute;
-                top: 50px;
-                width: 100%;
-                height: 70px;
-                border-top: 2px solid #0062cc;
-                border-bottom: 2px solid #0062cc;
-                background-color: #ffffff;
-                color: #0062cc;
-            }
-            .sclogo {
-                background-color: #007bff;
-                height: 50px;
-                width: 220px;
-                display: inline-block;
-                border: 5px double #0062cc;
-                margin-top: 8px;
-            }
-            .lineheight1 {
-                line-height: 5px;
-                font-family: 'Fugaz One', cursive;
-                color: #ffffff;
-                text-shadow: 4px -3px 0px #0062cc;
-            }
-            .lineheight2 {
-                line-height: 47px;
-                font-family: 'Playball', cursive;
-            }
-            .lineheight3 {
-                line-height: 68px;
             }
             .adSquare {
                 width: 200px;
@@ -162,24 +129,6 @@
     </head>
     <body>
         <?php require_once '../views/navbar.php'; ?>
-
-        <div class="bluetop">
-            <div class="titlespace">
-                <div class="row">
-                    <div class="col-md-3 text-center">
-                        <div class="sclogo">
-                            <h2 class="lineheight1">Spatula City</h2>
-                        </div>
-                    </div> <!-- End col-md-3 -->
-                    <div class="col-md-7 text-center hidden-xs hidden-sm">
-                        <h4 class="lineheight2"><em>"We sell spatulas, and that's all!"</em></h4>
-                    </div> <!-- End col-md-7 -->
-                    <div class="col-md-2 text-center hidden-xs hidden-sm">
-                        <p class="lineheight3">Tulsa, OK</p>
-                    </div> <!-- End col-md-2 -->        
-                </div> <!-- End row. -->
-            </div> <!-- End titlespace. -->
-        </div> <!-- End bluetop. -->
         
         <div class="container clearthetop">
 

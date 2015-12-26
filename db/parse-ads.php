@@ -36,7 +36,8 @@ function reorderArray($contentsArray)
         $contentsArray[$index]['location'] = $valueArray[2];
         $contentsArray[$index]['description'] = $valueArray[3];
         $contentsArray[$index]['image_url'] = $valueArray[4];
-        $contentsArray[$index]['method'] = substr($valueArray[5], 0, -1);
+        $contentsArray[$index]['method'] = $valueArray[5];
+        $contentsArray[$index]['categories'] = substr($valueArray[6], 0, -1);
     }
     return $contentsArray;
 }
@@ -59,14 +60,15 @@ $masterArray = array_merge($contentsArray, $contentsArray2, $contentsArray3);
 
 // print_r($contentsArray);
 
-$query = "INSERT INTO ads (user_id, method, image_url, title, price, location, description) 
+$query = "INSERT INTO ads (user_id, method, image_url, title, price, location, description, categories) 
             VALUES (:user_id, 
                 :method,
                 :image_url,
                 :title, 
                 :price, 
                 :location, 
-                :description)";
+                :description,
+                :categories)";
 
 $stmt = $dbc->prepare($query);
 
@@ -78,6 +80,7 @@ foreach ($masterArray as $ad) {
     $stmt->bindValue(':price', $ad['price'], PDO::PARAM_STR);
     $stmt->bindValue(':location', $ad['location'], PDO::PARAM_STR);
     $stmt->bindValue(':description', $ad['description'], PDO::PARAM_STR);
+    $stmt->bindValue(':categories', $ad['categories'], PDO::PARAM_STR);
     $stmt->execute();
 
     echo "Inserted ID: " . $dbc->lastInsertId() . PHP_EOL;
