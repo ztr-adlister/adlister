@@ -1,3 +1,4 @@
+"title", "price", "location", "description", "image_url", "method"
 "Hello Kitty Spatula", "100.00", "Zee's House (Don't tell him)", "Hello Kitty Spatula, lightly used, needs repair.", "../public/img/rspat1.png", "phone"
 "Black Spatula", "25.00", "Austin, TX", "This spatula is the color black. Not that it has any impact on cooking, but just thought you might wanna know.", "../public/img/rspat2.png", "email"
 "Death Star Spatula", "500.00", "Old Dime Box, TX", "It won't crush the rebel scum, but it'll flip flapjacks like they've never been flipped before.", "../public/img/rspat3.png", "text"
