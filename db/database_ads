@@ -1,0 +1,13 @@
+"title", "price", "location", "description", "image_url", "method"
+"Plaid-tula", "25", "Austin", "It's a spatula, and it's plaid. When are you ever going to run across one of these beauties again?", "../img/img12c.jpg", "text"
+"Folding Spatula", "10", "Ft. Worth Store", "It's a spatula, and it folds! Keep it in your back pocket for those times you could really use your spatula.", "../img/SBLK.jpg", "phone"
+"This is not a Trowel Spatula", "40", "Arlen", "It's a spatula. It's not a hand trowel. Really.", "../img/whatto_trowel1.jpg", "email"
+"Prepare-tula", "99", "Austin", "I'd rather have a spatula and not need one, than need one and not have one! Be prepared!", "../img/be_prepared.jpg", "text"
+"Evil Spatula", "666", "Hell Store and Online only!", "This evil spatula will handle all your flipping needs. Flip any dish from good to bad with ease!", "../img/evil.jpg", "text"
+"Drac-tula", "16", "Austin and Online", "He wants to flip your food (and suck your blood)!", "../img/drac_spat.jpg", "phone"
+"Friendly Spatula", "100", "Arlington Store", "This friendly little guy would love to help you flip some waffles. He loves waffles. Really loves waffles. Keep an eye on him. Seriously.", "../img/friendly.jpg", "text"
+"Slightly Used Spatula", "14", "Discount and Outlet stores only", "Only used a handful of times.", "../img/slightlyused.jpg", "phone"
+"Gun Spatula", "150", "Austin and Gun Stores Nationwide", "This little guy is always ready for a fight with a grill or a burglar. Up close and personal or strike with ease from afar with this great 8x20 scope.", "../img/rifle.jpg", "email"
+"Bacon Spatula", "25", "Dallas Store and Online", "It looks, and smells like bacon!", "../img/bacon.jpg", "email"
+
+
