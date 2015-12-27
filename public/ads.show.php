@@ -160,7 +160,7 @@
                             <div class="blankspace smallgray text-left">
                                 <p>categories: <?= $ad->categories ?></p>
                             </div>
-                            <div class="finalnotes">
+                            <div class="finalnotes hidden-xs hidden-sm">
                                 <div class="finalleft">
                                     <p>NOTES</p>
                                 </div>

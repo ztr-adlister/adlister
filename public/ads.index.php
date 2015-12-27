@@ -21,15 +21,18 @@
         $arrayCategories = Ad::showJustCategories();
         $justCategories = [];
         foreach ($arrayCategories as $key => $value) {
-            // print_r($value['categories']);
             array_push($justCategories, $value['categories']);
         }
-        // print_r($justCategories);
+        $justCategoriesString = implode(', ', $justCategories);
+        $justCategoriesArray = explode(', ', $justCategoriesString);
+        $justCategoriesArrayUnique = array_unique($justCategoriesArray);
+        sort($justCategoriesArrayUnique);
 
         return array(
             'adsArray' => $adsArray,
             'adId' => $adId,
-            'loginstatus' => $loginstatus
+            'loginstatus' => $loginstatus,
+            'justCategoriesArrayUnique' => $justCategoriesArrayUnique
         );    
     }
 
@@ -88,7 +91,7 @@
                 margin-bottom: 20px;
             }
             .sidebar {
-                height: 190px;
+                /*height: 190px;*/
                 width: 100%;
                 background-color: #ffffff;
                 border: 1px solid #007bff;
@@ -111,7 +114,7 @@
                 /*margin: 0 10px 20px 10px;*/
                 margin: 0px auto 20px;
                 position: relative;
-                overflow: auto;
+                overflow: hidden;
             }
             .boxtitle {
                 position: absolute;
@@ -142,11 +145,9 @@
                 <div class="col-md-2 hidden-xs hidden-sm">
                     <div class="sidebar">
                         <p class="priceTag text-center">Categories</p>
-                        <p class="forcategories">Antique</p>
-                        <p class="forcategories">Geeky</p>
-                        <p class="forcategories">Metal</p>
-                        <p class="forcategories">Plastic</p>
-                        <p class="forcategories">Wooden</p>
+                        <?php foreach ($justCategoriesArrayUnique as $category): ?>
+                            <p class="forcategories"><?= $category; ?></p>
+                        <?php endforeach; ?>
                     </div>
                     <div class="sidebar">
                         <p class="priceTag text-center"><em>"It's so flipping good!"</em></p>
