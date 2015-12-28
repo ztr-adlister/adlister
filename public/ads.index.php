@@ -54,7 +54,7 @@
         <link href='https://fonts.googleapis.com/css?family=Fugaz+One|Playball' rel='stylesheet' type='text/css'>
         <style type="text/css">
             body {
-                background-color: #F5F5F1;
+                background-color: #ffffff;
             }
             .adSquare {
                 width: 200px;
