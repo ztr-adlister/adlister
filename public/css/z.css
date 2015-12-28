@@ -1,0 +1,205 @@
+.bigBox {
+	width: 1280px;
+	height: 600px;
+	background-color: #0062cc;
+	margin: 50px;
+	position: relative;
+}
+
+.spatulaholder {
+        width: 800px;
+        height: 248px;
+        background-color: transparent;
+        position: relative;
+        top: 100px;
+        left: 258px;
+}
+
+.handle {
+    width: 240px;
+    height: 64px;
+    border-radius: 10px;
+    background-color: #000000;
+    position: absolute;
+    top: 92px;
+    left: 40px;
+    z-index: 2;
+}
+.handleshine {
+	width: 70px;
+	height: 10px;
+	border-radius: 30px;
+	background-color: white;
+	background: linear-gradient(90deg, #959595, #484848);
+	position: absolute;
+	top: 6px;
+	left: 9px;
+	opacity: 0.4;
+}
+.stem {
+    width: 288px;
+    height: 40px;
+    background-color: #d9d9d9;
+    position: absolute;
+    top: 104px;
+    left: 200px;
+    background: linear-gradient(90deg, #959595, #484848);
+}
+.flatend {
+    width: 240px;
+    height: 168px;
+    border-radius: 10px;
+    background-color: #d9d9d9;
+    position: absolute;
+    top: 40px;
+    left: 480px;
+    background: linear-gradient(90deg, #484848 30%, #959595, #484848);
+}
+.rectangle {
+    width: 160px;
+    height: 24px;
+    border-radius: 6px;
+    background-color: #0062cc;
+}
+
+#rect1 {
+    position: absolute;
+    top: 24px;
+    left: 40px;
+}
+#rect2 {
+    position: absolute;
+    top: 72px;
+    left: 40px;
+}
+#rect3 {
+    position: absolute;
+    top: 120px;
+    left: 40px;
+}
+
+.rectangles {
+	background-color: white;
+}
+
+#spiredBuilding {
+	position: absolute;
+	width: 100px;
+	height: 200px;
+	background-color: white;
+	left: 50px;
+	bottom: 0px;
+}
+
+#spiredSmallRect {
+	position: absolute;
+	height: 25px;
+	width: 40px;
+	background-color: white;
+	left: 30px;
+	bottom: 200px;
+}
+
+#spire {
+	position: absolute;
+	height: 30px;
+	width: 2px;
+	background-color: white;
+	left: 49px;
+	bottom: 225px;
+}
+
+
+#rectangle3 {
+	position: absolute;
+	height: 190px;
+	width: 90px;
+	left: 777px;
+	bottom: 0px;
+}
+
+#rectangle4 {
+	position: absolute;
+	height: 150px;
+	width: 86px;
+	left: 200px;
+	bottom: 0px;
+}
+
+#rectangle5 {
+	position: absolute;
+	height: 125px;
+	width: 160px;
+	left: 310px;
+	bottom: 0px;
+}
+
+#rectangle6 {
+	position: absolute;
+	height: 75px;
+	width: 140px;
+	left: 900px;
+	bottom: 0px;
+}
+
+#rectangle7 {
+	position: absolute;
+	height: 200px;
+	width: 100px;
+	left: 1065px;
+	bottom: 0px;
+}
+
+#triangleBuild1 {
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-left: 40px solid transparent;
+	border-right: 40px solid transparent;
+	border-bottom: 50px solid white;
+	top: -50px;
+	left: 10px;
+}
+
+#rectangle8 {
+	position: absolute;
+	height: 250px;
+	width: 70px;
+	left: 1190px;
+	bottom: 0px;
+}
+
+#rectangle9 {
+	position: absolute;
+	height: 200px;
+	width: 70px;
+	left: 208px;
+	bottom: 0px;
+}
+
+#rectangle10 {
+	position: absolute;
+	height: 212px;
+	width: 100px;
+	left: 628px;
+	bottom: 0px;
+}
+
+#rectangle11 {
+	position: absolute;
+	height: 160px;
+	width: 60px;
+	left: 500px;
+	bottom: 0px;
+}
+
+#triangleBuild2 {
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 120px solid white;
+	top: -95px;
+	left: 20px;
+}

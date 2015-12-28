@@ -34,10 +34,14 @@ require_once '../utils/Input.php';
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <title>ZTR Industries Ad Lister 3000</title>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
+
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/footer.css">
         <link rel="stylesheet" href="../css/main.css">
+        <link rel="stylesheet" href='../css/z.css'>
+
         <style type="text/css">
 
             .clearthetop {
@@ -68,27 +72,35 @@ require_once '../utils/Input.php';
     <body>
         <?php require_once '../views/navbar.php'; ?>
 
-        <div class="container clearthetop">
+        <!-- <div class="container clearthetop">
             <div class="row">
                 <div class="col-md-12">
                     <h2>The ZTR Industries Ad Lister 3000</h2>
-                </div> <!-- End col-md-12 -->
-            </div> <!-- End row. --> 
 
-            <div class="row">
-                <div class="col-md-2">
-                    <h4>Other Stuff of Some Import</h4>
-                    <form method="POST" action="index.php" class="form-horizontal">
-                        <div class="form-group">
-                            <label class="col-sm-5 control-label">Search</label>
-                            <div class="col-sm-6">
-                                <input type="text" name="description" value="..." class="form-control">
-                            </div>
+                    <div id="hero" class="hero-shop background-image " style="background-image:url(//img0.          etsystatic.com/site-assets/homepage-carousel/toddborka.jpg)">
+                        <div class="container1">
+                            <h1>Shop from people around the world, our nationwide stores, and warehouses!</h1>
                         </div>
-                        <button class="btn btn-default" type="submit">Submit</button>
-                    </form>
-                </div> <!-- End col-md-12 -->
-                <div class="col-md-10 text-center">
+
+                            <div class="image-credit-wrap">
+                                <div class="image-footer-container">
+                                    <a class="" href="">
+                                        <img src=""/>
+                                        <div class="seller-name"><span class="featured-shop-name">ToddBorka</span>
+                                        <br/>
+                                        <em>Lyon, France</em>
+                                    </a>   
+                            </div>                
+                </div> --> <!-- End col-md-12 -->
+
+            <!-- <div class="row">
+                <div class="col-md-12">
+                    <h4>Categories</h4>
+                </div> End col-md-12
+            </div> --> <!-- End row. --> 
+
+            <!-- <div class="row2">
+                <div class="col-md-12 text-center">
                     <h3>Newest Ads</h3>
 
                     <?php foreach($ads as $ad): ?>
@@ -108,17 +120,48 @@ require_once '../utils/Input.php';
                         </div>    
                     <?php endforeach ?>   
 
-                </div> <!-- End col-md-12 -->
-            </div> <!-- End row. --> 
+                </div> --> <!-- End col-md-12 -->
+            <!-- </div> --> <!-- End row. --> 
+        <!-- </div> --> <!-- End container. -->
 
-            <div class="row">
-                <div class="col-md-12">
-                    <h4>Categories</h4>
-                </div> <!-- End col-md-12 -->
-            </div> <!-- End row. --> 
-        </div> <!-- End container. -->
+
+
+
+        <div class="bigBox">
+            <div class="spatulaholder">
+                <div class="handle">
+                    <div class="handleshine"></div>
+                </div>
+                <div class="stem"></div>
+                <div class="flatend">
+                    <div class="rectangle" id="rect1"></div>
+                    <div class="rectangle" id="rect2"></div>
+                    <div class="rectangle" id="rect3"></div>
+                </div>
+            </div> <!-- end spatulaholder -->
+
+            <div id="spiredBuilding">
+                <div id="spiredSmallRect"></div>
+                <div id="spire"></div>
+            </div>    
+            <div class="rectangles" id="rectangle3"></div>
+            <div class="rectangles" id="rectangle4"></div>
+            <div class="rectangles" id="rectangle5"></div>
+            <div class="rectangles" id="rectangle6"></div>
+            <div class="rectangles" id="rectangle7">
+                <div id="triangleBuild1"></div></div>
+            <div class="rectangles" id="rectangle8"></div>
+            <div class="rectangles" id="rectangle9"></div>
+            <div class="rectangles" id="rectangle10"></div>
+            <div class="rectangles" id="rectangle11">
+                <div id="triangleBuild2"></div></div>
+
+
+        </div> <!-- End bigBox -->
 
         <?php require_once '../views/footer.php'; ?>
 
     </body>
 </html>
+
+
