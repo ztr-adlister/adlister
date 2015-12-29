@@ -18,6 +18,7 @@ $message = '';
 $loginstatus = "Members, Log In!";
 $newuser = new User;
 $newuser->email = Input::get('signupemail');
+$newuser->phone = Input::get('signupphone');
 $newuser->username = Input::get('username');
 $newuser->password = Input::get('password');
 $newuser->boxcolor = Input::get('boxcolor');
@@ -27,31 +28,33 @@ $usercheck = User::finduserbyusername($newuser->username);
 $emailcheck = User::checkemail($newuser->email);
 
 if($newuser->email != null) {
-    if($newuser->username != null) {
-        if($newuser->password != null) {
-            if($newuser->password == Input::get('confirmpassword')) {
-                if(empty($usercheck)) {
-                    if(empty($emailcheck)) {
-                        $newuser->password = password_hash($newuser->password, PASSWORD_DEFAULT);
-                        $newuser->save();
-                        $to = $newuser->email;
-                        $subject = "Welcome to ZTR-Adlister!";
-                        $emmessage = wordwrap("Greetings, " . $newuser->username . ",\r\nWelcome to ZTR-Adlister, the web's premium advertisement listing forum by Reagan Wilkins, Tony Burns, and Zeshan Segal! At this time you will not be able to log in, as the site is still in testing. This was merely a test of Reagan Wilkins's email code!\r\nHave a pleasant day!\r\n-Reagan Wilkins, Tony Burns, and Zeshan Segal.", 70, "\r\n");
-                        $headers = "From: ZTR-Adlister" . "\r\n";
-                        mail($to, $subject, $emmessage, $headers);
-                        header('location: users.show.php');
-                        die(); 
+    if($newuser->phone != null) {
+        if($newuser->username != null) {
+            if($newuser->password != null) {
+                if($newuser->password == Input::get('confirmpassword')) {
+                    if(empty($usercheck)) {
+                        if(empty($emailcheck)) {
+                            $newuser->password = password_hash($newuser->password, PASSWORD_DEFAULT);
+                            $newuser->save();
+                            // $to = $newuser->email;
+                            // $subject = "Welcome to ZTR-Adlister!";
+                            // $emmessage = wordwrap("Greetings, " . $newuser->username . ",\r\nWelcome to ZTR-Adlister, the web's premium advertisement listing forum by Reagan Wilkins, Tony Burns, and Zeshan Segal! At this time you will not be able to log in, as the site is still in testing. This was merely a test of Reagan Wilkins's email code!\r\nHave a pleasant day!\r\n-Reagan Wilkins, Tony Burns, and Zeshan Segal.", 70, "\r\n");
+                            // $headers = "From: ZTR-Adlister" . "\r\n";
+                            // mail($to, $subject, $emmessage, $headers);
+                            header('location: users.show.php');
+                            die(); 
+                        } else {
+                            $message = "This email is already taken"; 
+                        }
                     } else {
-                        $message = "This email is already taken"; 
+                        $message = "This username is already taken";
                     }
                 } else {
-                    $message = "This username is already taken";
+                    $message = "Your passwords do not match";
                 }
-            } else {
-                $message = "Your passwords do not match";
-            }
+            } 
         } 
-    } 
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -69,8 +72,8 @@ if($newuser->email != null) {
     </head>
     <body>
         <?php require_once '../views/navbar.php'; ?>
-    <h2 class = "signuphead">Welcome to the ZTR Industries Ad-Lister!</h2>
-    <h3 class = "signuphead">Please enter an email address, username, and password!</h3>
+    <h2 class = "signuphead">Welcome to Spatula City!</h2>
+    <h3 class = "signuphead">Please enter the following information</h3>
     <div class = "error"><?=$message;?></div>
 <!-- The signup form -->
     <form class = "signuphead" method = "POST" action = "users.create.php">
@@ -78,6 +81,11 @@ if($newuser->email != null) {
         <p id = "em">
             <label for "signupemail">Email</label>
             <input type = "text" name = "signupemail" id = "signupemail" value = "<?=$newuser->email?>" required>
+        </p>
+    <!-- Phone Number -->
+        <p id = "ph">
+            <label for "signupphone">Phone Number</label>
+            <input type = "text" name = "signupphone" id = "signupphone" value = "<?=$newuser->phone?>" required>
         </p>
     <!-- Username -->
         <p>
@@ -93,6 +101,15 @@ if($newuser->email != null) {
         <p id = "confirm1">
             <label for "confirmpassword">Confirm Password</label>
             <input type = "password" name = "confirmpassword" id = "confirmpassword" required>
+        </p>
+        <p>
+            <label for "securityquestion">Select a Security Question</label>
+            <select id = "securityquestion" name = "securityquestion" required>
+                <option id = "q1">What is your pet's name?</option>
+                <option id = "q2">What is your favorite kind of spatula?</option>
+                <option id = "q3">What High School did you attend?</option>
+                <option id = "q4"></option>
+            </select>
         </p>
     <!-- Box Color -->
         <p id = "select">
