@@ -60,7 +60,7 @@ $arrayPhrases = [
         width: 16px;
         height: 60px;
         border-radius: 5px;
-        background-color: #000000;
+        background-color: #262626;
         position: absolute;
         bottom: 10px;
         left: 23px;
