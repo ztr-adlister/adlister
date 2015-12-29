@@ -99,8 +99,8 @@ if(Input::notempty('adid')) {
             <div class = "col-md-8 col-md-offset-2">
                 <br>
             <?php foreach($userads as $advalue) {?>
-                <li><img src = "img/<?=$advalue['image_url']?>" class = "img-responsive" alt="Responsive image"></li>
-            <li><strong>Title:</strong> <a href="ads.show.php?id=<?=$advalue['id']?>"><?=$advalue['title']?></a></li>
+                <li><a href = "ads.show.php?id=<?=$advalue['id']?>"><img src = "img/<?=$advalue['image_url']?>" class = "img-responsive" alt="Responsive image"></a></li>
+            <li><strong>Title:</strong><?=$advalue['title']?></li>
             <li><strong>Description:</strong> <?=$advalue['description']?></li>
             <li><strong>Price:</strong> $<?=$advalue['price']?></li>
             <li><button class = "deleter" data-id="<?=$advalue['id']?>" data-name = "<?=$advalue['title']?>"><i class = "fa fa-trash"></i>Delete this Ad</button></li>
@@ -136,7 +136,6 @@ if(Input::notempty('adid')) {
     </form>
 
     <script src = "js/jquery.js"></script>
-    <script src = "js/jqueryrotate"></script>
     <script>
     "Use Strict";
 
