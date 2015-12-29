@@ -82,12 +82,16 @@ if(Input::notempty('adid')) {
                 width: 250px;
                 margin-left: 15%;
             }
+            #icon {
+                position: relative;
+                margin-top: 10px;
+            }
         </style>
     </head>
     <?php require_once '../views/navbar.php'; ?>
     <body>
     	<h2 class = "show">Hello, <?=$user['username'] ?>!</h2>
-        <div id = "box"><br><br><i class = "fa fa-<?=$user['icon']?> fa-5x"></i></div>
+        <div id = "box"><br><br><i id = "icon" class = "fa fa-<?=$user['icon']?> fa-5x"></i></div>
 
 <!-- Ads the user has posted -->
     	<h3 class = "show">Your Ads:</h3>
@@ -108,7 +112,7 @@ if(Input::notempty('adid')) {
         <a href="ads.edit.php" id = "editads"><i class = "fa fa-pencil"></i>Edit an existing Ad</a>
         <br><br><br>
         </ul>
-    	<br>
+    	<br><br><br><br><br><br><br><br><br><br>
 <!-- Takes you to the edit profile page -->
     	<a class = "show" id = "editprofile" href="users.edit.php"><i class = "fa fa-pencil"></i>Edit your profile</a>
         <br><br>
@@ -132,6 +136,7 @@ if(Input::notempty('adid')) {
     </form>
 
     <script src = "js/jquery.js"></script>
+    <script src = "js/jqueryrotate"></script>
     <script>
     "Use Strict";
 
@@ -153,5 +158,21 @@ if(Input::notempty('adid')) {
             $("#delete-id").val(profileid);
             $("#deletion").submit();
         }
+    });
+
+    $("#box").click(function() {
+        $("#icon").animate({
+            left: "+=50px"
+        }, 200).animate({
+            left: "-=100px"
+        }, 200).animate({
+            left: "+=50px"
+        }, 200).animate({
+            top: "-=50px"
+        }, 200).animate({
+            top: "+=130px"
+        }, 200).animate({
+            top: "-=80px"
+        }, 200);
     });
     </script>
