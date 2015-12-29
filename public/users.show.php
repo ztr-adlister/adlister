@@ -67,6 +67,7 @@ if(Input::notempty('adid')) {
 <!-- Carried over from the index -->
 <html lang="en">
     <head>
+        <link rel="icon" type="image/png" href="img/icon.png">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -79,6 +80,7 @@ if(Input::notempty('adid')) {
         <style type="text/css">
             img {
                 width: 250px;
+                margin-left: 15%;
             }
         </style>
     </head>
@@ -90,14 +92,15 @@ if(Input::notempty('adid')) {
 <!-- Ads the user has posted -->
     	<h3 class = "show">Your Ads:</h3>
     	<ul class = "show">
-            <div class = "col-md-6 col-md-offset-3">
+            <div class = "col-md-8 col-md-offset-2">
+                <br>
             <?php foreach($userads as $advalue) {?>
                 <li><img src = "img/<?=$advalue['image_url']?>" class = "img-responsive" alt="Responsive image"></li>
             <li><strong>Title:</strong> <a href="ads.show.php?id=<?=$advalue['id']?>"><?=$advalue['title']?></a></li>
             <li><strong>Description:</strong> <?=$advalue['description']?></li>
             <li><strong>Price:</strong> $<?=$advalue['price']?></li>
-            <li><button class = "deleter" data-id="<?=$advalue['id']?>" data-name = "<?=$advalue['title']?>">Delete this Ad</button></li>
-            <br>
+            <li><button class = "deleter" data-id="<?=$advalue['id']?>" data-name = "<?=$advalue['title']?>"><i class = "fa fa-trash"></i>Delete this Ad</button></li>
+            <br><br><br>
             <?php } ?>
             </div>
         <a href="ads.create.php" id = "createads"><i class = "fa fa-commenting-o"></i>Post a new Ad</a>

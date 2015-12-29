@@ -21,6 +21,7 @@ $newuser->email = Input::get('signupemail');
 $newuser->phone = Input::get('signupphone');
 $newuser->username = Input::get('username');
 $newuser->password = Input::get('password');
+$newuser->reminder = Input::get('reminder');
 $newuser->boxcolor = Input::get('boxcolor');
 $newuser->icon = Input::get('icontype');
 
@@ -36,11 +37,16 @@ if($newuser->email != null) {
                         if(empty($emailcheck)) {
                             $newuser->password = password_hash($newuser->password, PASSWORD_DEFAULT);
                             $newuser->save();
-                            // $to = $newuser->email;
-                            // $subject = "Welcome to ZTR-Adlister!";
-                            // $emmessage = wordwrap("Greetings, " . $newuser->username . ",\r\nWelcome to ZTR-Adlister, the web's premium advertisement listing forum by Reagan Wilkins, Tony Burns, and Zeshan Segal! At this time you will not be able to log in, as the site is still in testing. This was merely a test of Reagan Wilkins's email code!\r\nHave a pleasant day!\r\n-Reagan Wilkins, Tony Burns, and Zeshan Segal.", 70, "\r\n");
+                            // $to = $_POST['signupemail'];
+                            // $subject = "Welcome to Spatula City!";
+                            // $emmessage = wordwrap("Greetings, " . $newuser->username . ",\r\nWelcome to Spatula City, the web's premium advertisement listing forum by Reagan Wilkins, Tony Burns, and Zeshan Segal! At this time you will not be able to log in, as the site is still in testing. This was merely a test of Reagan Wilkins's email code!\r\nHave a pleasant day!\r\n-Reagan Wilkins, Tony Burns, and Zeshan Segal.", 70, "\r\n");
+                            // $type = 'plain'; // or HTML
+                            // $charset = 'utf-8';
                             // $headers = "From: ZTR-Adlister" . "\r\n";
-                            // mail($to, $subject, $emmessage, $headers);
+                            // $headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
+                            // $headers .= "MIME-Version: 1.0" . "\r\n";
+                            // $email = mail($to, $subject, $emmessage, $headers);
+                            // $message = $email;
                             header('location: users.show.php');
                             die(); 
                         } else {
@@ -61,6 +67,7 @@ if($newuser->email != null) {
 <!-- Carried over from the index -->
 <html lang="en">
     <head>
+        <link rel="icon" type="image/png" href="img/icon.png">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -102,14 +109,10 @@ if($newuser->email != null) {
             <label for "confirmpassword">Confirm Password</label>
             <input type = "password" name = "confirmpassword" id = "confirmpassword" required>
         </p>
-        <p>
-            <label for "securityquestion">Select a Security Question</label>
-            <select id = "securityquestion" name = "securityquestion" required>
-                <option id = "q1">What is your pet's name?</option>
-                <option id = "q2">What is your favorite kind of spatula?</option>
-                <option id = "q3">What High School did you attend?</option>
-                <option id = "q4"></option>
-            </select>
+        <!-- Reminder -->
+        <p id = "secq">
+            <label for "reminder">Write a reminder for your password (i.e. My dog's name, my first nickname, etc.): </label>
+            <input type = "text" id = "reminder" name = "reminder" required>
         </p>
     <!-- Box Color -->
         <p id = "select">
