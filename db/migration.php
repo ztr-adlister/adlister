@@ -12,6 +12,7 @@
 		boxcolor VARCHAR(15) NOT NULL,
 		icon VARCHAR(50) NOT NULL,
 		phone VARCHAR(20) NOT NULL,
+		reminder VARCHAR(500) NOT NULL,
 		PRIMARY KEY (id)
 	)';
 
