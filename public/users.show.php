@@ -20,7 +20,7 @@ if (!Auth::check()) {
 
 // Grabs the necessary data from the database
 User::dbConnect();
-$stmt = $dbc->prepare('SELECT username, id, icon FROM users WHERE username = :username');
+$stmt = $dbc->prepare('SELECT * FROM users WHERE username = :username');
 $stmt->bindValue(':username', $_SESSION['Loggedinuser'], PDO::PARAM_STR);
 $stmt->execute();
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -77,7 +77,9 @@ if(Input::notempty('adid')) {
         <link rel="stylesheet" type="text/css" href="/css/reagan.css">
         <link rel="stylesheet" type="text/css" href="/css/font-awesome-4.5.0/css/font-awesome.min.css">
         <style type="text/css">
-
+            img {
+                width: 250px;
+            }
         </style>
     </head>
     <?php require_once '../views/navbar.php'; ?>
@@ -88,13 +90,16 @@ if(Input::notempty('adid')) {
 <!-- Ads the user has posted -->
     	<h3 class = "show">Your Ads:</h3>
     	<ul class = "show">
-    		<?php foreach($userads as $advalue) {?>
+            <div class = "col-md-6 col-md-offset-3">
+            <?php foreach($userads as $advalue) {?>
+                <li><img src = "img/<?=$advalue['image_url']?>" class = "img-responsive" alt="Responsive image"></li>
             <li><strong>Title:</strong> <a href="ads.show.php?id=<?=$advalue['id']?>"><?=$advalue['title']?></a></li>
             <li><strong>Description:</strong> <?=$advalue['description']?></li>
             <li><strong>Price:</strong> $<?=$advalue['price']?></li>
             <li><button class = "deleter" data-id="<?=$advalue['id']?>" data-name = "<?=$advalue['title']?>">Delete this Ad</button></li>
             <br>
             <?php } ?>
+            </div>
         <a href="ads.create.php" id = "createads"><i class = "fa fa-commenting-o"></i>Post a new Ad</a>
         <br><br><br><br>
         <a href="ads.edit.php" id = "editads"><i class = "fa fa-pencil"></i>Edit an existing Ad</a>
