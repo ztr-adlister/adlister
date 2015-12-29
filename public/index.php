@@ -35,7 +35,7 @@ require_once '../utils/Input.php';
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>ZTR Industries Ad Lister 3000</title>
+        <title>Spatula City</title>
 
         <link rel="stylesheet" href="/css/bootstrap.min.css">
         <link href='https://fonts.googleapis.com/css?family=Fugaz+One|Lobster' rel='stylesheet' type='text/css'>
@@ -96,12 +96,11 @@ require_once '../utils/Input.php';
                             <?php endif; ?>
 
                         <div class="adSquare" title="<?= $fullTitle ?>">
-                            <img src="<?= $ad['image_url'] ?>" class="img-responsive" alt="Responsive image">
+                            <img src="img/<?= $ad['image_url'] ?>" class="img-responsive" alt="Responsive image">
                             <a href="ads.show.php?id=<?=$ad['id'];?>"><?= $adEllipsedTitle; ?></a>
-                            <p class="priceTag"><?= $ad['price'] ?></p>
+                            <p class="priceTag">$<?= $ad['price'] ?></p>
                         </div>    
                     <?php endforeach ?>   
-
                 </div> <!-- End col-md-12 -->
             </div> <!-- End row. --> 
         </div> <!-- End container. -->

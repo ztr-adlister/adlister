@@ -12,16 +12,57 @@ if(!isset($_SESSION['Loggedinuser'])) {
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>ZTR Industries Ad Lister 3000</title>
+        <title>Spatula City</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Fugaz+One|Shadows Into Light' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="/css/footer.css">
         <link rel="stylesheet" href="/css/main.css">
-        <link rel="stylesheet" type="text/css" href="/css/reagan.css">
+        <link rel="stylesheet" type="text/css" href="/css/z.css">
     </head>
-    <body>
+    <body class= "meetColor">
         <?php require_once '../views/navbar.php'; ?>
-        <br><br><br><br>
-       	<h3>Meet the ZTR team!</h3>
-       	<div id = "meetzee"><span class = "letter">Z</span>ee<br><br><br></div><br><br><br>
-       	<div id = "meettony"><span class = "letter">T</span>ony</div>
-       	<br><br><br><div id = "meetreagan"><span class = "letter">R</span>eagan<br><br><br></div><br><br><br>
+        <div class="container meetPage">
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <h1 class="h1Sy">Meet Our President: Sy Greenblum</h1>
+              </div> <!-- End col-md-12 -->  
+            </div> <!-- End of Row -->
+
+            <div class="row">
+              <div class="col-md-3">
+                <img src="img/spatula_icon_blue.png" class="img-responsive sy" id="lblue" alt="Responsive image">
+                <img src="img/spatula_icon_red.png" class="img-responsive sy" id="lred"alt="Responsive image">
+                <img src="img/spatula_icon_green.png" class="img-responsive sy" id="lgreen" alt="Responsive image">
+                <img src="img/spatula_icon_purple.png" class="img-responsive sy" id="lpurple" alt="Responsive image">
+                <img src="img/spatula_icon_orange.png" class="img-responsive sy" id="lorange" alt="Responsive image">
+                <img src="img/spatula_icon_pink.png" class="img-responsive sy" id="lpink" alt="Responsive image">
+                <img src="img/spatula_icon_yellow.png" class="img-responsive sy" id="lyellow" alt="Responsive image">
+                <img src="img/spatula_icon_ourblue.png" class="img-responsive sy" id="lourblue" alt="Responsive image">
+              </div>
+              <div class="col-md-6 text-center" id= "aboutSy">
+                    <img src="img/sy_pres.png" class="img-responsive sy" alt="Responsive image">
+                    <div class="pPadding">    
+                      <p>Hello,</p>
+                      <p>I'm Sy Greenblum, president of Spatula City.</p> 
+                      <p>I liked their spatulas so much, I bought the company. I use a spatula everyday. If it weren't for the spatula, I wouldn't be the man you see before you today.</p> 
+                      <p>There are thousands of spatulas that need your love. Please help them find a forever home.</p>
+                      <p>Thank you for supporting spatulas. If you don't get your spatula here, please get one somewhere.</p><br>
+                      <p>Sincerely,</p>
+                      <p>Sy Greenblum</p>
+                    </div><!--Closs ppadding -->  
+              </div><!-- End col-md-6 -->
+              <div class="col-md-3">
+                <img src="img/spatula_icon_blue.png" class="img-responsive sy" id="rblue" alt="Responsive image">
+                <img src="img/spatula_icon_red.png" class="img-responsive sy" id="rred"alt="Responsive image">
+                <img src="img/spatula_icon_green.png" class="img-responsive sy" id="rgreen" alt="Responsive image">
+                <img src="img/spatula_icon_purple.png" class="img-responsive sy" id="rpurple" alt="Responsive image">
+                <img src="img/spatula_icon_orange.png" class="img-responsive sy" id="rorange" alt="Responsive image">
+                <img src="img/spatula_icon_pink.png" class="img-responsive sy" id="rpink" alt="Responsive image">
+                <img src="img/spatula_icon_yellow.png" class="img-responsive sy" id="ryellow" alt="Responsive image">
+                <img src="img/spatula_icon_ourblue.png" class="img-responsive sy" id="rourblue" alt="Responsive image">
+              </div>  
+            </div><!-- End of Row -->  
+        </div> <!-- End Container -->
+        <?php require_once '../views/footer.php'; ?>
+    </body>
+</html>      

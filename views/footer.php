@@ -13,7 +13,7 @@
 				<span>Help:</span> <a href="help@ztr.com">help@ztr.com</a>
 			</div>
 			<div class="col-sm-3 lineheight">
-				<span>About:</span> <a href="adlister.dev/about.php">ZTR</a>
+				<span>About:</span> <a href="adlister.dev/meet.php">ZTR</a>
 			</div>
 		</div>
 	</div>
