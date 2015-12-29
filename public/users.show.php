@@ -9,9 +9,6 @@ require_once '../utils/Input.php';
 require_once '../models/Ad.php';
 require_once 'css/userbox.php';
 
-// Sets the navbar status
-$loginstatus = $_SESSION['Loggedinuser'] . " is logged in!";
-
 // Redirects you to the login page if you aren't logged in
 if (!Auth::check()) {
     header('Location: auth.login.php', true, 307);
