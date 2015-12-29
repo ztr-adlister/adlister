@@ -9,9 +9,6 @@ require_once '../utils/Input.php';
 require_once '../models/Ad.php';
 require_once 'css/userbox.php';
 
-// Sets the navbar status
-$loginstatus = $_SESSION['Loggedinuser'] . " is logged in!";
-
 // Redirects you to the login page if you aren't logged in
 if (!Auth::check()) {
     header('Location: auth.login.php', true, 307);
@@ -20,7 +17,7 @@ if (!Auth::check()) {
 
 // Grabs the necessary data from the database
 User::dbConnect();
-$stmt = $dbc->prepare('SELECT username, id, icon FROM users WHERE username = :username');
+$stmt = $dbc->prepare('SELECT * FROM users WHERE username = :username');
 $stmt->bindValue(':username', $_SESSION['Loggedinuser'], PDO::PARAM_STR);
 $stmt->execute();
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -67,6 +64,7 @@ if(Input::notempty('adid')) {
 <!-- Carried over from the index -->
 <html lang="en">
     <head>
+        <link rel="icon" type="image/png" href="img/icon.png">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -77,30 +75,41 @@ if(Input::notempty('adid')) {
         <link rel="stylesheet" type="text/css" href="/css/reagan.css">
         <link rel="stylesheet" type="text/css" href="/css/font-awesome-4.5.0/css/font-awesome.min.css">
         <style type="text/css">
-
+            img {
+                width: 250px;
+                margin-left: 15%;
+            }
+            #icon {
+                position: relative;
+                margin-top: 10px;
+            }
         </style>
     </head>
     <?php require_once '../views/navbar.php'; ?>
     <body>
     	<h2 class = "show">Hello, <?=$user['username'] ?>!</h2>
-        <div id = "box"><br><br><i class = "fa fa-<?=$user['icon']?> fa-5x"></i></div>
+        <div id = "box"><br><br><i id = "icon" class = "fa fa-<?=$user['icon']?> fa-5x"></i></div>
 
 <!-- Ads the user has posted -->
     	<h3 class = "show">Your Ads:</h3>
     	<ul class = "show">
-    		<?php foreach($userads as $advalue) {?>
-            <li><strong>Title:</strong> <a href="ads.show.php?id=<?=$advalue['id']?>"><?=$advalue['title']?></a></li>
+            <div class = "col-md-8 col-md-offset-2">
+                <br>
+            <?php foreach($userads as $advalue) {?>
+                <li><a href = "ads.show.php?id=<?=$advalue['id']?>"><img src = "img/<?=$advalue['image_url']?>" class = "img-responsive" alt="Responsive image"></a></li>
+            <li><strong>Title:</strong><?=$advalue['title']?></li>
             <li><strong>Description:</strong> <?=$advalue['description']?></li>
             <li><strong>Price:</strong> $<?=$advalue['price']?></li>
-            <li><button class = "deleter" data-id="<?=$advalue['id']?>" data-name = "<?=$advalue['title']?>">Delete this Ad</button></li>
-            <br>
+            <li><button class = "deleter" data-id="<?=$advalue['id']?>" data-name = "<?=$advalue['title']?>"><i class = "fa fa-trash"></i>Delete this Ad</button></li>
+            <br><br><br>
             <?php } ?>
+            </div>
         <a href="ads.create.php" id = "createads"><i class = "fa fa-commenting-o"></i>Post a new Ad</a>
         <br><br><br><br>
         <a href="ads.edit.php" id = "editads"><i class = "fa fa-pencil"></i>Edit an existing Ad</a>
         <br><br><br>
         </ul>
-    	<br>
+    	<br><br><br><br><br><br><br><br><br><br>
 <!-- Takes you to the edit profile page -->
     	<a class = "show" id = "editprofile" href="users.edit.php"><i class = "fa fa-pencil"></i>Edit your profile</a>
         <br><br>
@@ -145,5 +154,21 @@ if(Input::notempty('adid')) {
             $("#delete-id").val(profileid);
             $("#deletion").submit();
         }
+    });
+
+    $("#box").click(function() {
+        $("#icon").animate({
+            left: "+=50px"
+        }, 200).animate({
+            left: "-=100px"
+        }, 200).animate({
+            left: "+=50px"
+        }, 200).animate({
+            top: "-=50px"
+        }, 200).animate({
+            top: "+=130px"
+        }, 200).animate({
+            top: "-=80px"
+        }, 200);
     });
     </script>

@@ -56,9 +56,14 @@ if($choice == "email") {
 } else if ($choice == "password") {
 	if($newdata!= "") {
 		if($newdata == Input::get('confirmpass')) {
-			$updateuser->password = password_hash($newdata, PASSWORD_DEFAULT);
-			$updateuser->save();
-			$success = "Password successfully updated";
+			if(!empty(Input::get('newreminder'))) {
+				$updateuser->password = password_hash($newdata, PASSWORD_DEFAULT);
+				$updateuser->reminder = Input::get('newreminder');
+				$updateuser->save();
+				$success = "Password successfully updated";
+			} else {
+				$error = "Please enter a reminder for your password!";
+			}
 		} else {
 			$error = "Your passwords do not match";
 		}
@@ -90,6 +95,7 @@ if (!Auth::check()) {
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" type="image/png" href="img/icon.png">
 	<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -125,9 +131,14 @@ if (!Auth::check()) {
 		<label for "updatefield">New <?php if ($choice == "email") {?>Email<?php } else if ($choice == "phone") {?>Phone<?php } else if ($choice == "username") {?>Username<?php } else if ($choice == "password") {?>Password<?php }?>: </label>
 		<input type = <?php if ($choice == "password") {?> password <?php } else {?> text <?php }?> name = "updatefield" id = "updatefield">
 	</p>
+<!-- Confirm password field -->
 	<p id = "conf" <?php if ($choice != "password") {?>style = "display:none"<?php }?>>
 		<label for "confirmpass">Confirm Password:</label>
 		<input type = "password" name = "confirmpass" id = "confirmpass">
+	</p>
+	<p id = "newrem" <?php if ($choice != "password") {?>style = "display:none"<?php }?>>
+		<label for "newreminder">Set a new reminder: </label>
+		<input type = "text" name = "newreminder" id = "newreminder">
 	</p>
 	</p>
 	 <p id = "updatecolor" <?php if($choice != "box color") {?>style = "display:none"<?php } else {?>style = "display:initial"<?php }?>>
