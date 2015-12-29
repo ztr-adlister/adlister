@@ -1,12 +1,12 @@
 <?php
 
 $arrayPhrases = [
-    "There's just one place to go for all your spatula needs; Spatula City!", 
+    "There's just one place to go for all your spatula needs - Spatula City!", 
     "A giant warehouse of spatulas for every occasion.", 
     "Thousands to choose from in every shape, size, and color.",
     "Don't forget, they make great Christmas presents.",
     "And what better way to say 'I love you.' than with the gift of a spatula?",
-    "Spatula City - seven locations!",
+    "Spatula City - Seven locations!",
     "We're in the yellow pages under 'spatulas'.",
     "We sell spatulas, and that's all!",
     "And this weekend only, take advantage of our special liquidation sale.",
@@ -18,119 +18,143 @@ $arrayPhrases = [
     $phrase = $arrayPhrases[$arrayPhrasesKey];
 
 ?>
-
+<link href='https://fonts.googleapis.com/css?family=Fugaz+One|Playball' rel='stylesheet' type='text/css'>
 <style type="text/css">
+    .tippytop {
+        background-color: #ffffff;
+        height: 65px;
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
     .phrases {
         position: relative;
-        left: 125px;
+        display: inline-block;
+        left: 170px;
     }
-    .pushdown {
+    .customnav {
         background-color: #0062cc;
-        color: yellow;
-        margin-top: 20px;
+        margin-top: 65px;
         height: 90px;
-    }
-    .navbar-default .navbar-nav>li>a {
         color: #ffffff;
     }
-    .navbar-nav>li>a {
-        line-height: 56px;
+    .customnav a {
+        color: #ffffff;
+        line-height: 90px;
+        margin: 0 15px 0 15px;
+    }
+    .customnav i {
+        font-size: 40px;
+        line-height: 90px;
     }
     .spatulaholder {
-        width: 200px;
-        height: 62px;
-        background-color: #0062cc;
-        position: relative;
-        left: 35px;
+        width: 62px;
+        height: 200px;
+        background-color: transparent;
+        position: absolute;
+        top: -7px;
+        left: 25px;
     }
     .handle {
-        width: 60px;
-        height: 16px;
+        width: 16px;
+        height: 60px;
         border-radius: 5px;
         background-color: #000000;
         position: absolute;
-        top: 23px;
-        left: 10px;
+        bottom: 10px;
+        left: 23px;
         z-index: 2;
     }
     .stem {
-        width: 72px;
-        height: 10px;
+        width: 10px;
+        height: 72px;
         background-color: #d9d9d9;
         position: absolute;
-        top: 26px;
-        left: 50px;
+        bottom: 50px;
+        left: 26px;
     }
     .flatend {
-        width: 60px;
-        height: 42px;
+        width: 42px;
+        height: 60px;
         border-radius: 5px;
         background-color: #d9d9d9;
         position: absolute;
-        top: 10px;
-        left: 120px;
+        bottom: 120px;
+        left: 10px;
     }
     .rectangle {
-        width: 40px;
-        height: 6px;
+        width: 6px;
+        height: 40px;
         border-radius: 2px;
-        background-color: #0062cc;
+        background-color: #ffffff;
     }
     #rect1 {
         position: absolute;
-        top: 6px;
-        left: 10px;   
+        top: 10px;
+        left: 6px;   
     }
     #rect2 {
         position: absolute;
-        top: 18px;
-        left: 10px;   
+        top: 10px;
+        left: 18px;   
     }
     #rect3 {
         position: absolute;
-        top: 30px;
-        left: 10px;   
+        top: 10px;
+        left: 30px;   
+    }
+    .logo {
+        font-size: 35px;
+        font-family: 'Fugaz One', cursive;
+        color: #ffffff;
+        text-shadow: 4px -3px 0px #003d80;
+    }
+    .logo:hover {
+        text-shadow: 4px 3px 0px #000, 9px 8px 0px rgba(0,0,0,0.30);
+        text-decoration: none;
     }
 </style>
 
-<h3 class="phrases"><?= $phrase; ?></h3>
+<div class="tippytop hidden-xs hidden-sm">
+    <h3 class="phrases"><?= $phrase; ?></h3>
+</div> <!-- end tippytop -->
+
+<div class="spatulaholder hidden-xs hidden-sm">
+    <div class="handle"></div>
+    <div class="stem"></div>
+    <div class="flatend">
+        <div class="rectangle" id="rect1"></div>
+        <div class="rectangle" id="rect2"></div>
+        <div class="rectangle" id="rect3"></div>
+    </div>
+</div> <!-- end spatulaholder -->
     
-<nav class="navbar navbar-default pushdown">
+<nav class="customnav">
     <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.php">
-                <div class="spatulaholder">
-                    <div class="handle"></div>
-                    <div class="stem"></div>
-                    <div class="flatend">
-                        <div class="rectangle" id="rect1"></div>
-                        <div class="rectangle" id="rect2"></div>
-                        <div class="rectangle" id="rect3"></div>
-                    </div>
-                </div> <!-- end spatulaholder -->
-            </a>
-        </div> <!-- end navbar-header -->
-        
-        <!-- Collect the nav links, forms, and other content for toggling -->     
-        <div class="collapse navbar-collapse" id="navbar">        
-            <ul id="navig" class="nav navbar-nav navbar-right">
-                <li><a href="ads.index.php">My Store</a></li>
-                <li><a href="ads.index.php">Products</a></li>
-                <li><a href="ads.index.php">Services</a></li>
-                <li><a href="ads.index.php">Deals</a></li>
-                <li><a href="ads.index.php">Sell Your Spatula</a></li>
-                <li <?php if(!isset($_SESSION['Loggedinuser'])) {?>style="display:none"<?php }?>><a href="users.show.php">Your Profile</a></li>
-                <li <?php if(isset($_SESSION['Loggedinuser'])) {?>style = "display:none"<?php }?>><a href="auth.login.php">Members, Log In!</a></li>
-                <li <?php if(isset($_SESSION['Loggedinuser'])) {?>style = "display:none"<?php }?>><a href="users.create.php">Sign Up</a></li>
-                <li><a href="meet.php">About ZTR</a></li>
-            </ul>
-        </div> <!--/.nav-collapse -->
+        <div class="row">
+
+            <div class="col-md-4 text-center col-sm-7 col-xs-9">
+                <a class="logo" href="index.php">Spatula City</a>
+            </div> <!-- end col-md-4 -->             
+
+            <div class="col-md-8 text-center hidden-xs hidden-sm">        
+                <a href="ads.index.php">My Store</a>
+                <a href="ads.index.php">Products</a>
+                <a href="ads.index.php">Deals</a>
+                <a href="ads.index.php">Sell Your Spatula</a>
+                <a <?php if(!isset($_SESSION['Loggedinuser'])) {?>style="display:none"<?php }?> href="users.show.php">Your Profile</a>
+                <a <?php if(isset($_SESSION['Loggedinuser'])) {?>style = "display:none"<?php }?> href="auth.login.php">Members, Log In!</a>
+                <a <?php if(isset($_SESSION['Loggedinuser'])) {?>style = "display:none"<?php }?> href="users.create.php">Sign Up</a>
+                <a href="meet.php">About Spatula City</a>
+            </div> <!-- end col-md-8 -->
+
+            <div class="col-sm-5 col-xs-3 hidden-md hidden-lg text-center">
+                <i class="fa fa-bars"></i>
+            </div> <!-- end col-sm-5 col-xs-3 -->
+
+        </div> <!-- end row -->
     </div> <!-- end container fluid -->
 </nav>
+
+
