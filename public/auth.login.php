@@ -27,7 +27,10 @@ $password = Input::get('password');
 
 if ($username != NULL && $password != NULL) {
     Auth::attempt($username, $password);
-}
+    if (!Auth::attempt($username, $password)) {
+        $message = "Your information is incorrect";
+    }
+} 
 
 if(Auth::check()) {
     header('Location: users.show.php');
@@ -53,14 +56,20 @@ if(Auth::check()) {
             .login_container{
                 margin-top: 70px;
             }
-
+            .failure {
+                color: red;
+                text-shadow: 1px 1px 1px black;
+                font-size: 20px;
+                margin-left: 10%;
+                margin-bottom: -5%;
+            }
         </style>
 
     </head>
     <body>
         <?php require_once '../views/navbar.php'; ?>
 
-        <div class = "success"><?=$message;?></div>
+        <div class = "failure"><?=$message;?></div>
         <div class="container login_container">
             <div class="row">
                 <div class="col-sm-4 text-center">
