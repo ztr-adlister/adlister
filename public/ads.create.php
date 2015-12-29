@@ -4,6 +4,7 @@
     require_once '../utils/Input.php';
     require_once '../db/adlister_login.php';
     require_once '../models/User.php';
+    require_once '../models/Ad.php';
 
     function pageController()
     {
@@ -20,6 +21,16 @@
         $username = Auth::user();
 
         $user = User::finduserbyusername($username);
+
+        $arrayCategories = Ad::showJustCategories();
+        $justCategories = [];
+        foreach ($arrayCategories as $key => $value) {
+            array_push($justCategories, $value['categories']);
+        }
+        $justCategoriesString = implode(', ', $justCategories);
+        $justCategoriesArray = explode(', ', $justCategoriesString);
+        $justCategoriesArrayUnique = array_unique($justCategoriesArray);
+        sort($justCategoriesArrayUnique);
 
         // Uses the 'Submit A National Park' form to insert new values to the table and database.
         function insertAd($dbc, $user)
@@ -64,13 +75,20 @@
                 $error = $e->getMessage();
                 $errorArray['errDes'] = $error;
             }
+            try {
+                $categoriesArray = Input::get('categories', 1, 50);
+                $categories = implode(', ', $categoriesArray);
+            } catch (Exception $e) {
+                $error = $e->getMessage();
+                $errorArray['errCats'] = $error;
+            }
 
             // If the $errorArray is not empty, this will return out of the method before binding values and executing below. The $errorArray returns with an array of strings.
             if (!empty($errorArray)) {
                 return $errorArray;
             }
 
-            $stmt = $dbc->prepare('INSERT INTO ads (user_id, method, image_url, title, price, location, description) VALUES (:user_id, :method, :image_url, :title, :price, :location, :description)');
+            $stmt = $dbc->prepare('INSERT INTO ads (user_id, method, image_url, title, price, location, description, categories) VALUES (:user_id, :method, :image_url, :title, :price, :location, :description, :categories)');
             $stmt->bindValue(':user_id', $user->id, PDO::PARAM_STR);
             $stmt->bindValue(':method', $method, PDO::PARAM_STR);
             $stmt->bindValue(':image_url', $image_url, PDO::PARAM_STR);
@@ -78,6 +96,7 @@
             $stmt->bindValue(':price', $price, PDO::PARAM_INT);
             $stmt->bindValue(':location', $location, PDO::PARAM_STR);
             $stmt->bindValue(':description', $description, PDO::PARAM_STR);
+            $stmt->bindValue(':categories', $categories, PDO::PARAM_STR);
 
             $stmt->execute();
         }
@@ -89,10 +108,11 @@
         $formPrice = '';
         $formLoc = '';
         $formDes = '';
+        $formCat = [''];
         $yellow = false;
 
         if (!empty($_POST)) {
-            if ( Input::notEmpty('method') && Input::notEmpty('image_url') && Input::notEmpty('title') && Input::notEmpty('price') && Input::notEmpty('location') && Input::notEmpty('description') ) {
+            if ( Input::notEmpty('method') && Input::notEmpty('image_url') && Input::notEmpty('title') && Input::notEmpty('price') && Input::notEmpty('location') && Input::notEmpty('description') && Input::notEmpty('categories') ) {
                 $errorArray = insertAd($dbc, $user);
                 if ($errorArray == []) {
                     $errorArray = ['Ad Submitted!'];
@@ -103,6 +123,7 @@
                     $formPrice = Input::get('price');
                     $formLoc = Input::get('location');
                     $formDes = Input::get('description');
+                    $formCat = Input::get('categories');
                 }
             } else {
                 $errorArray = ['Please submit values for each data field.'];
@@ -113,6 +134,7 @@
                 $formPrice = Input::get('price');
                 $formLoc = Input::get('location');
                 $formDes = Input::get('description');
+                $formCat = Input::get('categories');
             }
         }
 
@@ -126,11 +148,14 @@
             'formPrice' => $formPrice,
             'formLoc' => $formLoc,
             'formDes' => $formDes,
+            'formCat' => $formCat,
+            'justCategoriesArrayUnique' => $justCategoriesArrayUnique,
             'loginstatus' => $loginstatus
         );    
     }
 
     extract(pageController());
+
 ?>
 
 <!DOCTYPE html>
@@ -162,6 +187,9 @@
             }
             .yellow {
                 background-color: #ffffb3;
+            }
+            .checkboxmargin {
+                margin: 0 45px;
             }
         </style>
     </head>
@@ -240,38 +268,17 @@
                         <div class="row formmargin">
                             <div class="col-xs-12">                   
                                 <label >Ad Categories</label>
-                                <!-- <input type="text" name="categories" value="<?= $formTitle; ?>" <?php if (isset($errorArray['errTitle']) || $yellow): ?> class="form-control yellow" autofocus<?php else: ?> class="form-control" <?php endif; ?>> -->
-                                <div <?php if (isset($errorArray['errMethod']) || $yellow): ?> class="text-center yellow" <?php else: ?> class="text-center" <?php endif; ?>>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" id="inlineCheckbox1" value="option1"> antique
-                                    </label>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" id="inlineCheckbox3" value="option3"> cartoon
-                                    </label>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" id="inlineCheckbox2" value="option2"> futuristic
-                                    </label>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" id="inlineCheckbox2" value="option2"> geeky
-                                    </label>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" id="inlineCheckbox3" value="option3"> metal
-                                    </label>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" id="inlineCheckbox1" value="option1"> new
-                                    </label>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" id="inlineCheckbox1" value="option1"> plastic
-                                    </label>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" id="inlineCheckbox3" value="option3"> used
-                                    </label>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" id="inlineCheckbox2" value="option2"> wooden
-                                    </label>
+                                <div <?php if (isset($errorArray['errCats']) || $yellow): ?> class="text-center yellow" <?php else: ?> class="text-center" <?php endif; ?>>
+                                    
+                                    <?php foreach ($justCategoriesArrayUnique as $category): ?>
+                                        <label class="checkbox-inline checkboxmargin">
+                                            <input type="checkbox" name="categories[]" value=<?= $category ?> <?php if (in_array($category, $formCat)): ?> checked <?php endif; ?>> <?= $category ?>
+                                        </label>
+                                    <?php endforeach; ?>
+
                                 </div>
-                            </div>
-                        </div>
+                            </div> <!-- end col-xs-12 -->
+                        </div> <!-- end row -->
                         <div class="row formmargin">
                             <div class="col-xs-12">
                                 <label >Ad Text</label>

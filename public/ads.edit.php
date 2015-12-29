@@ -19,7 +19,15 @@
         }
         $loginstatus = $_SESSION['Loggedinuser'] . " is logged in!";
 
-
+        $arrayCategories = Ad::showJustCategories();
+        $justCategories = [];
+        foreach ($arrayCategories as $key => $value) {
+            array_push($justCategories, $value['categories']);
+        }
+        $justCategoriesString = implode(', ', $justCategories);
+        $justCategoriesArray = explode(', ', $justCategoriesString);
+        $justCategoriesArrayUnique = array_unique($justCategoriesArray);
+        sort($justCategoriesArrayUnique);
         
 
         $username = Auth::user();
@@ -80,13 +88,20 @@
                 $error = $e->getMessage();
                 // $errorArray['errDes'] = $error;
             }
+            try {
+                $categoriesArray = Input::get('categories', 1, 50);
+                $categories = implode(', ', $categoriesArray);
+            } catch (Exception $e) {
+                $error = $e->getMessage();
+                $errorArray['errCats'] = $error;
+            }
 
             // If the $errorArray is not empty, this will return out of the method before binding values and executing below. The $errorArray returns with an array of strings.
             if (!empty($errorArray)) {
                 return $errorArray;
             }
 
-            $stmt = $dbc->prepare('UPDATE ads SET user_id = :user_id, method = :method, image_url = :image_url, title = :title, price = :price, location = :location, description = :description WHERE id = :id');
+            $stmt = $dbc->prepare('UPDATE ads SET user_id = :user_id, method = :method, image_url = :image_url, title = :title, price = :price, location = :location, description = :description, categories = :categories WHERE id = :id');
             $stmt->bindValue(':id', $adid, PDO::PARAM_INT);
             $stmt->bindValue(':user_id', $user->id, PDO::PARAM_STR);
             $stmt->bindValue(':method', $method, PDO::PARAM_STR);
@@ -95,6 +110,7 @@
             $stmt->bindValue(':price', $price, PDO::PARAM_INT);
             $stmt->bindValue(':location', $location, PDO::PARAM_STR);
             $stmt->bindValue(':description', $description, PDO::PARAM_STR);
+            $stmt->bindValue(':categories', $categories, PDO::PARAM_STR);
 
             $stmt->execute();
         }
@@ -107,6 +123,7 @@
         $formLoc = '';
         $formDes = '';
         $formAdId = '';
+        $formCat = [''];
         $yellow = false;
 
         if (isset($_POST['ad_to_edit'])) {
@@ -118,11 +135,12 @@
             $formPrice = $adToEditObj->price;
             $formLoc = $adToEditObj->location;
             $formDes = $adToEditObj->description;
+            $formCat = explode(', ', $adToEditObj->categories);
             $formAdId = $adToEdit;
         } 
         
         if ( Input::has('method') && Input::has('image_url') && Input::has('title') && Input::has('price') && Input::has('location') && Input::has('description') ) {
-            if ( Input::notEmpty('method') && Input::notEmpty('image_url') && Input::notEmpty('title') && Input::notEmpty('price') && Input::notEmpty('location') && Input::notEmpty('description') ) {
+            if ( Input::notEmpty('method') && Input::notEmpty('image_url') && Input::notEmpty('title') && Input::notEmpty('price') && Input::notEmpty('location') && Input::notEmpty('description') && Input::notEmpty('categories') ) {
                 $errorArray = updateAd($dbc, $user);
                 if ($errorArray == []) {
                     $errorArray = ['Ad Editted!'];
@@ -134,6 +152,7 @@
                     $formLoc = Input::get('location');
                     $formDes = Input::get('description');
                     $formAdId = Input::get('adid');
+                    $formCat = Input::get('categories');
                 }
             } else {
                 $errorArray = ['Please submit values for each data field.'];
@@ -145,6 +164,7 @@
                 $formLoc = Input::get('location');
                 $formDes = Input::get('description');
                 $formAdId = Input::get('adid');
+                $formCat = Input::get('categories');
             }
         }
 
@@ -160,6 +180,8 @@
             'formLoc' => $formLoc,
             'formDes' => $formDes,
             'formAdId' => $formAdId,
+            'formCat' => $formCat,
+            'justCategoriesArrayUnique' => $justCategoriesArrayUnique,
             'loginstatus' => $loginstatus
         );    
     }
@@ -201,6 +223,9 @@
             }
             .dontdisplay {
                 display: none;
+            }
+            .checkboxmargin {
+                margin: 0 45px;
             }
         </style>
     </head>
@@ -296,6 +321,20 @@
                             </div>
                         </div>
                         <div class="row formmargin">
+                            <div class="col-xs-12">                   
+                                <label >Ad Categories</label>
+                                <div <?php if (isset($errorArray['errCats']) || $yellow): ?> class="text-center yellow" <?php else: ?> class="text-center" <?php endif; ?>>
+                                    
+                                    <?php foreach ($justCategoriesArrayUnique as $category): ?>
+                                        <label class="checkbox-inline checkboxmargin">
+                                            <input type="checkbox" name="categories[]" value=<?= $category ?> <?php if (in_array($category, $formCat)): ?> checked <?php endif; ?>> <?= $category ?>
+                                        </label>
+                                    <?php endforeach; ?>
+
+                                </div>
+                            </div> <!-- end col-xs-12 -->
+                        </div> <!-- end row -->
+                        <div class="row formmargin">
                             <div class="col-xs-12">
                                 <label >Ad Text</label>
                                 <textarea rows="7" name="description" <?php if (isset($errorArray['errDes']) || $yellow): ?> class="form-control yellow" autofocus<?php else: ?> class="form-control" <?php endif; ?>><?= $formDes; ?></textarea>
@@ -305,6 +344,7 @@
                     </form>
 
                 </div> <!-- End col-md-8 -->
+
             </div> <!-- End row. -->
 
         </div> <!-- End container. -->
