@@ -48,12 +48,10 @@
             .titlemargin {
                 margin-bottom: 25px;
             }
-            .forimages {
-                width: 350px;
-                height: 100%;
+            img {
                 border: 1px solid #d9d9d9;
                 box-shadow: 5px 5px 5px #d9d9d9;
-                margin-bottom: 20px;
+                margin: 0 auto 20px;
             }
             .smallertext {
                 font-size: 13px;
@@ -88,13 +86,18 @@
             .greybox {
                 width: 100%;
                 background-color: #d9d9d9;
+                margin-bottom: 20px;
                 padding: 20px;
+            }
+            .smallgray {
+                font-size: 13px;
+                color: #999999;
             }
             .finalnotes {
                 width: 100%;
                 height: 70px;
                 position: relative;
-                margin: 10px 0;
+                margin: 0 0 10px 0;
             }
             .finalleft {
                 position: absolute;
@@ -130,9 +133,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <h3 class="titlemargin"><?= $ad->title ?></h3>
-                            <div class="forimages">
-                                <img src="img/<?= $ad->image_url ?>" class="img-responsive" alt="Responsive image">
-                            </div>
+                            <img src="img/<?= $ad->image_url ?>" class="img-responsive" alt="Responsive image">
                         </div> <!-- End col-md-6 -->
                         <div class="col-md-6">
                             <h3>$<?= $ad->price ?> <span class="smallertext">List Price: $<?= round(($ad->price * 0.10) + $ad->price, 2); ?></span> <span class="saletext">ON SALE</span></h3>
@@ -142,16 +143,24 @@
                                 <p>Q & A (<?= $randNum; ?>)</p>
                             </div>
                             <div class="blankspace text-left">
-                                <p>shipping: <span class="green">ships free</span></p>
+                                <?php $userName = User::find($ad->user_id); ?>
+
+                                <?php if ($ad->method == 'email'): ?>
+                                    <p>contact Info: <?= $userName->username; ?> via <?= $ad->method; ?>: <span class="green"><?= $userName->email; ?></span> </p>
+                                <?php else: ?>
+                                    <p>contact Info: <?= $userName->username; ?> via <?= $ad->method; ?>: <span class="green"><?= $userName->phone; ?></span> </p>
+                                <?php endif; ?>
+
                                 <p><?= $avail; ?> available: <span class="redorange"><?= $ad->location; ?></span></p>
                             </div>
                             <div class="greybox text-left">
-                                <?php $userName = User::find($ad->user_id); ?>
                                 
-                                <h4>Contact <?= $userName->username; ?> via <?= $ad->method; ?></h4>
                                 <p><?= $ad->description ?></p>
                             </div>
-                            <div class="finalnotes">
+                            <div class="blankspace smallgray text-left">
+                                <p>categories: <?= $ad->categories ?></p>
+                            </div>
+                            <div class="finalnotes hidden-xs hidden-sm">
                                 <div class="finalleft">
                                     <p>NOTES</p>
                                 </div>

@@ -25,6 +25,27 @@ class Ad extends Model
 
 		return $ads;
 	}
+
+	public static function findCategories($categories)
+	{
+		self::dbConnect();
+		$stmt = self::$dbc->prepare('SELECT * FROM ' . self::$table . ' WHERE categories LIKE :categories');
+		$stmt->bindValue(':categories', $categories, PDO::PARAM_STR);
+		$stmt->execute();
+		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		return $result;
+	}
+
+	public static function showJustCategories()
+	{
+		self::dbConnect();
+		$stmt = self::$dbc->prepare('SELECT categories FROM ' . self::$table . ' GROUP BY categories ASC');
+		$stmt->execute();
+		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		return $result;
+	}
 }
 
 
