@@ -1,0 +1,13 @@
+.pictureHolder {
+	position: relative;
+}
+
+.spatulaText {
+	position: absolute;
+	top: 25px;
+	left: 125px;
+	font-size: 60px;
+	color: white;
+	font-family: 'Lobster', cursive;
+	text-shadow: 4px 3px 0px #000, 9px 8px 0px rgba(0,0,0,0.15);
+}

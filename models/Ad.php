@@ -19,7 +19,7 @@ class Ad extends Model
 	public static function getNewest() {
 		self::dbConnect();
 
-		$query = 'SELECT * FROM ' . self::$table .' ORDER BY id DESC LIMIT 3';
+		$query = 'SELECT * FROM ' . self::$table .' ORDER BY id DESC LIMIT 6';
 		$stmt = self::$dbc->query($query);
 		$ads = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
