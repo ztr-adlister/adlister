@@ -35,23 +35,52 @@ if($choice == "email") {
 	} else {
 		$error = "This email is already taken";
 	}
+} else if ($choice == "phone") {
+	$updateuser->phone = $newdata;
+	$updateuser->save();
+	$success = "Phone Number Successfully Updated";
 } else if ($choice == "username") {
 	$updateuser->username = $newdata;
 	$usercheck = User::finduserbyusername($updateuser->username);
 	if($updateuser->username == $userdata['username'] || empty($usercheck)) {
-		$updateuser->save();
-		$_SESSION['Loggedinuser'] = $updateuser->username;
-		$success = "Username successfully updated";
+		if($updateuser->username != "") {
+			$updateuser->save();
+			$_SESSION['Loggedinuser'] = $updateuser->username;
+			$success = "Username successfully updated";
+		} else {
+			$error = "Please enter a valid username";
+		}
 	} else {
 		$error = "This username is already taken";
 	}
 } else if ($choice == "password") {
-	$updateuser->password = password_hash($newdata, PASSWORD_DEFAULT);
-	$updateuser->save();
-	$success = "Password successfully updated";
-} else if ($choice == "just box color/icon") {
-	$updateuser->save();
-	$success = "Box Color and Icon successfully updated";
+	if($newdata!= "") {
+		if($newdata == Input::get('confirmpass')) {
+			$updateuser->password = password_hash($newdata, PASSWORD_DEFAULT);
+			$updateuser->save();
+			$success = "Password successfully updated";
+		} else {
+			$error = "Your passwords do not match";
+		}
+	} else {
+		$error = "Please enter a valid password";
+	}
+} else if ($choice == "box color") {
+	if ($updateuser->boxcolor != $userdata['boxcolor']) {
+		$updateuser->save();
+		header('location: users.show.php');
+		die();
+	} else {
+		$error = "Enter your new box color";
+	}
+} else if ($choice == "icon") {
+	if ($updateuser->icon != $userdata['icon']) {
+		$updateuser->save();
+		header('location: users.show.php');
+		die();
+	} else {
+		$error = "Enter your new icon";
+	}
 }
 if (!Auth::check()) {
     header('Location: auth.login.php', true, 307);
@@ -74,23 +103,34 @@ if (!Auth::check()) {
 <body>
 	<?php require_once '../views/navbar.php'; ?>
 	<br><br><br><br>
+<!-- Displays the message -->
 	<div class = "error"><?=$error?></div>
 	<div class = "success"><?=$success?></div>
+<!-- The form itself -->
 <form class = "edit" method="POST" action = "users.edit.php">
-	<p>
-		<label for "updatefield">New Information (keep blank for box color/icon): </label>
-		<input type = <?php if ($choice == "password") {?> password <?php } else {?> text <?php }?> name = "updatefield" id = "updatefield">
-	</p>
+<!-- Select your edit field -->
 	<p id="updrop">
 		<label for "updatechoice">What information do you want to edit?</label>
 		<select id ="updatechoice" name="updatechoice" required>
-			<option>just box color/icon</option>
-			<option>email</option>
-			<option>username</option>
-			<option>password</option>
+			<option selected disabled>Select a Field</option>
+			<option <?php if($choice == "box color") {?>selected<?php }?>>box color</option>
+			<option <?php if($choice == "icon") {?>selected<?php }?>>icon</option>
+			<option <?php if($choice == "email") {?>selected<?php }?>>email</option>
+			<option <?php if($choice == "phone") {?>selected<?php }?>>phone</option>
+			<option <?php if($choice == "username") {?>selected<?php }?>>username</option>
+			<option <?php if($choice == "password") {?>selected<?php }?>>password</option>
 		</select>
+<!-- Text input field -->
+	<p <?php if ($choice == "box color" || $choice == "icon" || $choice == "") {?>style = "display:none"<?php }?>>
+		<label for "updatefield">New <?php if ($choice == "email") {?>Email<?php } else if ($choice == "phone") {?>Phone<?php } else if ($choice == "username") {?>Username<?php } else if ($choice == "password") {?>Password<?php }?>: </label>
+		<input type = <?php if ($choice == "password") {?> password <?php } else {?> text <?php }?> name = "updatefield" id = "updatefield">
 	</p>
-	 <p id = "updatecolor">
+	<p id = "conf" <?php if ($choice != "password") {?>style = "display:none"<?php }?>>
+		<label for "confirmpass">Confirm Password:</label>
+		<input type = "password" name = "confirmpass" id = "confirmpass">
+	</p>
+	</p>
+	 <p id = "updatecolor" <?php if($choice != "box color") {?>style = "display:none"<?php } else {?>style = "display:initial"<?php }?>>
 	        <label for "updatebox">Box Color</label>
 	        <select id = "boxcolor" name = "boxcolor">
 	            <option id = "red"<?php if($userdata['boxcolor'] == "Red") {?>selected<?php }?>>Red</option>
@@ -115,7 +155,7 @@ if (!Auth::check()) {
 	            <option id = "gold" <?php if($userdata['boxcolor'] == "Gold") {?>selected<?php }?>>Gold</option>
 	        </select>
             </p>
-            <p id = "updateicon">
+            <p id = "updateicon" <?php if($choice != "icon") {?>style = "display:none"<?php }?>>
                 <label for "icontype">Icon</label>
                <select id = "icontype" name = "icontype" required>
                 <option <?php if($userdata['icon'] == "university") {?>selected<?php }?>>university</option>
