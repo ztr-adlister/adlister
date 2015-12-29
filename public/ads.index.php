@@ -21,15 +21,18 @@
         $arrayCategories = Ad::showJustCategories();
         $justCategories = [];
         foreach ($arrayCategories as $key => $value) {
-            // print_r($value['categories']);
             array_push($justCategories, $value['categories']);
         }
-        // print_r($justCategories);
+        $justCategoriesString = implode(', ', $justCategories);
+        $justCategoriesArray = explode(', ', $justCategoriesString);
+        $justCategoriesArrayUnique = array_unique($justCategoriesArray);
+        sort($justCategoriesArrayUnique);
 
         return array(
             'adsArray' => $adsArray,
             'adId' => $adId,
-            'loginstatus' => $loginstatus
+            'loginstatus' => $loginstatus,
+            'justCategoriesArrayUnique' => $justCategoriesArrayUnique
         );    
     }
 
@@ -53,6 +56,53 @@
             body {
                 background-color: #F5F5F1;
             }
+            .bottomline {
+                margin-top: 10px;
+                border-bottom: 2px solid #0062cc;
+                margin-bottom: 20px;
+            }
+            .note {
+                font-size: 18px;
+            }
+            .blue {
+                color: #007bff;
+            }
+            .sidebar {
+                width: 100%;
+                background-color: #ffffff;
+                border: 1px solid #007bff;
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+            .priceTag {
+                background-color: #007bff;
+                color: white;
+            }
+            .forcategories {
+                margin-left: 20px;
+            }
+            .bigbox {
+                width: 600px;
+                height: 225px;
+                border: 1px solid #d9d9d9;
+                background: green url(img/starspangledspatula.jpg) center center no-repeat;
+                border-radius: 5px;
+                margin: 0px auto 20px;
+                position: relative;
+                overflow: hidden;
+            }
+            .boxtitle {
+                position: absolute;
+                top: 3px;
+                left: 102px;
+                color: #007bff;
+                font-weight: bold;
+            }
+            .boxdescription {
+                position: absolute;
+                top: 177px;
+                left: 1px;
+            }
             .adSquare {
                 width: 200px;
                 height: 200px;
@@ -70,83 +120,27 @@
                 margin: 10px auto;
                 overflow: hidden;
             }
-            /*img {
-                margin-top: -20%;
-            }*/
-            .priceTag {
-                background-color: #007bff;
-                color: white;
-            }
-            .note {
-                font-size: 18px;
-            }
-            .blue {
-                color: #007bff;
-            }
-            .bottomline {
-                border-bottom: 2px solid #007bff;
-                margin-bottom: 20px;
-            }
-            .sidebar {
-                height: 190px;
-                width: 100%;
-                background-color: #ffffff;
-                border: 1px solid #007bff;
-                border-radius: 5px;
-                margin-bottom: 10px;
-                /*margin: 0 auto;*/
-                /*display: inline-block;*/
-            }
-            .forcategories {
-                margin-left: 20px;
-            }
-            .bigbox {
-                width: 600px;
-                height: 225px;
-                border: 1px solid #d9d9d9;
-                background: green url(img/starspangledspatula.jpg) center center no-repeat;
-                /*background-color: #007bff;*/
-                border-radius: 5px;
-                /*display: inline-block;*/
-                /*margin: 0 10px 20px 10px;*/
-                margin: 0px auto 20px;
-                position: relative;
-                overflow: auto;
-            }
-            .boxtitle {
-                position: absolute;
-                top: 3px;
-                left: 102px;
-                color: #007bff;
-                font-weight: bold;
-            }
-            .boxdescription {
-                position: absolute;
-                top: 177px;
-                left: 1px;
-            }
         </style>
     </head>
     <body>
+
         <?php require_once '../views/navbar.php'; ?>
         
-        <div class="container clearthetop">
+        <div class="container">
 
             <div class="row">            
-                <div class="col-md-12 text-center bottomline">
+                <div class="col-md-10 col-md-offset-1 text-center bottomline">
                     <p class="note"><span class="blue">NOTE TO BUYERS</span> Christmas delivery is no longer available. Orders will be shipped next week. <a class="blue" href="#">See details <i class="fa fa-chevron-right"></i></a></p>
-                </div> <!-- End col-md-12 -->
+                </div> <!-- End col-md-10 -->
             </div> <!-- End row. -->
 
             <div class="row">            
                 <div class="col-md-2 hidden-xs hidden-sm">
                     <div class="sidebar">
                         <p class="priceTag text-center">Categories</p>
-                        <p class="forcategories">Antique</p>
-                        <p class="forcategories">Geeky</p>
-                        <p class="forcategories">Metal</p>
-                        <p class="forcategories">Plastic</p>
-                        <p class="forcategories">Wooden</p>
+                        <?php foreach ($justCategoriesArrayUnique as $category): ?>
+                            <p class="forcategories"><?= $category; ?></p>
+                        <?php endforeach; ?>
                     </div>
                     <div class="sidebar">
                         <p class="priceTag text-center"><em>"It's so flipping good!"</em></p>
