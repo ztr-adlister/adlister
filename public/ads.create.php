@@ -134,7 +134,7 @@
                 $formPrice = Input::get('price');
                 $formLoc = Input::get('location');
                 $formDes = Input::get('description');
-                $formCat = Input::get('categories');
+                $formCat = Input::has('categories') ? Input::get('categories') : [''] ;
             }
         }
 
@@ -160,39 +160,9 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>ZTR Industries Ad Lister 3000</title>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="../css/footer.css">
-        <link rel="stylesheet" href="../css/main.css">
-        <style type="text/css">
-            .clearthetop {
-                margin-top: 50px;
-            }
-            .radiomargin {
-                margin-left: 10px;
-            }
-            .formmargin {
-                margin-bottom: 10px;
-            }
-            .methodmargin {
-                margin-top: 15px;
-                margin-bottom: 5px;
-            }
-            .red {
-                color: #e60000; /* Makes the error exceptions red. */
-            }
-            .yellow {
-                background-color: #ffffb3;
-            }
-            .checkboxmargin {
-                margin: 0 45px;
-            }
-        </style>
-    </head>
+    
+    <?php require_once '../views/header.php'; ?>
+
     <body>
         <?php require_once '../views/navbar.php'; ?>
 
@@ -269,7 +239,7 @@
                             <div class="col-xs-12">                   
                                 <label >Ad Categories</label>
                                 <div <?php if (isset($errorArray['errCats']) || $yellow): ?> class="text-center yellow" <?php else: ?> class="text-center" <?php endif; ?>>
-                                    
+                                    <?php $category = []; ?>
                                     <?php foreach ($justCategoriesArrayUnique as $category): ?>
                                         <label class="checkbox-inline checkboxmargin">
                                             <input type="checkbox" name="categories[]" value=<?= $category ?> <?php if (in_array($category, $formCat)): ?> checked <?php endif; ?>> <?= $category ?>
