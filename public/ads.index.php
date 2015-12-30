@@ -56,6 +56,7 @@
         <style type="text/css">
             body {
                 background-color: #F5F5F1;
+                background: url(/img/spatula_icon_orange.png) #f5f5f1;
             }
             .bottomline {
                 margin-top: 10px;
