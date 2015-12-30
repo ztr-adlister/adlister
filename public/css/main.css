@@ -94,6 +94,7 @@
     text-decoration: none;
 }
 /* END CSS for navbar.php page */
+
 /* START CSS for ads.index.php page */
 .adsindexpagebody {
     background-color: #F5F5F1;
@@ -104,18 +105,18 @@
 }
 .bottomline {
     margin-top: 10px;
-    /*border-bottom: 2px solid #0062cc;*/
+    border: 1px solid #0062cc;
     border-radius: 10px;
     margin-bottom: 20px;
     height: 40px;
     line-height: 40px;
-    background: linear-gradient(90deg, rgba(0, 98, 204, 1), rgba(255, 255, 255, 1), rgba(0, 98, 204, 1));
+    background: linear-gradient(75deg, #808080, white, #808080);
 }
 .note {
     font-size: 18px;
 }
 .blue {
-    color: #007bff;
+    color: #0062cc;
 }
 .sidebar {
     width: 100%;
@@ -129,7 +130,7 @@
     color: white;
 }
 .forcategories {
-    margin-left: 20px;
+    margin: 4px 25px;
 }
 .bigbox {
     width: 600px;
@@ -143,11 +144,14 @@
 }
 .boxtitle {
     position: absolute;
-    top: 3px;
-    left: 102px;
+    top: -9px;
+    left: 42px;
     color: #007bff;
     font-weight: bold;
-    
+    font-family: 'Lobster', cursive;
+    font-size: 60px;
+    height: 80px;
+    width: 450px;
     background: linear-gradient(330deg, #e05252 0%, #99e052 25%, #52e0e0 50%, #9952e0 75%, #e05252 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
