@@ -1,5 +1,6 @@
 .meetColor {
 	background-color: black;
+	background-image: url(../img/spatPat.png);
 }
 
 .h1Sy {
@@ -32,90 +33,3 @@
 	text-align: left;
 	background-image: url("../img/linedpaper.png");
 }
-
-#lblue {
-	padding: 20px;
-	-ms-transform: rotate(-135deg); /* IE 9 */
-    -webkit-transform: rotate(-135deg); /* Chrome, Safari, Opera */
-    transform: rotate(-135deg);
-}
-
-#lred {
-	-ms-transform: rotate(-25deg); /* IE 9 */
-    -webkit-transform: rotate(-25deg); /* Chrome, Safari, Opera */
-    transform: rotate(-25deg);
-}
-
-#lgreen { 
-	padding: 6px;
-	-ms-transform: rotate(25deg); /* IE 9 */
-    -webkit-transform: rotate(25deg); /* Chrome, Safari, Opera */
-    transform: rotate(25deg);
-}
-
-#lpurple {
-	padding: 20px;
-	-ms-transform: rotate(-135deg); /* IE 9 */
-    -webkit-transform: rotate(-135deg); /* Chrome, Safari, Opera */
-    transform: rotate(-135deg);
-}
-
-#lorange {
-	-ms-transform: rotate(-25deg); /* IE 9 */
-    -webkit-transform: rotate(-25deg); /* Chrome, Safari, Opera */
-    transform: rotate(-25deg);
-}
-
-#lpink {
-	padding: 6px;
-	-ms-transform: rotate(25deg); /* IE 9 */
-    -webkit-transform: rotate(25deg); /* Chrome, Safari, Opera */
-    transform: rotate(25deg);
-}
-
-#lyellow {
-	padding: 20px;
-	-ms-transform: rotate(-135deg); /* IE 9 */
-    -webkit-transform: rotate(-135deg); /* Chrome, Safari, Opera */
-    transform: rotate(-135deg);
-}
-
-#lourblue {
-	-ms-transform: rotate(-25deg); /* IE 9 */
-    -webkit-transform: rotate(-25deg); /* Chrome, Safari, Opera */
-    transform: rotate(-25deg);
-}
-
-#rblue {
-
-}
-
-#rred {
-
-}
-
-#rgreen { 
-
-}
-
-#rpurple {
-
-}
-
-#rorange {
-
-}
-
-#rpink {
-
-}
-
-#ryellow {
-
-}
-
-#rourblue {
-	
-}
-
-
