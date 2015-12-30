@@ -1,4 +1,100 @@
- /* START CSS for ads.index.php page */
+/* START CSS for navbar.php page */
+.tippytop {
+    background-color: #ffffff;
+    height: 65px;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.phrases {
+    position: relative;
+    display: inline-block;
+    left: 170px;
+}
+.customnav {
+    background-color: #0062cc;
+    margin-top: 65px;
+    height: 90px;
+    color: #ffffff;
+}
+.customnav a {
+    color: #ffffff;
+    line-height: 90px;
+    margin: 0 15px 0 15px;
+}
+.customnav i {
+    font-size: 40px;
+    line-height: 90px;
+}
+.spatulaholder {
+    width: 62px;
+    height: 200px;
+    background-color: transparent;
+    position: absolute;
+    top: -7px;
+    left: 25px;
+}
+.handle {
+    width: 16px;
+    height: 60px;
+    border-radius: 5px;
+    background-color: #262626;
+    position: absolute;
+    bottom: 10px;
+    left: 23px;
+    z-index: 2;
+}
+.stem {
+    width: 10px;
+    height: 72px;
+    background-color: #d9d9d9;
+    position: absolute;
+    bottom: 50px;
+    left: 26px;
+}
+.flatend {
+    width: 42px;
+    height: 60px;
+    border-radius: 5px;
+    background-color: #d9d9d9;
+    position: absolute;
+    bottom: 120px;
+    left: 10px;
+}
+.rectangle {
+    width: 6px;
+    height: 40px;
+    border-radius: 2px;
+    background-color: #ffffff;
+}
+#rect1 {
+    position: absolute;
+    top: 10px;
+    left: 6px;   
+}
+#rect2 {
+    position: absolute;
+    top: 10px;
+    left: 18px;   
+}
+#rect3 {
+    position: absolute;
+    top: 10px;
+    left: 30px;   
+}
+.logo {
+    font-size: 35px;
+    font-family: 'Fugaz One', cursive;
+    color: #ffffff;
+    text-shadow: 4px -3px 0px #003d80;
+}
+.logo:hover {
+    text-shadow: 4px 3px 0px #000, 9px 8px 0px rgba(0,0,0,0.30);
+    text-decoration: none;
+}
+/* END CSS for navbar.php page */
+/* START CSS for ads.index.php page */
 .adsindexpagebody {
     background-color: #F5F5F1;
     /*background-image: url(/img/spatula_icon_transparent50.png), linear-gradient(to right, rgba(30, 75, 115, 1),  rgba(255, 255, 255, 0));*/

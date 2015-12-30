@@ -1,120 +1,23 @@
 <?php
-
-$arrayPhrases = [
-    "There's just one place to go for all your spatula needs - Spatula City!", 
-    "A giant warehouse of spatulas for every occasion.", 
-    "Thousands to choose from in every shape, size, and color.",
-    "Don't forget, they make great Christmas presents.",
-    "And what better way to say 'I love you.' than with the gift of a spatula?",
-    "Spatula City - Seven locations!",
-    "We're in the yellow pages under 'spatulas'.",
-    "We sell spatulas, and that's all!",
-    "And this weekend only, take advantage of our special liquidation sale.",
-    "Buy nine spatulas, get the tenth one for just one penny.", 
-    "And because we eliminate the middle man, we can sell all our spatulas factory direct to you."
+    
+    $arrayPhrases = [
+        "There's just one place to go for all your spatula needs - Spatula City!", 
+        "A giant warehouse of spatulas for every occasion.", 
+        "Thousands to choose from in every shape, size, and color.",
+        "Don't forget, they make great Christmas presents.",
+        "And what better way to say 'I love you.' than with the gift of a spatula?",
+        "Spatula City - Seven locations!",
+        "We're in the yellow pages under 'spatulas'.",
+        "We sell spatulas, and that's all!",
+        "And this weekend only, take advantage of our special liquidation sale.",
+        "Buy nine spatulas, get the tenth one for just one penny.", 
+        "And because we eliminate the middle man, we can sell all our spatulas factory direct to you."
     ];
 
     $arrayPhrasesKey = array_rand($arrayPhrases, 1);
     $phrase = $arrayPhrases[$arrayPhrasesKey];
 
 ?>
-<link href='https://fonts.googleapis.com/css?family=Fugaz+One|Playball' rel='stylesheet' type='text/css'>
-<style type="text/css">
-    .tippytop {
-        background-color: #ffffff;
-        height: 65px;
-        width: 100%;
-        position: absolute;
-        top: 0px;
-        left: 0px;
-    }
-    .phrases {
-        position: relative;
-        display: inline-block;
-        left: 170px;
-    }
-    .customnav {
-        background-color: #0062cc;
-        margin-top: 65px;
-        height: 90px;
-        color: #ffffff;
-    }
-    .customnav a {
-        color: #ffffff;
-        line-height: 90px;
-        margin: 0 15px 0 15px;
-    }
-    .customnav i {
-        font-size: 40px;
-        line-height: 90px;
-    }
-    .spatulaholder {
-        width: 62px;
-        height: 200px;
-        background-color: transparent;
-        position: absolute;
-        top: -7px;
-        left: 25px;
-    }
-    .handle {
-        width: 16px;
-        height: 60px;
-        border-radius: 5px;
-        background-color: #262626;
-        position: absolute;
-        bottom: 10px;
-        left: 23px;
-        z-index: 2;
-    }
-    .stem {
-        width: 10px;
-        height: 72px;
-        background-color: #d9d9d9;
-        position: absolute;
-        bottom: 50px;
-        left: 26px;
-    }
-    .flatend {
-        width: 42px;
-        height: 60px;
-        border-radius: 5px;
-        background-color: #d9d9d9;
-        position: absolute;
-        bottom: 120px;
-        left: 10px;
-    }
-    .rectangle {
-        width: 6px;
-        height: 40px;
-        border-radius: 2px;
-        background-color: #ffffff;
-    }
-    #rect1 {
-        position: absolute;
-        top: 10px;
-        left: 6px;   
-    }
-    #rect2 {
-        position: absolute;
-        top: 10px;
-        left: 18px;   
-    }
-    #rect3 {
-        position: absolute;
-        top: 10px;
-        left: 30px;   
-    }
-    .logo {
-        font-size: 35px;
-        font-family: 'Fugaz One', cursive;
-        color: #ffffff;
-        text-shadow: 4px -3px 0px #003d80;
-    }
-    .logo:hover {
-        text-shadow: 4px 3px 0px #000, 9px 8px 0px rgba(0,0,0,0.30);
-        text-decoration: none;
-    }
-</style>
 
 <div class="tippytop hidden-xs hidden-sm">
     <h3 class="phrases"><?= $phrase; ?></h3>
