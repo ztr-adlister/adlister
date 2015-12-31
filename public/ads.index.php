@@ -31,11 +31,14 @@
         $justCategoriesArrayUnique = array_unique($justCategoriesArray);
         sort($justCategoriesArrayUnique);
 
+        $spotlight = $adsArray[array_rand($adsArray, 1)];
+
         return array(
             'adsArray' => $adsArray,
             'adId' => $adId,
             'loginstatus' => $loginstatus,
             'clickedcategories' => $clickedcategories,
+            'spotlight' => $spotlight,
             'justCategoriesArrayUnique' => $justCategoriesArrayUnique
         );    
     }
@@ -74,12 +77,12 @@
                                  All Spatulas
                             </label>
 
-                        <?php foreach ($justCategoriesArrayUnique as $category): ?>
-                            <label class="forcategories">
-                                <input type="radio" name="clickcategory" value="<?= $category; ?>" <?php if (Input::get('clickcategory') == $category): ?> checked <?php endif; ?>>
-                                 <?= $category; ?>
-                            </label>
-                        <?php endforeach; ?>
+                            <?php foreach ($justCategoriesArrayUnique as $category): ?>
+                                <label class="forcategories">
+                                    <input type="radio" name="clickcategory" value="<?= $category; ?>" <?php if (Input::get('clickcategory') == $category): ?> checked <?php endif; ?>>
+                                     <?= $category; ?>
+                                </label>
+                            <?php endforeach; ?>
                         
                         </form>
 
@@ -87,26 +90,27 @@
                 </div> <!-- End col-md-2 -->
 
                 <div class="col-md-10 text-center">
-                    <div class="bigbox hidden-xs hidden-sm">
-                        <h1 class="boxtitle">Spatula Spotlight!</h1>
-                        <p class="boxdescription">The Star Spangled Spatula is perfect for Indepence Day BBQs! Get yours today, 50% off. Supplies are limited.</p>
+                    <div class="bigboxtop hidden-xs hidden-sm">
+                        <h1 class="boxtitle">Spatula Spotlight! <?= $spotlight['title']?></h1>
+                    </div>
+                    <div class="bigbox hidden-xs hidden-sm" style="background:black url(../img/<?= $spotlight['image_url']?>) center center repeat;background-size:contain;">
                     </div>
                     
-                        <?php foreach ($adsArray as $ad): ?>
-                                <?php $fullTitle = $ad['title'] . ' in ' . $ad['location']; ?>
-                                <?php if ( strlen($fullTitle) > 22 ): ?>
-                                <?php $adEllipsedTitle = substr_replace($fullTitle, '...', 22); ?> 
-                                <?php else: ?>
-                                <?php $adEllipsedTitle = $fullTitle; ?>
-                                <?php endif; ?>
-                            <div class="adSquare" title="<?= $fullTitle ?>">
-                                <div class="forimages">
-                                    <img src="img/<?= $ad['image_url']; ?>" class="img-responsive" alt="Responsive image">
-                                </div>
-                                <a href="ads.show.php?id=<?=$ad['id'];?>"><?= $adEllipsedTitle; ?></a>
-                                <p class="priceTag">$<?= "{$ad['price']}"; ?></p>
+                    <?php foreach ($adsArray as $ad): ?>
+                            <?php $fullTitle = $ad['title'] . ' in ' . $ad['location']; ?>
+                            <?php if ( strlen($fullTitle) > 22 ): ?>
+                            <?php $adEllipsedTitle = substr_replace($fullTitle, '...', 22); ?> 
+                            <?php else: ?>
+                            <?php $adEllipsedTitle = $fullTitle; ?>
+                            <?php endif; ?>
+                        <div class="adSquare" title="<?= $fullTitle ?>">
+                            <div class="forimages">
+                                <img src="img/<?= $ad['image_url']; ?>" class="img-responsive" alt="Responsive image">
                             </div>
-                        <?php endforeach; ?>
+                            <a href="ads.show.php?id=<?=$ad['id'];?>"><?= $adEllipsedTitle; ?></a>
+                            <p class="priceTag">$<?= "{$ad['price']}"; ?></p>
+                        </div>
+                    <?php endforeach; ?>
                         
                 </div> <!-- End col-md-8 -->
             </div> <!-- End row. -->

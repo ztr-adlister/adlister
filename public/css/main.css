@@ -124,6 +124,7 @@
     border: 1px solid #007bff;
     border-radius: 5px;
     margin-bottom: 10px;
+    padding-bottom: 10px;
 }
 .priceTag {
     background-color: #007bff;
@@ -132,34 +133,31 @@
 .forcategories {
     margin: 4px 25px;
 }
-.bigbox {
+.bigboxtop {
     width: 600px;
-    height: 225px;
-    border: 1px solid #d9d9d9;
-    background: green url(../img/starspangledspatula.jpg) center center no-repeat;
-    border-radius: 5px;
-    margin: 0px auto 20px;
-    position: relative;
-    overflow: hidden;
+    height: 45px;
+    margin: 0 auto;
+    background-color: #000000;
+}
+.bigboxtop > h1 {
+    margin: 0;
 }
 .boxtitle {
-    position: absolute;
-    top: -9px;
-    left: 42px;
-    color: #007bff;
-    font-weight: bold;
-    font-family: 'Lobster', cursive;
-    font-size: 60px;
     height: 80px;
-    width: 450px;
+    color: #007bff;
+    font-family: 'Lobster', cursive;
+    font-size: 38px;
+    font-weight: bold;
     background: linear-gradient(330deg, #e05252 0%, #99e052 25%, #52e0e0 50%, #9952e0 75%, #e05252 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.boxdescription {
-    position: absolute;
-    top: 177px;
-    left: 1px;
+.bigbox {
+    width: 600px;
+    height: 225px;
+    margin: 0px auto 20px;
+    position: relative;
+    overflow: hidden;
 }
 .adSquare {
     width: 200px;
