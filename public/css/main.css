@@ -93,6 +93,23 @@
     text-shadow: 4px 3px 0px #000, 9px 8px 0px rgba(0,0,0,0.30);
     text-decoration: none;
 }
+.fa-bars {
+    text-shadow: 4px -3px 0px #003d80;
+}
+.fa-bars:hover {
+    text-shadow: 4px 3px 0px #000, 9px 8px 0px rgba(0,0,0,0.30);
+    text-decoration: none;    
+}
+.secondarynav {
+    background-color: #0062cc;
+    height: 30px;
+    display: none;
+}
+.secondarynav a {
+    color: #ffffff;
+    /*line-height: 0px;*/
+    margin: 0 10px 0 10px;
+}
 /* END CSS for navbar.php page */
 
 /* START CSS for ads.index.php page */

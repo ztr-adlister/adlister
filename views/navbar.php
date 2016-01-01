@@ -59,3 +59,17 @@
         </div> <!-- end row -->
     </div> <!-- end container fluid -->
 </nav>
+
+<div class="secondarynav hidden-md hidden-lg">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12 hidden-md hidden-lg text-center">
+                <a href="ads.index.php"><i class="fa fa-product-hunt"></i> Products</a>
+                <a <?php if(!isset($_SESSION['Loggedinuser'])) {?>style="display:none"<?php }?> href="users.show.php"><i class="fa fa-user"></i> Your Profile</a>
+                <a <?php if(isset($_SESSION['Loggedinuser'])) {?>style = "display:none"<?php }?> href="auth.login.php"><i class="fa fa-user"></i> Log In</a>
+                <a <?php if(isset($_SESSION['Loggedinuser'])) {?>style = "display:none"<?php }?> href="users.create.php"><i class="fa fa-sign-in"></i> Sign Up</a>
+                <a href="meet.php"><i class="fa fa-info-circle"></i> About</a>
+            </div>
+        </div> <!-- end row -->
+    </div>
+</div>
