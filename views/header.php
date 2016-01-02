@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/main.css">
-    <!-- <link rel="stylesheet" href="../css/reagan.css"> -->
-    <!-- <link rel="stylesheet" href="../css/z.css"> -->
+    <link rel="stylesheet" href="../css/reagan.css">
+    <link rel="stylesheet" href="../css/z.css">
     <link rel="stylesheet" type="text/css" href="/css/font-awesome-4.5.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Fugaz+One|Lobster' rel='stylesheet' type='text/css'>
 </head>
