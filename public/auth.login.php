@@ -41,7 +41,7 @@ if(Auth::check()) {
 <!DOCTYPE html>
 <html lang="en">
    <?php require_once '../views/header.php'; ?>
-    <body>
+    <body class = "meetColor">
         <?php require_once '../views/navbar.php'; ?>
 <br>
         <div class = "failure"><?=$message;?></div>
@@ -50,14 +50,14 @@ if(Auth::check()) {
                 <div class="col-sm-4 text-center">
                     <form class= "form-horizontal" method="POST" action = "auth.login.php">
                         <div class="form-group">
-                            <label class="control-label col-sm-5">Username:</label>
+                            <label class="control-label col-sm-5 textinfrontofbackground">Username:</label>
                             <div class="col-sm-6">
                                 <input type="text" name="username" autofocus><br>
                             </div>
                         </div>
                             
                         <div class="form-group">   
-                                <label class="control-label col-sm-5">Password:</label>
+                                <label class="control-label col-sm-5 textinfrontofbackground">Password:</label>
                             <div class="col-sm-6">
                                 <input type="password" name="password"><br>
                             </div>    
