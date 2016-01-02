@@ -37,10 +37,12 @@ $(document).ready(function() {
         }, 200);
     });
     
+    // On the ads.index.php page, this change event filters the ads that show on that page by categories.
     $('input[name=clickcategory]').change(function(){
         $('form').submit();
     });
 
+    // In the navbar on mobile views, this slides out some navigation buttons. This is hidden in md and lg views.
     $('.fa-bars').click(function(){
         $('.secondarynav').slideToggle();
     });
