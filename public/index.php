@@ -42,7 +42,6 @@ require_once '../utils/Input.php';
 
 <!DOCTYPE html>
 <html lang="en">
-
     <?php require_once '../views/header.php'; ?>
 
     <body class="meetColor">
@@ -60,10 +59,11 @@ require_once '../utils/Input.php';
 
             <div class="row">
                 <div class="col-md-2 text-center">
-                    <div class="sidebar">
+                    <div class="sidebar indexSideBar">
                         <p class="priceTag text-center">Categories</p>
+                         <a href="ads.index.php" class="catSelect">All Spatulas</a>
                         <?php foreach ($justCategoriesArrayUnique as $category): ?>
-                            <p class="forcategories"><?= $category; ?></p>
+                            <a href="ads.index.php?clickcategory=<?=$category;?>" class="catSelect"><?= $category; ?></a>
                         <?php endforeach; ?>
                     </div>
                 </div> <!-- End col-md-2 -->    
