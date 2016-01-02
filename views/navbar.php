@@ -44,7 +44,7 @@
             <div class="col-md-8 text-center hidden-xs hidden-sm">        
                 <a href="ads.index.php">My Store</a>
                 <a href="ads.index.php">Products</a>
-                <a href="ads.index.php">Deals</a>
+                <a href="ads.deals.php">Deals</a>
                 <a href="ads.index.php">Sell Your Spatula</a>
                 <a <?php if(!isset($_SESSION['Loggedinuser'])) {?>style="display:none"<?php }?> href="users.show.php">Your Profile</a>
                 <a <?php if(isset($_SESSION['Loggedinuser'])) {?>style = "display:none"<?php }?> href="auth.login.php">Members, Log In!</a>
@@ -69,7 +69,7 @@
                 <a <?php if(isset($_SESSION['Loggedinuser'])) {?>style = "display:none"<?php }?> href="auth.login.php"><i class="fa fa-user"></i> Log In</a>
                 <a <?php if(isset($_SESSION['Loggedinuser'])) {?>style = "display:none"<?php }?> href="users.create.php"><i class="fa fa-sign-in"></i> Sign Up</a>
                 <a href="meet.php"><i class="fa fa-info-circle"></i> About</a>
-            </div>
+            </div> <!-- end col-sm-12 -->
         </div> <!-- end row -->
-    </div>
-</div>
+    </div> <!-- end container-fluid -->
+</div> <!-- end secondarynav -->

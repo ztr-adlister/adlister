@@ -107,7 +107,6 @@
 }
 .secondarynav a {
     color: #ffffff;
-    /*line-height: 0px;*/
     margin: 0 10px 0 10px;
 }
 /* END CSS for navbar.php page */
@@ -304,4 +303,80 @@
 .dontdisplay {
     display: none; /* This makes user_id input on the form invisible in the HTML. It is needed to query on db. */
 }
-/* END CSS for ads.edit.php page 
+/* END CSS for ads.edit.php page */
+
+/* START CSS for ads.deals.php page */
+.adsdealspagebody {
+    background-color: #000;
+}
+.pushdancingspatsdown {
+    margin-top: 5px;
+}
+.dancingspatula {
+    display: inline-block;
+    margin: 70px -48px;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    animation: spin 12s infinite linear;
+}
+@keyframes spin {
+    0% {transform: rotate(-90deg);}
+    10% {transform: rotate(-45deg);}
+    20% {transform: rotate(-110deg);}
+    30% {transform: rotate(-25deg);}
+    40% {transform: rotate(130deg);}
+    50% {transform: rotate(25deg);}
+    60% {transform: rotate(165deg);}
+    70% {transform: rotate(42deg);}
+    80% {transform: rotate(180deg);}
+    90% {transform: rotate(-300deg);}
+    100% {transform: rotate(270deg);}
+}
+.dealstitle {
+    font-family: 'Lobster', cursive;
+    font-size: 77px;
+}
+.letter1 {
+    animation: blink 4s infinite;
+}
+@keyframes blink {
+    0% {color: #fff;}
+    11% {color: #00C0F2;}
+    22% {color: #EC0423;}
+    33% {color: #8BC84A;}
+    44% {color: #875EA7;}
+    55% {color: #F58C58;}
+    66% {color: #F06AA8;}
+    77% {color: #FFF325;}
+    88% {color: #0062CC;}
+    100% {color: #ccccff;}
+}
+.letter2 {
+    animation: blink 4s 1s infinite;
+}
+.letter3 {
+    animation: blink 4s 2s infinite;
+}
+.letter4 {
+    animation: blink 4s 3s infinite;
+}
+.letter5 {
+    animation: blink 4s 4s infinite;
+}
+.letter6 {
+    animation: blink 4s 5s infinite;
+}
+.letter7 {
+    animation: blink 4s 6s infinite;
+}
+.letter8 {
+    animation: blink 4s 7s infinite;
+}
+.dealscode {
+    color: #fff;
+    font-family: 'Fugaz One', helvetica;
+    font-size: 25px;
+}
+/* END CSS for ads.deals.php page */
