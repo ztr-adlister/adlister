@@ -63,7 +63,7 @@
                 </div> <!-- End col-md-10 -->
                 <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 hidden-lg text-center bottomline">
                     <p class="note"><span class="blue">NOTE TO BUYERS</span> <a class="blue" href="#">See details <i class="fa fa-chevron-right"></i></a></p>
-                </div>
+                </div> <!-- End col-md-10 -->
             </div> <!-- End row. -->
 
             <div class="row">            
@@ -83,10 +83,9 @@
                                      <?= $category; ?>
                                 </label>
                             <?php endforeach; ?>
-                        
                         </form>
 
-                    </div>
+                    </div> <!-- End sidebar -->
                 </div> <!-- End col-md-2 -->
 
                 <div class="col-md-10 text-center">
@@ -110,11 +109,10 @@
                             <a href="ads.show.php?id=<?=$ad['id'];?>"><?= $adEllipsedTitle; ?></a>
                             <p class="priceTag">$<?= "{$ad['price']}"; ?></p>
                         </div>
-                    <?php endforeach; ?>
-                        
+                    <?php endforeach; ?>    
                 </div> <!-- End col-md-8 -->
             </div> <!-- End row. -->
-
+            
         </div> <!-- End container. -->
 
         <?php require_once '../views/footer.php'; ?>
