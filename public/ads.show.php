@@ -75,6 +75,7 @@
                             </div>
                             <div class="blankspace smallgray text-left">
                                 <p>categories: <?= $ad->categories ?></p>
+                                <a class = "visittheprofile" href="users.visit.php?usertovisit=<?=$userName->username?>"><?=$userName->username?>'s Other Ads</a>
                             </div>
                             <div class="finalnotes hidden-xs hidden-sm">
                                 <div class="finalleft">
