@@ -74,16 +74,6 @@ if(Input::notempty('adid')) {
         <link rel="stylesheet" href="../css/main.css">
         <link rel="stylesheet" type="text/css" href="/css/reagan.css">
         <link rel="stylesheet" type="text/css" href="/css/font-awesome-4.5.0/css/font-awesome.min.css">
-        <style type="text/css">
-            img {
-                width: 250px;
-                margin-left: 15%;
-            }
-            #icon {
-                position: relative;
-                margin-top: 10px;
-            }
-        </style>
     </head>
     <?php require_once '../views/navbar.php'; ?>
     <body>
@@ -92,11 +82,11 @@ if(Input::notempty('adid')) {
 
 <!-- Ads the user has posted -->
     	<h3 class = "show">Your Ads:</h3>
-    	<ul class = "show">
+    	<ul class = "showads">
             <div class = "col-md-8 col-md-offset-2">
                 <br>
             <?php foreach($userads as $advalue) {?>
-                <li><a href = "ads.show.php?id=<?=$advalue['id']?>"><img src = "img/<?=$advalue['image_url']?>" class = "img-responsive" alt="Responsive image"></a></li>
+                <li><a href = "ads.show.php?id=<?=$advalue['id']?>"><img id = "image" src = "img/<?=$advalue['image_url']?>" class = "img-responsive" alt="Responsive image"></a></li>
             <li><strong>Title:</strong><?=$advalue['title']?></li>
             <li><strong>Description:</strong> <?=$advalue['description']?></li>
             <li><strong>Price:</strong> $<?=$advalue['price']?></li>

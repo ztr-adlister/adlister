@@ -4,6 +4,7 @@ require_once '../utils/Input.php';
 require_once '../models/User.php';
 require_once '../db/adlister_login.php';
 require_once '../db/db_connect.php';
+session_start();
 $stmt = $dbc->query('SELECT * FROM users');
 $stmt->execute();
 $database = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -13,6 +14,10 @@ $email = Input::get('email');
 if($username != '' && $email != '') {
 	$retrieveduser = User::finduserbyusername($username);
 	$message = $retrieveduser->reminder;
+}
+if(Auth::check()) {
+	header('location: users.show.php');
+	die();
 }
 ?>
 <!DOCTYPE html>
@@ -28,12 +33,6 @@ if($username != '' && $email != '') {
         <link rel="stylesheet" href="../css/main.css">
         <link rel="stylesheet" type="text/css" href="../css/reagan.css">
         <link rel="stylesheet" type="text/css" href="/css/font-awesome-4.5.0/css/font-awesome.min.css">
-        
-        <style type="text/css">
-            .login_container{
-                margin-top: 70px;
-            }
-        </style>
 
     </head>
     <body>

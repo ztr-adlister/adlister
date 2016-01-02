@@ -51,24 +51,11 @@ if(Auth::check()) {
         <link rel="stylesheet" href="../css/main.css">
         <link rel="stylesheet" type="text/css" href="../css/reagan.css">
         <link rel="stylesheet" type="text/css" href="/css/font-awesome-4.5.0/css/font-awesome.min.css">
-        
-        <style type="text/css">
-            .login_container{
-                margin-top: 70px;
-            }
-            .failure {
-                color: red;
-                text-shadow: 1px 1px 1px black;
-                font-size: 20px;
-                margin-left: 10%;
-                margin-bottom: -5%;
-            }
-        </style>
 
     </head>
     <body>
         <?php require_once '../views/navbar.php'; ?>
-
+<br>
         <div class = "failure"><?=$message;?></div>
         <div class="container login_container">
             <div class="row">
