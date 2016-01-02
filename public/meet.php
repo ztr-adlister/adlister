@@ -8,18 +8,9 @@ if(!isset($_SESSION['Loggedinuser'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="icon" type="image/png" href="img/icon.png">
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Spatula City: Meet</title>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link href='https://fonts.googleapis.com/css?family=Fugaz+One|Shadows Into Light' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="/css/footer.css">
-        <link rel="stylesheet" href="/css/main.css">
-        <link rel="stylesheet" type="text/css" href="/css/z.css">
-    </head>
+
+    <?php require_once '../views/header.php'; ?>
+
     <body class= "meetColor">
         <?php require_once '../views/navbar.php'; ?>
 
