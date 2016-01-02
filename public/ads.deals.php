@@ -52,7 +52,7 @@
     
     <?php require_once '../views/header.php'; ?>    
     
-    <body class="adsdealspagebody">
+    <body class="dealspagebody">
         <?php require_once '../views/navbar.php'; ?>
         
         <div class="container pushdancingspatsdown">
@@ -80,7 +80,5 @@
 
         <?php require_once '../views/footer.php'; ?>
 
-        <script src="js/jquery-1.11.3.min.js"></script>
-        <script src="js/main.js"></script>
     </body>
 </html>

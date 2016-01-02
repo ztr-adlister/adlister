@@ -52,14 +52,14 @@
     
     <?php require_once '../views/header.php'; ?>    
     
-    <body class="adsindexpagebody">
+    <body class="meetColor">
         <?php require_once '../views/navbar.php'; ?>
         
         <div class="container">
 
             <div class="row">            
                 <div class="col-lg-10 col-lg-offset-1 hidden-md hidden-sm hidden-xs text-center bottomline">
-                    <p class="note"><span class="blue">NOTE TO BUYERS</span> Christmas delivery is no longer available. Orders will be shipped next week. <a class="blue" href="#">See details <i class="fa fa-chevron-right"></i></a></p>
+                    <p class="note"><span class="blue">NOTE TO BUYERS</span> Christmas delivery is no longer available. Orders will be shipped next week. <a class="blue" href="ads.deals.php">See details <i class="fa fa-chevron-right"></i></a></p>
                 </div> <!-- End col-md-10 -->
                 <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 hidden-lg text-center bottomline">
                     <p class="note"><span class="blue">NOTE TO BUYERS</span> <a class="blue" href="#">See details <i class="fa fa-chevron-right"></i></a></p>
