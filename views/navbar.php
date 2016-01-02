@@ -45,7 +45,7 @@
                 <a href="ads.index.php">My Store</a>
                 <a href="ads.index.php">Products</a>
                 <a href="ads.deals.php">Deals</a>
-                <a href="ads.index.php">Sell Your Spatula</a>
+                <a <?php if(isset($_SESSION['Loggedinuser'])): ?>href="ads.create.php"<?php else: ?>href="auth.login.php"<?php endif; ?>>Sell Your Spatula</a>
                 <a <?php if(!isset($_SESSION['Loggedinuser'])) {?>style="display:none"<?php }?> href="users.show.php">Your Profile</a>
                 <a <?php if(isset($_SESSION['Loggedinuser'])) {?>style = "display:none"<?php }?> href="auth.login.php">Members, Log In!</a>
                 <a <?php if(isset($_SESSION['Loggedinuser'])) {?>style = "display:none"<?php }?> href="users.create.php">Sign Up</a>
