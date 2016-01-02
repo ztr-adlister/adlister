@@ -63,20 +63,9 @@ if(Input::notempty('adid')) {
 <!DOCTYPE html>
 <!-- Carried over from the index -->
 <html lang="en">
-    <head>
-        <link rel="icon" type="image/png" href="img/icon.png">
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Your Profile</title>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="../css/footer.css">
-        <link rel="stylesheet" href="../css/main.css">
-        <link rel="stylesheet" type="text/css" href="/css/reagan.css">
-        <link rel="stylesheet" type="text/css" href="/css/font-awesome-4.5.0/css/font-awesome.min.css">
-    </head>
-    <?php require_once '../views/navbar.php'; ?>
+    <?php require_once '../views/header.php'; ?>
     <body>
+    <?php require_once '../views/navbar.php'; ?>
     	<h2 class = "show">Hello, <?=$user['username'] ?>!</h2>
         <div id = "box"><br><br><i id = "icon" class = "fa fa-<?=$user['icon']?> fa-5x"></i></div>
 
@@ -121,44 +110,3 @@ if(Input::notempty('adid')) {
     <form method="POST" id = "addelete">
         <input type = "hidden" name = "adid" id ="delete-ad">
     </form>
-
-    <script src = "js/jquery.js"></script>
-    <script>
-    "Use Strict";
-
-    // The "Delete this Ad" button
-    $(".deleter").click(function() {
-        var adid = $(this).data("id");
-        var adtitle = $(this).data("name");
-        if (confirm("Are you sure you want to delete this ad: " + adtitle + "?")) {
-            $("#delete-ad").val(adid);
-            $("#addelete").submit();
-        }
-    });
-
-    // The "Delete Profile" button
-    $("#deleteprofile").click(function() {
-        var profileid = $(this).data("id");
-        var profilename = $(this).data("name");
-        if (confirm("Are you sure you want to delete your profile, " +profilename + "?")) {
-            $("#delete-id").val(profileid);
-            $("#deletion").submit();
-        }
-    });
-
-    $("#box").click(function() {
-        $("#icon").animate({
-            left: "+=50px"
-        }, 200).animate({
-            left: "-=100px"
-        }, 200).animate({
-            left: "+=50px"
-        }, 200).animate({
-            top: "-=50px"
-        }, 200).animate({
-            top: "+=130px"
-        }, 200).animate({
-            top: "-=80px"
-        }, 200);
-    });
-    </script>
