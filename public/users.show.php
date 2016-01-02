@@ -110,5 +110,3 @@ if(Input::notempty('adid')) {
     <form method="POST" id = "addelete">
         <input type = "hidden" name = "adid" id ="delete-ad">
     </form>
-
-    <script src = "js/jquery.js"></script>
