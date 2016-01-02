@@ -66,17 +66,7 @@ if($newuser->email != null) {
 <!DOCTYPE html>
 <!-- Carried over from the index -->
 <html lang="en">
-    <head>
-        <link rel="icon" type="image/png" href="img/icon.png">
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Sign Up!</title>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="../css/footer.css">
-        <link rel="stylesheet" href="../css/main.css">
-        <link rel="stylesheet" type="text/css" href="/css/reagan.css">
-    </head>
+   <?php require_once '../views/header.php'; ?>
     <body>
         <?php require_once '../views/navbar.php'; ?>
     <h2 class = "signuphead">Welcome to Spatula City!</h2>

@@ -94,18 +94,7 @@ if (!Auth::check()) {
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-	<link rel="icon" type="image/png" href="img/icon.png">
-	<meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Edit your profile</title>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/reagan.css">
-    <link rel="stylesheet" type="text/css" href="/css/font-awesome-4.5.0/css/font-awesome.min.css">
-</head>
+<?php require_once '../views/header.php'; ?>
 <body>
 	<?php require_once '../views/navbar.php'; ?>
 	<br><br><br><br>
