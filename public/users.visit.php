@@ -32,10 +32,9 @@ if(User::finduserbyusername($usertovisit)) {
     <?php require_once '../views/header.php'; ?>
     <body class = "meetColor">
    <?php require_once '../views/navbar.php';?>
-    <h2 class = "show textinfrontofbackground"><?=$visitinguser['username']?>'s Profile</h2>
+    <h2 class = "show textinfrontofbackground"><?=$visitinguser['username']?>'s Ads</h2>
     <div id = "box" style = "background-color: <?=$boxcolor?>;"><br><br><i id = "icon" class = "fa fa-<?=$visitinguser['icon']?> fa-5x"></i></div>
  <!-- Ads the user has posted -->
-    	<h3 class = "show textinfrontofbackground"><?=$visitinguser['username']?>'s Ads:</h3>
     	<ul class = "showads">
             <div class = "col-md-8 col-md-offset-2">
                 <br>

@@ -67,7 +67,7 @@ if(Input::notempty('adid')) {
     <body class = "meetColor">
     <?php require_once '../views/navbar.php'; ?>
     	<h2 class = "show textinfrontofbackground">Hello, <?=$user['username'] ?>!</h2>
-        <div id = "box" style = "background-color: <?=$boxcolor?>;"><br><br><i id = "icon" class = "fa fa-<?=$user['icon']?> fa-5x"></i></div>
+        <div class = "hidden-xs hidden-sm" id = "box" style = "background-color: <?=$boxcolor?>;"><br><br><i id = "icon" class = "fa fa-<?=$user['icon']?> fa-5x"></i></div>
 
 <!-- Ads the user has posted -->
     	<h3 class = "show textinfrontofbackground">Your Ads:</h3>
@@ -75,17 +75,17 @@ if(Input::notempty('adid')) {
             <div class = "col-md-8 col-md-offset-2">
                 <br>
             <?php foreach($userads as $advalue) {?>
-                <li><a href = "ads.show.php?id=<?=$advalue['id']?>"><img id = "image" src = "img/<?=$advalue['image_url']?>" class = "img-responsive" alt="Responsive image"></a></li>
-            <li><strong>Title:</strong><?=$advalue['title']?></li>
+                <li><a class = "hidden-xs hidden-sm" href = "ads.show.php?id=<?=$advalue['id']?>"><img id = "image" src = "img/<?=$advalue['image_url']?>" class = "img-responsive" alt="Responsive image"></a></li>
+            <li><strong>Title:</strong><a href = "ads.show.php?id=<?=$advalue['id']?>"><?=$advalue['title']?></a></li>
             <li><strong>Description:</strong> <?=$advalue['description']?></li>
             <li><strong>Price:</strong> $<?=$advalue['price']?></li>
             <li><button class = "deleter" data-id="<?=$advalue['id']?>" data-name = "<?=$advalue['title']?>"><i class = "fa fa-trash"></i>Delete this Ad</button></li>
             <br><br><br>
             <?php } ?>
             </div>
-        <a href="ads.create.php" id = "createads"><i class = "fa fa-commenting-o"></i>Post a new Ad</a>
+        <a href="ads.create.php" id = "createads"><i class = "fa fa-commenting-o hidden-sm"></i>Post a new Ad</a>
         <br><br><br><br>
-        <a href="ads.edit.php" id = "editads"><i class = "fa fa-pencil"></i>Edit an existing Ad</a>
+        <a href="ads.edit.php" id = "editads"><i class = "fa fa-pencil hidden-sm"></i>Edit an existing Ad</a>
         <br><br><br>
         </ul>
     	<br><br><br><br><br><br><br><br><br><br>
