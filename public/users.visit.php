@@ -11,15 +11,21 @@ require_once 'css/userbox.php';
 
 User::dbConnect();
 $usertovisit = $_GET['usertovisit'];
-$stmt = $dbc->prepare('SELECT id, username, boxcolor, icon FROM users WHERE username LIKE :username');
-$stmt->bindvalue(':username', $usertovisit, PDO::PARAM_STR);
-$stmt->execute();
-$visitinguser = $stmt->fetch(PDO::FETCH_ASSOC);
-$boxcolor = $visitinguser['boxcolor'];
-$stmt1 = $dbc->prepare('SELECT * FROM ads WHERE user_id = :id');
-$stmt1->bindValue(':id', $visitinguser['id'], PDO::PARAM_INT);
-$stmt1->execute();
-$visitingads = $stmt1;
+if(User::finduserbyusername($usertovisit)) {
+    $stmt = $dbc->prepare('SELECT id, username, boxcolor, icon FROM users WHERE username LIKE :username');
+    $stmt->bindvalue(':username', $usertovisit, PDO::PARAM_STR);
+    $stmt->execute();
+    $visitinguser = $stmt->fetch(PDO::FETCH_ASSOC);
+    $boxcolor = $visitinguser['boxcolor'];
+    $stmt1 = $dbc->prepare('SELECT * FROM ads WHERE user_id = :id');
+    $stmt1->bindValue(':id', $visitinguser['id'], PDO::PARAM_INT);
+    $stmt1->execute();
+    $visitingads = $stmt1;
+} else {
+    header('location: index.php');
+    die();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +47,6 @@ $visitingads = $stmt1;
             <br><br><br>
             <?php } ?>
             </div>
-        <!-- <a href="ads.create.php" id = "createads"><i class = "fa fa-commenting-o"></i>Post a new Ad</a> -->
         <br><br><br><br>
         <a href="ads.index.php" id = "editads"><i class = "fa fa-pencil"></i>Back to Ads</a>
         <br><br><br>
