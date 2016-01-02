@@ -36,10 +36,10 @@
 
     <?php require_once '../views/header.php'; ?>
 
-    <body>
+    <body class="meetColor">
         <?php require_once '../views/navbar.php'; ?>
 
-        <div class="container clearthetop">
+        <div class="container clearthetop textwhite">
             <div class="row">
                 <div class="col-md-2">
                 </div> <!-- End col-md-2 -->
@@ -51,7 +51,7 @@
                             <h3 class="titlemargin"><?= $ad->title ?></h3>
                             <img src="img/<?= $ad->image_url ?>" class="img-responsive adsshowimg" alt="Responsive image">
                         </div> <!-- End col-md-6 -->
-                        <div class="col-md-6">
+                        <div class="col-md-6 blackbackground">
                             <h3>$<?= $ad->price ?> <span class="smallertext">List Price: $<?= round(($ad->price * 0.10) + $ad->price, 2); ?></span> <span class="saletext">ON SALE</span></h3>
                             <div class="twolines text-left">
                                 <?php $randNum = rand(1, 15); ?>

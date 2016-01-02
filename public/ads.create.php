@@ -163,10 +163,10 @@
     
     <?php require_once '../views/header.php'; ?>
 
-    <body>
+    <body class="meetColor">
         <?php require_once '../views/navbar.php'; ?>
 
-        <div class="container clearthetop">
+        <div class="container clearthetop textwhite">
             <div class="row">
                 <div class="col-md-2">
                     <ul class="nav navbar-nav">
@@ -175,7 +175,7 @@
                     </ul>
                 </div> <!-- End col-md-2 -->
 
-                <div class="col-md-8">
+                <div class="col-md-8 blackbackground">
                     <h3>Create an Ad</h3>
                     <?php foreach ($errorArray as $err): ?>
                         <h4 class="red"><?= $err; ?></h4>

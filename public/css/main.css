@@ -210,6 +210,13 @@
 .checkboxmargin {
     margin: 0 45px;
 }
+.textwhite {
+    color: #e6e6e6;
+}
+.blackbackground {
+    background-color: rgba(0,0,0,0.7);
+    margin-bottom: 10px;
+}
 /* END SHARED CSS */
 
 /* START CSS for ads.show.php page */
@@ -218,7 +225,7 @@
 }
 .adsshowimg {
     border: 1px solid #d9d9d9;
-    box-shadow: 5px 5px 5px #d9d9d9;
+    box-shadow: 5px 5px 5px rgba(217,217,217,0.5);
     margin: 0 auto 20px;
 }
 .smallertext {
@@ -227,7 +234,7 @@
 }
 .saletext {
     font-size: 13px;
-    color: #b30000;
+    color: #e60000;
     font-weight: bold;
 }
 .twolines {
@@ -249,11 +256,12 @@
     color: #269900;
 }
 .redorange {
-    color: #994c00;
+    color: #e67200;
 }
 .greybox {
     width: 100%;
     background-color: #d9d9d9;
+    color: #1a1a1a;
     margin-bottom: 20px;
     padding: 20px;
 }
@@ -299,6 +307,9 @@
 /* END CSS for ads.edit.php page */
 
 /* START CSS for ads.deals.php page */
+.dealspagebody {
+    background-color: #000;
+}
 .pushdancingspatsdown {
     margin-top: 5px;
 }

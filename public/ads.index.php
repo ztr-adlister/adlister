@@ -52,7 +52,7 @@
     
     <?php require_once '../views/header.php'; ?>    
     
-    <body class="adsindexpagebody">
+    <body class="meetColor">
         <?php require_once '../views/navbar.php'; ?>
         
         <div class="container">
