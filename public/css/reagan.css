@@ -1,4 +1,12 @@
 /*Names used in more than one file*/
+	#box {
+		/*background-color: <?=$boxcolor['boxcolor']?>;*/
+		width: 200px;
+		height: 200px;
+		margin-left: 42%;
+		border: 5px solid black;
+		text-align: center;
+	}
 	/*lines up the email input with everything else*/
 	#em {
 	    margin-left: 30px;
