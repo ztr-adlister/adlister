@@ -36,7 +36,8 @@ if(!isset($_SESSION['Loggedinuser'])) {
                     <div class="pPadding">    
                         <p>Hello,</p>
                         <p>I'm Sy Greenblum, president of Spatula City.</p> 
-                        <p>I liked their spatulas so much, I bought the company. I use a spatula everyday. If it weren't for the spatula, I wouldn't be the man you see before you today.</p> 
+                        <p>I liked their spatulas so much, I bought the company. Because we eliminate the middleman, we can sell all our spatulas factory direct to you.</p>
+                        <p>I use a spatula everyday. If it weren't for the spatula, I wouldn't be the man you see before you today.</p> 
                         <p>There are thousands of spatulas that need your love. Please help them find a forever home.</p>
                         <p>Thank you for supporting spatulas. If you don't get your spatula here, please get one somewhere.</p><br>
                         <p>Sincerely,</p>

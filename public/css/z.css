@@ -1,3 +1,5 @@
+/*Start of Meet Page CSS*/
+
 .meetColor {
 	background-color: black;
 	background-image: url(../img/spatPat.png);
@@ -7,8 +9,46 @@
 	color: white;
 }
 
-.pictureHolder {
+#aboutSy > .img-responsive {
+	display: inline-block;
+}
+
+.pPadding {
+	padding: 10px 14px;
+	margin: 10px 26px;
+	font-size: 25px;
+	font-family: 'Shadows Into Light', cursive;
+	text-align: left;
+	background-image: url("../img/linedpaper.png");
+}
+
+/*End of Meet page CSS*/
+
+/*Start of Landing Page CSS*/
+
+.landingPageclearthetop {
+    margin-top: 15px;
+}
+
+.landingPageadSquare {
+	width: 300px;
+	height: 300px;
+	border: 1px solid gray;
+	display: inline-block;
+	margin: 0 0 10px 10px;
 	position: relative;
+	overflow: auto;
+	background-color: white;
+}
+.landingPageadSquare img {
+    margin: 0 auto;
+    height: 240px;
+    overflow: hidden;
+}
+
+.landingPagepriceTag {
+    background-color: #0062CC;
+    color:white;
 }
 
 .spatulaText {
@@ -21,15 +61,11 @@
 	text-shadow: 4px 3px 0px #000, 9px 8px 0px rgba(0,0,0,0.15);
 }
 
-#aboutSy > .img-responsive {
-	display: inline-block;
+.pictureHolder {
+	position: relative;
 }
 
-.pPadding {
-	padding: 10px 20px;
-	margin: 10px 40px;
-	font-size: 25px;
-	font-family: 'Shadows Into Light', cursive;
-	text-align: left;
-	background-image: url("../img/linedpaper.png");
+#browseAdsText {
+	color: white;
+	text-shadow: 4px 3px 0px #0062CC;
 }

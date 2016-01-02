@@ -16,9 +16,21 @@ require_once '../utils/Input.php';
         }
 
         $adId = Input::has('id') ? Input::get('id') : 1 ;
+
+        $arrayCategories = Ad::showJustCategories();
+        $justCategories = [];
+        foreach ($arrayCategories as $key => $value) {
+            array_push($justCategories, $value['categories']);
+        }
+        $justCategoriesString = implode(', ', $justCategories);
+        $justCategoriesArray = explode(', ', $justCategoriesString);
+        $justCategoriesArrayUnique = array_unique($justCategoriesArray);
+        sort($justCategoriesArrayUnique);
+
         return [
             'ads' => $ads,
-            'loginstatus' => $loginstatus
+            'loginstatus' => $loginstatus,
+            'justCategoriesArrayUnique' => $justCategoriesArrayUnique
         ];
     }
 
@@ -43,37 +55,11 @@ require_once '../utils/Input.php';
         <link rel="stylesheet" href="../css/main.css">
         <link rel="stylesheet" href='../css/z.css'>
 
-        <style type="text/css">
-
-            .clearthetop {
-                margin-top: 50px;
-            }
-
-            .adSquare {
-                width: 300px;
-                height: 300px;
-                border: 1px solid gray;
-                display: inline-block;
-                margin: 0 0 10px 10px;
-                position: relative;
-                overflow: auto;
-            }
-            .adSquare img {
-                margin: 0 auto;
-                height: 240px;
-                overflow: hidden;
-            }
-
-            .priceTag {
-                background-color: #007bff;
-                color:white;
-            }
-        </style>
     </head>
-    <body>
+    <body class="meetColor">
         <?php require_once '../views/navbar.php'; ?>
 
-        <div class="container clearthetop">
+        <div class="container landingPageclearthetop">
             <div class="row">
                 <div class="col-md-12">
                     <div class="pictureHolder">
@@ -81,11 +67,19 @@ require_once '../utils/Input.php';
                         <img src="img/spatulaCity.png" class="img-responsive" alt="Responsive image">
                     </div> <!-- End of pictureHolder  -->    
                 </div> <!-- End col-md-12 -->
-            </div> <!-- End of row -->   
+            </div> <!-- End of row -->     
 
             <div class="row">
-                <div class="col-md-12 text-center">
-                    <h3>Browse Our Newest Ads</h3>
+                <div class="col-md-2 text-center">
+                    <div class="sidebar">
+                        <p class="priceTag text-center">Categories</p>
+                        <?php foreach ($justCategoriesArrayUnique as $category): ?>
+                            <p class="forcategories"><?= $category; ?></p>
+                        <?php endforeach; ?>
+                    </div>
+                </div> <!-- End col-md-2 -->    
+                <div class="col-md-10 text-center">
+                    <h1 id="browseAdsText">Browse Our Newest Spatulas!!</h1>
 
                     <?php foreach($ads as $ad): ?>
                             <?php $fullTitle = $ad['title'] . ' in ' . $ad['location']; ?>
@@ -95,13 +89,13 @@ require_once '../utils/Input.php';
                             <?php $adEllipsedTitle = $fullTitle; ?>
                             <?php endif; ?>
 
-                        <div class="adSquare" title="<?= $fullTitle ?>">
+                        <div class="landingPageadSquare" title="<?= $fullTitle ?>">
                             <img src="img/<?= $ad['image_url'] ?>" class="img-responsive" alt="Responsive image">
                             <a href="ads.show.php?id=<?=$ad['id'];?>"><?= $adEllipsedTitle; ?></a>
-                            <p class="priceTag">$<?= $ad['price'] ?></p>
+                            <p class="landingPagepriceTag">$<?= $ad['price'] ?></p>
                         </div>    
                     <?php endforeach ?>   
-                </div> <!-- End col-md-12 -->
+                </div> <!-- End col-md-10 -->    
             </div> <!-- End row. --> 
         </div> <!-- End container. -->
 

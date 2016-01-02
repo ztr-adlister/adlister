@@ -4,7 +4,7 @@
     <div class= "container text-muted">
         <div class="row text-center">
             <div class="col-sm-3 lineheight">
-                <span>2015 All rights reserved ZTR Inc.</span> 
+                <span>&copy 2015 ZTR, Inc.</span> 
             </div>
             <div class="col-sm-3 lineheight">
                 <span>Email:</span> <a href="mailto:someone@ztr.com">someone@ztr.com</a>
