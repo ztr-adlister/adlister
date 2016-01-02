@@ -67,46 +67,46 @@ if($newuser->email != null) {
 <!-- Carried over from the index -->
 <html lang="en">
    <?php require_once '../views/header.php'; ?>
-    <body>
+    <body class = "meetColor">
         <?php require_once '../views/navbar.php'; ?>
-    <h2 class = "signuphead">Welcome to Spatula City!</h2>
-    <h3 class = "signuphead">Please enter the following information</h3>
+    <h2 class = "signuphead textinfrontofbackground">Welcome to Spatula City!</h2>
+    <h3 class = "signuphead textinfrontofbackground">Please enter the following information</h3>
     <div class = "error"><?=$message;?></div>
 <!-- The signup form -->
     <form class = "signuphead" method = "POST" action = "users.create.php">
     <!-- Email -->
         <p id = "em">
-            <label for "signupemail">Email</label>
+            <label class = "textinfrontofbackground" for "signupemail">Email</label>
             <input type = "text" name = "signupemail" id = "signupemail" value = "<?=$newuser->email?>" required>
         </p>
     <!-- Phone Number -->
         <p id = "ph">
-            <label for "signupphone">Phone Number</label>
+            <label class = "textinfrontofbackground" for "signupphone">Phone Number</label>
             <input type = "text" name = "signupphone" id = "signupphone" value = "<?=$newuser->phone?>" required>
         </p>
     <!-- Username -->
         <p>
-            <label for "username">Username</label>
+            <label class = "textinfrontofbackground" for "username">Username</label>
             <input type = "text" name = "username" id = "username" value = "<?=$newuser->username?>" required>
         </p>
     <!-- Password -->
         <p>
-            <label for "password">Password</label>
+            <label class = "textinfrontofbackground" for "password">Password</label>
             <input type = "password" name = "password" id = "password" required>
         </p>
     <!-- Confirm Password -->
         <p id = "confirm1">
-            <label for "confirmpassword">Confirm Password</label>
+            <label class = "textinfrontofbackground" for "confirmpassword">Confirm Password</label>
             <input type = "password" name = "confirmpassword" id = "confirmpassword" required>
         </p>
         <!-- Reminder -->
         <p id = "secq">
-            <label for "reminder">Write a reminder for your password (i.e. My dog's name, my first nickname, etc.): </label>
+            <label class = "textinfrontofbackground" for "reminder">Write a reminder for your password (i.e. My dog's name, my first nickname, etc.): </label>
             <input type = "text" id = "reminder" name = "reminder" required>
         </p>
     <!-- Box Color -->
         <p id = "select">
-            <label for "boxcolor">What color do you want your box to be?</label>
+            <label class = "textinfrontofbackground" for "boxcolor">What color do you want your box to be?</label>
             <select id = "boxcolor" name = "boxcolor" required>
                 <!-- Red -->
                 <option id = "red"<?php if($newuser->boxcolor == "Red") {?>selected<?php }?>>Red</option>
@@ -151,7 +151,7 @@ if($newuser->email != null) {
             </select>
         </p>
         <p id = "select">
-            <label for "icontype">What icon do you want to represent you?</label>
+            <label class = "textinfrontofbackground" for "icontype">What icon do you want to represent you?</label>
             <select id = "icontype" name = "icontype" required>
                 <option <?php if($newuser->icon == "university") {?>selected<?php }?>>university</option>
                 <option<?php if($newuser->icon == "beer") {?>selected<?php }?>>beer</option>

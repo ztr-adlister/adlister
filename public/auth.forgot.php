@@ -23,24 +23,24 @@ if(Auth::check()) {
 <!DOCTYPE html>
 <html lang="en">
     <?php require_once '../views/header.php'; ?>
-    <body>
+    <body class = "meetColor">
         <?php require_once '../views/navbar.php'; ?>
 
         <div class="container login_container">
-        	<h2>Please enter all information below to retrieve your reminder</h2>
+        	<h2 class = "textinfrontofbackground">Please enter all information below to retrieve your reminder</h2>
         <div class = "message"><?=$message;?></div>
             <div class="row">
                 <div class="col-sm-4 text-center">
                     <form class= "form-horizontal" method="POST" action = "auth.forgot.php">
                         <div class="form-group">
-                            <label class="control-label col-sm-5">Username:</label>
+                            <label class="control-label col-sm-5 textinfrontofbackground">Username:</label>
                             <div class="col-sm-6">
                                 <input type="text" name="username" autofocus><br>
                             </div>
                         </div>
                             
                         <div class="form-group">   
-                                <label class="control-label col-sm-5">Email:</label>
+                                <label class="control-label col-sm-5 textinfrontofbackground">Email:</label>
                             <div class="col-sm-6">
                                 <input type="text" name="email"><br>
                             </div>    

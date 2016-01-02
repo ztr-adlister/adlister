@@ -21,7 +21,7 @@ $stmt = $dbc->prepare('SELECT * FROM users WHERE username = :username');
 $stmt->bindValue(':username', $_SESSION['Loggedinuser'], PDO::PARAM_STR);
 $stmt->execute();
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
+$boxcolor = $user['boxcolor'];
 $stmt1 = $dbc->prepare('SELECT * FROM ads WHERE user_id = :id');
 $stmt1->bindValue(':id', $user['id'], PDO::PARAM_INT);
 $stmt1->execute();
@@ -64,13 +64,13 @@ if(Input::notempty('adid')) {
 <!-- Carried over from the index -->
 <html lang="en">
     <?php require_once '../views/header.php'; ?>
-    <body>
+    <body class = "meetColor">
     <?php require_once '../views/navbar.php'; ?>
-    	<h2 class = "show">Hello, <?=$user['username'] ?>!</h2>
-        <div id = "box"><br><br><i id = "icon" class = "fa fa-<?=$user['icon']?> fa-5x"></i></div>
+    	<h2 class = "show textinfrontofbackground">Hello, <?=$user['username'] ?>!</h2>
+        <div id = "box" style = "background-color: <?=$boxcolor?>;"><br><br><i id = "icon" class = "fa fa-<?=$user['icon']?> fa-5x"></i></div>
 
 <!-- Ads the user has posted -->
-    	<h3 class = "show">Your Ads:</h3>
+    	<h3 class = "show textinfrontofbackground">Your Ads:</h3>
     	<ul class = "showads">
             <div class = "col-md-8 col-md-offset-2">
                 <br>
