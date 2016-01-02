@@ -112,13 +112,6 @@
 /* END CSS for navbar.php page */
 
 /* START CSS for ads.index.php page */
-.adsindexpagebody {
-    background-color: #F5F5F1;
-    /*background-image: url(/img/spatula_icon_transparent50.png), linear-gradient(to right, rgba(30, 75, 115, 1),  rgba(255, 255, 255, 0));*/
-    background: url(../img/spatula_icon_transparent50.png), linear-gradient(45deg, #0062cc, #F5F5F1);
-    /*background-repeat: repeat, no-repeat;*/
-    /*background-position: top left, right;*/
-}
 .bottomline {
     margin-top: 10px;
     border: 1px solid #0062cc;
@@ -306,9 +299,6 @@
 /* END CSS for ads.edit.php page */
 
 /* START CSS for ads.deals.php page */
-.adsdealspagebody {
-    background-color: #000;
-}
 .pushdancingspatsdown {
     margin-top: 5px;
 }
