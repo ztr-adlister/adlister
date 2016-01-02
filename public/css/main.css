@@ -130,13 +130,13 @@
 .sidebar {
     width: 100%;
     background-color: #ffffff;
-    border: 1px solid #007bff;
+    border: 1px solid #0062cc;
     border-radius: 5px;
     margin-bottom: 10px;
     padding-bottom: 10px;
 }
 .priceTag {
-    background-color: #007bff;
+    background-color: #0062cc;
     color: white;
 }
 .forcategories {
@@ -379,5 +379,8 @@
     color: #fff;
     font-family: 'Fugaz One', helvetica;
     font-size: 25px;
+    background: linear-gradient(330deg, #e05252 0%, #99e052 25%, #52e0e0 50%, #9952e0 75%, #e05252 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 /* END CSS for ads.deals.php page */
