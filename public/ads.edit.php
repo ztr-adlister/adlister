@@ -192,44 +192,9 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="icon" type="image/png" href="img/icon.png">
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>ZTR Industries Ad Lister 3000</title>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="../css/footer.css">
-        <link rel="stylesheet" href="../css/main.css">
-        
-        <style type="text/css">
-            .clearthetop {
-                margin-top: 50px;
-            }
-            .radiomargin {
-                margin-left: 10px;
-            }
-            .formmargin {
-                margin-bottom: 10px;
-            }
-            .methodmargin {
-                margin-top: 15px;
-                margin-bottom: 5px;
-            }
-            .red {
-                color: #e60000; /* Makes the error exceptions red. */
-            }
-            .yellow {
-                background-color: #ffffb3;
-            }
-            .dontdisplay {
-                display: none;
-            }
-            .checkboxmargin {
-                margin: 0 45px;
-            }
-        </style>
-    </head>
+
+    <?php require_once '../views/header.php'; ?>
+
     <body>
         <?php require_once '../views/navbar.php'; ?>
 
