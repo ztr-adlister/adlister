@@ -44,28 +44,28 @@ if(Auth::check()) {
     <body class = "meetColor">
         <?php require_once '../views/navbar.php'; ?>
 <br>
-        <div class = "failure"><?=$message;?></div>
+        <div class = "error"><?=$message;?></div>
         <div class="container login_container">
             <div class="row">
-                <div class="col-sm-4 text-center">
+                <div class="col-md-6 col-md-offset-3 col-sm-4 text-center">
                     <form class= "form-horizontal" method="POST" action = "auth.login.php">
                         <div class="form-group">
                             <label class="control-label col-sm-5 textinfrontofbackground">Username:</label>
                             <div class="col-sm-6">
-                                <input type="text" name="username" autofocus><br>
+                                <input class = "form-control" type="text" name="username" autofocus><br>
                             </div>
                         </div>
                             
                         <div class="form-group">   
                                 <label class="control-label col-sm-5 textinfrontofbackground">Password:</label>
                             <div class="col-sm-6">
-                                <input type="password" name="password"><br>
+                                <input class = "form-control" type="password" name="password"><br>
                             </div>    
                         </div>
                         
                         <button class="btn btn-default" type="submit"><i class="fa fa-check"></i></span>Submit</button>
                     </form>
-                    <a href = "auth.forgot.php" id = "forgot">Forgot Password?</div>
+                    <button class = "btn btn-primary"><a href = "auth.forgot.php" id = "forgot">Forgot Password?</a></button></div>
             </div>        
             <!-- <h2><?= $login ?><h2> -->
         </div> <!-- End container. -->

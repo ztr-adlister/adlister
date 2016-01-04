@@ -244,8 +244,9 @@ if($newuser->email != null) {
                 </div>
         </div>
             </p>
-            <button class = "btn btn-primary" type = "submit" value = "Sign Up!">Sign Up!</button>
+            <button class = "btn btn-primary" type = "submit" value = "Sign Up!"><i class = "fa fa-user-plus"></i>Sign Up!</button>
         </form>
     </div>
 </div>
+<br>
     <?php require_once '../views/footer.php'; ?>
