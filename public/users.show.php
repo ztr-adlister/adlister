@@ -84,9 +84,9 @@ if(Input::notempty('adid')) {
             <br><br><br>
             <?php } ?>
             </div>
-        <a href="ads.create.php" id = "createads"><i class = "fa fa-commenting-o hidden-sm"></i>Post a new Ad</a>
+        <button class = "btn btn-warning col-md-6 hidden-xs hidden-sm"><a href="ads.create.php" id = "createads"><i class = "fa fa-commenting-o"></i>Post a new Ad</a></button>
         <br><br><br><br>
-        <a href="ads.edit.php" id = "editads"><i class = "fa fa-pencil hidden-sm"></i>Edit an existing Ad</a>
+        <button class = "btn btn-success hidden-xs hidden-sm"><a href="ads.edit.php" id = "editads"><i class = "fa fa-pencil hidden-sm"></i>Edit an existing Ad</a></button>
         <br><br><br>
         </ul>
     	<br><br><br><br><br><br><br><br><br><br>

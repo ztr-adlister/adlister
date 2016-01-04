@@ -137,38 +137,36 @@
 		color: white;
 	}
 	#createads {
-		background-color: #FF9933;
 		color: white;
-		padding-top: 10px;
+		/*padding-top: 10px;
 		padding-bottom: 10px;
 		padding-left: 7%;
-		padding-right: 7%;
-		margin-left: 28%;
-		margin-right: 31%;
+		padding-right: 7%;*/
+		margin-left: 0%;
+		margin-right: 12%;
 		margin-top: -30px;
 		text-decoration: none;
-		box-shadow: 5px 5px 5px black;
+		/*box-shadow: 5px 5px 5px black;*/
 		position: relative;
 	}
-	#createads:hover {
+	/*#createads:hover {
 		background-color: #FF6600;
-	}
+	}*/
 	#editads {
-		background-color: #00CC66;
 		color: white;
-		padding-top: 10px;
-		padding-bottom: 10px;
-		padding-left: 6%;
-		padding-right: 6%;
-		margin-left: 28%;
-		margin-right: 31%;
+		/*padding-top: 10px;
+		padding-bottom: 10px;*/
+		/*padding-left: 6%;
+		padding-right: 6%;*/
+		margin-left: 25%;
+		margin-right: 32%;
 		margin-top: -30px;
 		text-decoration: none;
-		box-shadow: 5px 5px 5px black;
+		/*box-shadow: 5px 5px 5px black;*/
 	}
-	#editads:hover {
+	/*#editads:hover {
 		background-color: green;
-	}
+	}*/
 	.login_container{
         margin-top: 70px;
     }
