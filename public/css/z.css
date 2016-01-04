@@ -1,4 +1,4 @@
-/*Start of Meet Page CSS*/
+/*Start of MEET PAGE CSS*/
 .meetColor {
 	background-color: black;
 	background-image: url(../img/spatPat.png);
@@ -21,9 +21,9 @@
 	text-align: left;
 	background-image: url("../img/linedpaper.png");
 }
-/*End of Meet page CSS*/
+/*End of MEET PAGE CSS*/
 
-/*Start of Landing Page CSS*/
+/*Start of LANDING PAGE CSS*/
 .landingPageclearthetop {
     margin-top: 15px;
 }
@@ -72,13 +72,17 @@
 	margin: 4px 40px;
 }
 
+.catSelect2 {
+	margin: 4px 4px;
+}
+
 .indexSideBar {
 	margin-top: 70px;
 }
 
-/*End of Landing Page CSS*/
+/*End of LANDING PAGE CSS*/
 
-/*Start of Store Page CSS*/
+/*Start of STORE PAGE CSS*/
 .storePage {
     margin-top: 15px;
 }
@@ -113,18 +117,65 @@
 }
 
 .backGroundBox {
+	font-family: 'Fugaz one', cursive;
 	background-color:rgba(0,0,0,0.7);
 	margin-bottom: 10px;
 }
 
 .tweetSy > a {
 	color:#0062CC;
-	font-size: 25px;
+	font-size: 30px;
 }
 
 .tweetSy > a:hover {
 	text-decoration: none;
-	text-shadow: 2px 1px 0px orange;
+	text-shadow: 2px 1px 0px white;
 }
 
-/*End of Store Page CSS*/
+.twitterSy {
+	color:#0062CC;
+	font-size: 20px;
+	text-decoration: none;
+}
+
+.storeHours{
+	color: #007bff;
+    font-family: 'Fugaz One', cursive;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.storeHours > p {
+	margin: 0 26px 10px;
+	color: white;
+}
+
+.storeHours > h1 {
+	margin: 0 26px 10px;
+	color: #0062CC;
+	text-shadow: 3px 2px 0px white;
+}
+
+.storeHours > ul {
+	margin: 0 26px 10px;
+	color: white;
+}
+
+.rushLimbaughArticle {
+	padding: 10px;
+}
+
+.rushLimbaughArticle > a {
+	color: white;
+	font-size: 20px;
+	text-align: center;
+}
+.rushLimbaughArticle > a:hover {
+	text-decoration: none;
+}
+
+.rushLimbaughArticle > img {
+	display: inline-block;
+}
+
+/*End of STORE PAGE CSS*/
