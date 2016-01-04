@@ -46,6 +46,16 @@ class Ad extends Model
 
 		return $result;
 	}
+
+	public static function showJustLocations()
+	{
+		self::dbConnect();
+		$stmt = self::$dbc->prepare('SELECT location FROM ' . self::$table . ' GROUP BY location ASC');
+		$stmt->execute();
+		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		return $result;
+	}
 }
 
 
