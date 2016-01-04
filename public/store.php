@@ -60,13 +60,10 @@ sort($locationUnique);
             <div class="col-md-4 text-center">  
                 <div class="storeDetails">
                     <div class="tweetSy">
-<<<<<<< HEAD
-                        <a href="https://twitter.com/SpatulaCityPrez" target="_blank"><i class="fa fa-twitter-square fa-5x"></i>
+                        <a href="https://twitter.com/SpatulaCityPrez" target="_blank"><i class="zeefa fa fa-twitter-square fa-5x"></i>
                         <p class="twitterSy">Twitter With Us</p>
                         </a>
-=======
-                        <a href="https://twitter.com/SpatulaCityPrez" target="_blank"><i class=" zeefa fa fa-twitter-square fa-5x"></i> <p>Twitter Our Prez</p></a>
->>>>>>> 75226563008605b512d5f14faca8db32e428d993
+                        
                     </div> <!-- end tweetSy-->
                 </div> <!--end storeDetails -->  
             </div> <!-- end col-md-4--> 
