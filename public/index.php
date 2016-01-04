@@ -63,7 +63,8 @@ require_once '../utils/Input.php';
                         <p class="priceTag text-center">Categories</p>
                          <a href="ads.index.php" class="catSelect">All Spatulas</a>
                         <?php foreach ($justCategoriesArrayUnique as $category): ?>
-                            <a href="ads.index.php?clickcategory=<?=$category;?>" class="catSelect"><?= $category; ?></a>
+                            <a href="ads.index.php?clickcategory=<?=$category;?>" class="catSelect hidden-sm hidden-xs"><?= $category; ?></a>
+                            <a href="ads.index.php?clickcategory=<?=$category;?>" class="catSelect2 hidden-md hidden-lg"><?= $category; ?></a>
                         <?php endforeach; ?>
                     </div>
                 </div> <!-- End col-md-2 -->    
