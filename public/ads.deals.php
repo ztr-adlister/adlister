@@ -5,41 +5,17 @@
 
     function pageController()
     {
+        // Gets the current session.
         session_start();
-        $adsArray = Ad::all();
-
-        $clickedcategories = Input::has('clickcategory') ? '%' . Input::get('clickcategory') . '%' : '%' ;
-        $adsArray = Ad::findCategories($clickedcategories);
-
-        arsort($adsArray);
-
+        
         if(!isset($_SESSION['Loggedinuser'])) {
             $loginstatus = "Members, Log In!";
         } else {
             $loginstatus = $_SESSION['Loggedinuser'] . " is logged in!";
         }
 
-        $adId = Input::has('id') ? Input::get('id') : 1 ;
-
-        $arrayCategories = Ad::showJustCategories();
-        $justCategories = [];
-        foreach ($arrayCategories as $key => $value) {
-            array_push($justCategories, $value['categories']);
-        }
-        $justCategoriesString = implode(', ', $justCategories);
-        $justCategoriesArray = explode(', ', $justCategoriesString);
-        $justCategoriesArrayUnique = array_unique($justCategoriesArray);
-        sort($justCategoriesArrayUnique);
-
-        $spotlight = $adsArray[array_rand($adsArray, 1)];
-
         return array(
-            'adsArray' => $adsArray,
-            'adId' => $adId,
-            'loginstatus' => $loginstatus,
-            'clickedcategories' => $clickedcategories,
-            'spotlight' => $spotlight,
-            'justCategoriesArrayUnique' => $justCategoriesArrayUnique
+            'loginstatus' => $loginstatus
         );    
     }
 
@@ -58,9 +34,11 @@
         <div class="container pushdancingspatsdown">
             <div class="row">
                 <div class="col-md-12 text-center">
+                    <!-- This h1 has each letter in a span so that the CSS animation can run at different times for each letter to create the blinking effect. -->
                     <h1 class="dealstitle"><span class="letter1">S</span><span class="letter2">p</span><span class="letter3">a</span><span class="letter4">t</span><span class="letter5">u</span><span class="letter6">l</span><span class="letter7">a</span> <span class="letter8">C</span><span class="letter1">i</span><span class="letter2">t</span><span class="letter3">y</span> <span class="letter4">D</span><span class="letter5">e</span><span class="letter6">a</span><span class="letter7">l</span><span class="letter8">s!</span></h1>
                 </div> <!-- end col-md-12 -->
                 <div class="col-md-10 col-md-offset-1 text-center">
+                    <!-- These are the images for the dancing spatulas. They all use the same CSS animation. -->
                     <img src="img/spatula_icon_blue.png" class="img-responsive dancingspatula" id="lblue" alt="Responsive image">
                     <img src="img/spatula_icon_red.png" class="img-responsive dancingspatula" id="lred"alt="Responsive image">
                     <img src="img/spatula_icon_green.png" class="img-responsive dancingspatula" id="lgreen" alt="Responsive image">

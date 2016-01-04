@@ -10,18 +10,21 @@
     {
         require_once '../db/db_connect.php';
 
+        // Gets the current session and session id for logged in users.
         session_start();
-        // get the current session id
         $sessionId = session_id();
+
         if(!isset($_SESSION['Loggedinuser'])) {
             header('location: auth.login.php');
             die();
         }
         $loginstatus = $_SESSION['Loggedinuser'] . " is logged in!";
-        $username = Auth::user();
 
-        $user = User::finduserbyusername($username);
-
+        // This portion of code gets all the ads' categories in one array.
+        // The categories, which are strings (sometimes with multiple categories in it), 
+        // are then put into the array by themselves. The array is imploded into a string and then exploded into an 
+        // array again. This allows us to split the strings with multiple categories in them. 
+        // The php array_unique removes duplicate category values and sort orders them by first letter.
         $arrayCategories = Ad::showJustCategories();
         $justCategories = [];
         foreach ($arrayCategories as $key => $value) {
@@ -31,8 +34,14 @@
         $justCategoriesArray = explode(', ', $justCategoriesString);
         $justCategoriesArrayUnique = array_unique($justCategoriesArray);
         sort($justCategoriesArrayUnique);
+        
+        // Through $_SESSION, gets the logged in user.
+        $username = Auth::user();
 
-        // Uses the 'Submit A National Park' form to insert new values to the table and database.
+        // Returns an object of the user's data.
+        $user = User::finduserbyusername($username);
+
+        // Uses the 'Create an Ad' form to insert the new values to the table and database.
         function insertAd($dbc, $user)
         {
             // Now calls on the Input class's getString and getDate methods with try catches.
@@ -101,6 +110,7 @@
             $stmt->execute();
         }
 
+        // Sets each variable for future use in the following 'if else' logic tree.
         $errorArray = [''];
         $formMethod = '';
         $formImage = '';
@@ -111,6 +121,11 @@
         $formCat = [''];
         $yellow = false;
 
+        // If none of these are set in the $_POST, then nothing happens. This is the outer most if.
+        // If these are empty, then the else on line 143 is tripped. Inner if/else on lines 130 and 143.
+        // If these have values, updateAd runs. Line 131.
+        // If no errors are tripped then if on line 132 trips and the ad is edited.
+        // If errors are tripped, then else on line 134 trips and the errors are displayed and the form is sticky.
         if (!empty($_POST)) {
             if ( Input::notEmpty('method') && Input::notEmpty('image_url') && Input::notEmpty('title') && Input::notEmpty('price') && Input::notEmpty('location') && Input::notEmpty('description') && Input::notEmpty('categories') ) {
                 $errorArray = insertAd($dbc, $user);
@@ -177,6 +192,7 @@
 
                 <div class="col-md-8 blackbackground">
                     <h3>Create an Ad</h3>
+                    <!-- Displays errors from the $errorArray, depending on what the user does with the form. -->
                     <?php foreach ($errorArray as $err): ?>
                         <h4 class="red"><?= $err; ?></h4>
                     <?php endforeach; ?>
@@ -194,6 +210,7 @@
                         <div class="row formmargin">
                             <div class="col-xs-6">
                                 <label >Method of Contact</label><br>
+                                <!-- For each form input, if the corresponding error is present, it will be highlighted in yellow. -->
                                 <div <?php if (isset($errorArray['errMethod']) || $yellow): ?> class="text-center yellow" <?php else: ?> class="text-center" <?php endif; ?>>
                                     <label class="radiomargin">
                                         <input type="radio" name="method" id="optionsRadio1" value="email"
@@ -240,6 +257,7 @@
                                 <label >Ad Categories</label>
                                 <div <?php if (isset($errorArray['errCats']) || $yellow): ?> class="text-center yellow" <?php else: ?> class="text-center" <?php endif; ?>>
                                     <?php $category = []; ?>
+                                    <!-- This foreach will display each category that is found in the database. -->
                                     <?php foreach ($justCategoriesArrayUnique as $category): ?>
                                         <label class="checkbox-inline checkboxmargin">
                                             <input type="checkbox" name="categories[]" value=<?= $category ?> <?php if (in_array($category, $formCat)): ?> checked <?php endif; ?>> <?= $category ?>
@@ -257,7 +275,9 @@
                         </div>
                         <button class="btn btn-default formmargin" type="submit">Submit</button>
                     </form> 
+                
                 </div> <!-- End col-md-8 -->
+
             </div> <!-- End row. -->
 
         </div> <!-- End container. -->

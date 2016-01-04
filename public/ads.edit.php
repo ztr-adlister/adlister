@@ -10,15 +10,21 @@
     {
         require_once '../db/db_connect.php';
 
+        // Gets the current session and session id for logged in users.
         session_start();
-        // get the current session id
         $sessionId = session_id();
+
         if(!isset($_SESSION['Loggedinuser'])) {
             header('location: auth.login.php');
             die();
         }
         $loginstatus = $_SESSION['Loggedinuser'] . " is logged in!";
 
+        // This portion of code gets all the ads' categories in one array.
+        // The categories, which are strings (sometimes with multiple categories in it), 
+        // are then put into the array by themselves. The array is imploded into a string and then exploded into an 
+        // array again. This allows us to split the strings with multiple categories in them. 
+        // The php array_unique removes duplicate category values and sort orders them by first letter.
         $arrayCategories = Ad::showJustCategories();
         $justCategories = [];
         foreach ($arrayCategories as $key => $value) {
@@ -29,20 +35,24 @@
         $justCategoriesArrayUnique = array_unique($justCategoriesArray);
         sort($justCategoriesArrayUnique);
         
-
+        // Through $_SESSION, gets the logged in user.
         $username = Auth::user();
 
+        // Returns an object of the user's data.
         $user = User::finduserbyusername($username);
 
+        // Using the user's id (a foreign key in the ads table), finds all ads by that user.
         $userAds = Ad::findAllAdsByUserId($user->id);
 
+        // The first form "Select an Ad" sets 'ad_to_edit' in $_POST, which is the variable $adToEdit.
         $adToEdit = Input::has('ad_to_edit') ? (int) (Input::get('ad_to_edit')) : NULL ;
+        // Using $adToEdit, this returns an object of data about that ad.
         $adToEditObj = Ad::find($adToEdit);
 
-        // Uses the 'Submit A National Park' form to insert new values to the table and database.
+        // Uses the second form of an edited ad to insert the new values into the table and database.
         function updateAd($dbc, $user)
         {
-            // Now calls on the Input class's getString and getDate methods with try catches.
+            // Now calls on the Input class's getString and getNumber methods with try catches.
             // Try catch create an array of errors for passing to the user in the HTML.
             $errorArray = [];
 
@@ -86,7 +96,6 @@
                 $adid = Input::getNumber('adid', 1, 5000000);
             } catch (Exception $e) {
                 $error = $e->getMessage();
-                // $errorArray['errDes'] = $error;
             }
             try {
                 $categoriesArray = Input::get('categories', 1, 50);
@@ -115,6 +124,7 @@
             $stmt->execute();
         }
 
+        // Sets each variable for future use in the following 'if else' logic tree.
         $errorArray = [''];
         $formMethod = '';
         $formImage = '';
@@ -126,6 +136,7 @@
         $formCat = [''];
         $yellow = false;
 
+        // If an ad is selected for editing, then this will populate each input with the ad's data from the ads table.
         if (isset($_POST['ad_to_edit'])) {
             $errorArray = ['Make your edits.'];
             $yellow = true;
@@ -139,6 +150,11 @@
             $formAdId = $adToEdit;
         } 
         
+        // If none of these are set in the $_POST, then nothing happens. This is the outer most if.
+        // If these are empty, then the else on line 173 is tripped. Inner if/else on lines 158 and 173.
+        // If these have values, updateAd runs. Line 159.
+        // If no errors are tripped then if on line 161 trips and the ad is edited.
+        // If errors are tripped, then else on line 163 trips and the errors are displayed and the form is sticky.
         if ( Input::has('method') && Input::has('image_url') && Input::has('title') && Input::has('price') && Input::has('location') && Input::has('description') ) {
             if ( Input::notEmpty('method') && Input::notEmpty('image_url') && Input::notEmpty('title') && Input::notEmpty('price') && Input::notEmpty('location') && Input::notEmpty('description') && Input::notEmpty('categories') ) {
                 $errorArray = updateAd($dbc, $user);
@@ -209,6 +225,7 @@
 
                 <div class="col-md-8 blackbackground">
                     <h3>Edit an Ad</h3>
+                    <!-- Displays errors from the $errorArray, depending on what the user does with the form. -->
                     <?php foreach ($errorArray as $err): ?>
                         <h4 class="red"><?= $err; ?></h4>
                     <?php endforeach; ?>
@@ -216,9 +233,9 @@
                     <form method="POST" action="ads.edit.php" class="form-inline formmargin">
                         <div class="form-group">
                             <label class="control-label"><?= $user->username; ?>'s Ads</label>
-                            <!-- This foreach makes a list of all parks to display, without limit and offset that shows the park name but deletes by the park's id. -->
                             <select id="ad_to_edit" name="ad_to_edit" class="form-control">
                                 <option value="" disabled selected> Select an Ad </option>
+                                <!-- This foreach makes a list of all the ads he or she owns to display for selecting to edit. -->
                                 <?php foreach ($userAds as $ad): ?>
                                     <option value="<?= "{$ad['id']}"; ?>"> <?= "{$ad['title']}"; ?> </option>
                                 <?php endforeach; ?>
@@ -237,7 +254,8 @@
                                 <label >Name</label>
                                 <input type="text" name="name" value="<?= $user->username; ?>" class="form-control" readonly>
                             </div>
-                            <div class="col-xs-4 dontdisplay">
+                            <!-- The ad id, which is a number doesn't need to be displayed to the user in the HTML. -->
+                            <div class="col-xs-4 dontdisplay"> 
                                 <label >AD Id</label>
                                 <input type="text" name="adid" value="<?= $formAdId; ?>" class="form-control" readonly>
                             </div>
@@ -245,6 +263,7 @@
                         <div class="row formmargin">
                             <div class="col-xs-6">
                                 <label >Method of Contact</label><br>
+                                <!-- For each form input, if the corresponding error is present, it will be highlighted in yellow. -->
                                 <div <?php if (isset($errorArray['errMethod']) || $yellow): ?> class="text-center yellow" <?php else: ?> class="text-center" <?php endif; ?>>
                                     <label class="radiomargin">
                                         <input type="radio" name="method" id="optionsRadio1" value="email"
@@ -278,7 +297,6 @@
                                 <div class="input-group">
                                     <span class="input-group-addon">$</span>
                                     <input type="text" name="price" value="<?= $formPrice; ?>" <?php if (isset($errorArray['errPrice']) || $yellow): ?> class="form-control yellow" autofocus<?php else: ?> class="form-control" <?php endif; ?>>
-                                    <!-- <span class="input-group-addon">.00</span> -->
                                 </div>
                             </div>
                             <div class="col-xs-4">
@@ -291,6 +309,7 @@
                                 <label >Ad Categories</label>
                                 <div <?php if (isset($errorArray['errCats']) || $yellow): ?> class="text-center yellow" <?php else: ?> class="text-center" <?php endif; ?>>
                                     
+                                    <!-- This foreach will display each category that is found in the database. -->
                                     <?php foreach ($justCategoriesArrayUnique as $category): ?>
                                         <label class="checkbox-inline checkboxmargin">
                                             <input type="checkbox" name="categories[]" value=<?= $category ?> <?php if (in_array($category, $formCat)): ?> checked <?php endif; ?>> <?= $category ?>
