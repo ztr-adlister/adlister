@@ -217,7 +217,7 @@ if (!Auth::check()) {
             </select>
             </p>
 	<p>
-		<button class = "btn btn-primary" type = "submit" value = "submit"><i class = "fa fa-check"></i>Update</button>
+		<button class = "btn btn-primary" type = "submit" value = "submit"><i class = "fa fa-check"></i><?php if($choice == "") {?>Load for Editing<?php } else {?>Update<?php }?></button>
 	</p>
 </form>
 

@@ -36,18 +36,18 @@ if(User::finduserbyusername($usertovisit)) {
     <div id = "box" style = "background-color: <?=$boxcolor?>;"><br><br><i id = "icon" class = "fa fa-<?=$visitinguser['icon']?> fa-5x"></i></div>
  <!-- Ads the user has posted -->
     	<ul class = "showads">
-            <div class = "col-md-8 col-md-offset-2">
+            <div class = "col-md-7 col-md-offset-2">
                 <br>
             <?php foreach($visitingads as $advalue) {?>
-                <li><a href = "ads.show.php?id=<?=$advalue['id']?>"><img id = "image" src = "img/<?=$advalue['image_url']?>" class = "img-responsive" alt="Responsive image"></a></li>
-            <li><strong>Title:</strong><?=$advalue['title']?></li>
+                <li><a class = "hidden-xs hidden-sm" href = "ads.show.php?id=<?=$advalue['id']?>"><img id = "image" src = "img/<?=$advalue['image_url']?>" class = "img-responsive" alt="Responsive image"></a></li>
+            <li><strong>Title:</strong><a href = "ads.show.php?id=<?=$advalue['id']?>"><?=$advalue['title']?></a></li>
             <li><strong>Description:</strong> <?=$advalue['description']?></li>
             <li><strong>Price:</strong> $<?=$advalue['price']?></li>
             <br><br><br>
             <?php } ?>
             </div>
         <br><br><br><br>
-        <a href="ads.index.php" id = "editads"><i class = "fa fa-pencil"></i>Back to Ads</a>
+        <button class = "btn btn-success hidden-xs hidden-sm"><a href="ads.index.php" id = "editads"><i class = "fa fa-pencil"></i>Back to Ads</a></button>
         <br><br><br>
         </ul>
     	<br><br><br><br><br><br><br><br><br><br>

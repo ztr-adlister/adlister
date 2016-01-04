@@ -37,7 +37,7 @@ if(!isset($_SESSION['Loggedinuser'])) {
             <div class="col-md-8 backGroundBox">  
                 <div class="storeDetails">
                     <div class="tweetSy">
-                        <a href="https://twitter.com/SpatulaCityPrez" target="_blank"><i class="fa fa-twitter-square fa-5x"></i> <p>Twitter Our Prez</p></a>
+                        <a href="https://twitter.com/SpatulaCityPrez" target="_blank"><i class=" zeefa fa fa-twitter-square fa-5x"></i> <p>Twitter Our Prez</p></a>
                     </div> <!-- end tweetSy-->
                 </div> <!--end storeDetails -->  
             </div> <!-- end col-md-8--> 
