@@ -50,43 +50,44 @@ if(Auth::check()) {
         <?php require_once '../views/navbar.php'; ?>
 
         <div class="container login_container">
-        	<h2 class = "textinfrontofbackground">Please enter all information below to retrieve your reminder</h2>
+        	<h2 class = "signuphead textinfrontofbackground">Please enter all information below to retrieve your reminder</h2>
         <div class = "success"><?=$message;?></div><div class = "error"><?=$error?></div>
             <div class="row">
-                <div class="col-sm-4 text-center">
+                <div class="col-md-6 col-md-offset-3 col-sm-4 text-center">
                     <form class= "form-horizontal" method="POST" action = "auth.forgot.php">
                         <div class="form-group">
                             <label class="control-label col-sm-5 textinfrontofbackground" for="username">Username:</label>
                             <div class="col-sm-6">
-                                <input type="text" name="username" id = "username" autofocus><br>
+                                <input class = "form-control" type="text" name="username" id = "username" autofocus><br>
                             </div>
                         </div>
                             
                         <div class="form-group">   
                                 <label class="control-label col-sm-5 textinfrontofbackground" for="email">Email:</label>
                             <div class="col-sm-6">
-                                <input type="text" name="email" id = "text"><br>
+                                <input class = "form-control" type="text" name="email" id = "text"><br>
                             </div>    
                         </div>
 
                         <div class="form-group">   
                                 <label class="control-label col-sm-5 textinfrontofbackground" for="boxcolor">Boxcolor:</label>
                             <div class="col-sm-6">
-                                <input type="text" name="boxcolor" id = "boxcolor"><br>
+                                <input class = "form-control" type="text" name="boxcolor" id = "boxcolor"><br>
                             </div>    
                         </div>
 
                         <div class="form-group">   
                                 <label class="control-label col-sm-5 textinfrontofbackground" for="icon">Icon:</label>
                             <div class="col-sm-6">
-                                <input type="text" name="icon" id = "icon"><br>
+                                <input class = "form-control" type="text" name="icon" id = "icon"><br>
                             </div>    
                         </div>
                         <button class="btn btn-default" type="submit"><i class="fa fa-check"></i></span>Submit</button>
                     </form>
-                    <a id = "forgot" href="auth.login.php">Back to login</a>
+                    <button class = "btn btn-primary"><i class = "fa fa-arrow-left"></i><a id = "forgot" href="auth.login.php">To login</a></button>
                 </div>
             </div>        
             <!-- <h2><?= $login ?><h2> -->
         </div> <!-- End container. -->
+        <br>
      <?php require_once '../views/footer.php'; ?>
