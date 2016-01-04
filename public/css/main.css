@@ -201,17 +201,18 @@
     margin-top: 15px;
     margin-bottom: 5px;
 }
+.textwhite {
+    color: #e6e6e6;
+}
 .red {
     color: #e60000; /* Makes the error exceptions red. */
 }
 .yellow {
     background-color: #ffffb3;
+    color: #333333;
 }
 .checkboxmargin {
     margin: 0 45px;
-}
-.textwhite {
-    color: #e6e6e6;
 }
 .blackbackground {
     background-color: rgba(0,0,0,0.7);
