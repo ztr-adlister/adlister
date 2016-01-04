@@ -74,7 +74,7 @@
             <div class="col-sm-12 col-xs-12 hidden-md hidden-lg text-center">
                 <a href="ads.index.php"><i class="fa fa-product-hunt"></i> Products</a>
                 <a <?php if(!isset($_SESSION['Loggedinuser'])) {?>style="display:none"<?php }?> href="users.show.php"><i class="fa fa-user"></i> Your Profile</a>
-                <?php if(isset($_SESSION['Loggedinuser'])): ?><a href="ads.create.php"> Sell</a><?php else: ?><a href="auth.login.php"> Log In</a><?php endif; ?>
+                <?php if(isset($_SESSION['Loggedinuser'])): ?><a href="ads.create.php"><i class="fa fa-money"></i> Sell</a><?php else: ?><a href="auth.login.php"><i class="fa fa-user"></i> Log In</a><?php endif; ?>
                 <a <?php if(isset($_SESSION['Loggedinuser'])) {?>style = "display:none"<?php }?> href="users.create.php"><i class="fa fa-sign-in"></i> Sign Up</a>
                 <a href="meet.php"><i class="fa fa-info-circle"></i> About</a>
             </div> <!-- end col-sm-12 -->
