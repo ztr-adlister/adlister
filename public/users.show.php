@@ -66,13 +66,14 @@ if(Input::notempty('adid')) {
     <?php require_once '../views/header.php'; ?>
     <body class = "meetColor">
     <?php require_once '../views/navbar.php'; ?>
+<!-- Your username, box, and icon -->
     	<h2 class = "show textinfrontofbackground">Hello, <?=$user['username'] ?>!</h2>
         <div class = "hidden-xs hidden-sm" id = "box" style = "background-color: <?=$boxcolor?>;"><br><br><i id = "icon" class = "fa fa-<?=$user['icon']?> fa-5x"></i></div>
 
 <!-- Ads the user has posted -->
     	<h3 class = "show textinfrontofbackground">Your Ads:</h3>
     	<ul class = "showads">
-            <div class = "col-md-8 col-md-offset-2">
+            <div class = "col-md-7 col-md-offset-2 col-sm-7 col-sm-offset-2">
                 <br>
             <?php foreach($userads as $advalue) {?>
                 <li><a class = "hidden-xs hidden-sm" href = "ads.show.php?id=<?=$advalue['id']?>"><img id = "image" src = "img/<?=$advalue['image_url']?>" class = "img-responsive" alt="Responsive image"></a></li>
