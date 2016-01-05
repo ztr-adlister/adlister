@@ -301,6 +301,10 @@
                             <div class="col-xs-6">                   
                                 <label >Image URL</label>
                                 <input type="text" name="image_url" value="<?= $formImage; ?>" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="row formmargin">
+                            <div class="col-xs-6 col-xs-offset-6">
                                 <label >Or Upload a Different Image</label>
                                 <input type="file" name="image_upload" value="" <?php if (isset($errorArray['errImage']) || $yellow): ?> class="form-control yellow" autofocus<?php else: ?> class="form-control" <?php endif; ?>>
                             </div>
