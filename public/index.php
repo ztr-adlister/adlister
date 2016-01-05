@@ -81,7 +81,7 @@ require_once '../utils/Input.php';
                             <?php endif; ?>
 
                         <div class="landingPageadSquare" title="<?= $fullTitle ?>">
-                            <img src="img/<?= $ad['image_url'] ?>" class="img-responsive" alt="Responsive image">
+                            <img src="<?= $ad['image_url'] ?>" class="img-responsive" alt="Responsive image">
                             <a href="ads.show.php?id=<?=$ad['id'];?>"><?= $adEllipsedTitle; ?></a>
                             <p class="landingPagepriceTag">$<?= $ad['price'] ?></p>
                         </div>    
