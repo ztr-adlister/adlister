@@ -92,7 +92,7 @@
                     $uploads_directory = 'img/uploads/';
                     $filename = $uploads_directory . basename($_FILES['image_url']['name']);
                     if (move_uploaded_file($_FILES['image_url']['tmp_name'], $filename)) {
-                        echo 'The file ' . basename($_FILES['image_url']['name']) . ' has been uploaded.';
+                        // echo 'The file ' . basename($_FILES['image_url']['name']) . ' has been uploaded.';
                     } else {
                         $errorArray['errImage'] = 'Sorry, there was an error uploading your file.';
                     }
