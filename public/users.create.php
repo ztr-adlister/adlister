@@ -52,8 +52,8 @@ if($newuser->email != null) {
                             // $headers .= "MIME-Version: 1.0" . "\r\n";
                             // $email = mail($to, $subject, $emmessage, $headers);
                             // $message = $email;
-                            // header('location: users.show.php');
-                            // die(); 
+                            header('location: users.show.php');
+                            die(); 
                         } else {
                             $message = "This email is already taken"; 
                         }
