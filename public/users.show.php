@@ -90,7 +90,7 @@ if(Input::notempty('adid')) {
                 <li><a class="hidden-xs hidden-sm" href="ads.show.php?id=<?=$advalue['id']?>"><img id="image" src ="<?=$advalue['image_url']?>" class="img-responsive" alt="Responsive image"></a></li>
 
             <!-- ad title -->
-            <li><strong>Title:</strong><a href = "ads.show.php?id=<?=$advalue['id']?>"><?=$advalue['title']?></a></li>
+            <li><strong>Title: </strong><a href = "ads.show.php?id=<?=$advalue['id']?>"><?=$advalue['title']?></a></li>
 
             <!-- ad description -->
             <li><strong>Description:</strong> <?=$advalue['description']?></li>
