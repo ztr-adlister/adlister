@@ -10,7 +10,11 @@ require_once '../models/Ad.php';
 require_once 'css/userbox.php';
 
 User::dbConnect();
+
+// Selects information based on the info in the query
 $usertovisit = $_GET['usertovisit'];
+
+// Only executes the code if the username is in the database. If not, sends you back to the landing page.
 if(User::finduserbyusername($usertovisit)) {
     $stmt = $dbc->prepare('SELECT id, username, boxcolor, icon FROM users WHERE username LIKE :username');
     $stmt->bindvalue(':username', $usertovisit, PDO::PARAM_STR);
@@ -39,7 +43,7 @@ if(User::finduserbyusername($usertovisit)) {
     <div class ="col-md-8 col-md-offset-2 col-sm-7 col-sm-offset-2 showads">
     	<ul><br>
             <?php foreach($visitingads as $advalue) {?>
-                <li><a class = "hidden-xs hidden-sm" href = "ads.show.php?id=<?=$advalue['id']?>"><img id = "image" src = "img/<?=$advalue['image_url']?>" class = "img-responsive" alt="Responsive image"></a></li>
+                <li><a class = "hidden-xs hidden-sm" href = "ads.show.php?id=<?=$advalue['id']?>"><img id = "image" src = "<?=$advalue['image_url']?>" class = "img-responsive" alt="Responsive image"></a></li>
             <li><strong>Title:</strong><a href = "ads.show.php?id=<?=$advalue['id']?>"><?=$advalue['title']?></a></li>
             <li><strong>Description:</strong> <?=$advalue['description']?></li>
             <li><strong>Price:</strong> $<?=$advalue['price']?></li>

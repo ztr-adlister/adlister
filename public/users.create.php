@@ -25,6 +25,9 @@ $newuser->reminder = Input::get('reminder');
 $newuser->boxcolor = Input::get('boxcolor');
 $newuser->icon = Input::get('icontype');
 
+$receiver = Input::get('emailer');
+$receivedmessage = Input::get('comment');
+
 $usercheck = User::finduserbyusername($newuser->username);
 $emailcheck = User::checkemail($newuser->email);
 
@@ -37,6 +40,8 @@ if($newuser->email != null) {
                         if(empty($emailcheck)) {
                             $newuser->password = password_hash($newuser->password, PASSWORD_DEFAULT);
                             $newuser->save();
+                            $receiver = $newuser->email;
+                            $receivedmessage = "Hello, $newuser->username!\nWelcome to Spatula City! This email is to let you know that you have successfully been registered in our database, and it also serves as a way to test our brand new emailing system!\nWe hope you enjoy your Spatula shopping experience!\n-Reagan Wilkins, Anthony Burns, and Zeshan Segal.";
                             // $to = $_POST['signupemail'];
                             // $subject = "Welcome to Spatula City!";
                             // $emmessage = wordwrap("Greetings, " . $newuser->username . ",\r\nWelcome to Spatula City, the web's premium advertisement listing forum by Reagan Wilkins, Tony Burns, and Zeshan Segal! At this time you will not be able to log in, as the site is still in testing. This was merely a test of Reagan Wilkins's email code!\r\nHave a pleasant day!\r\n-Reagan Wilkins, Tony Burns, and Zeshan Segal.", 70, "\r\n");
@@ -47,8 +52,8 @@ if($newuser->email != null) {
                             // $headers .= "MIME-Version: 1.0" . "\r\n";
                             // $email = mail($to, $subject, $emmessage, $headers);
                             // $message = $email;
-                            header('location: users.show.php');
-                            die(); 
+                            // header('location: users.show.php');
+                            // die(); 
                         } else {
                             $message = "This email is already taken"; 
                         }
@@ -202,51 +207,64 @@ if($newuser->email != null) {
                     <option <?php if($newuser->icon == "male") {?>selected<?php }?>>male</option>
                     <option <?php if($newuser->icon == "plane") {?>selected<?php }?>>plane</option>
                     <option <?php if($newuser->icon == "paper-plane") {?>selected<?php }?>>paper-plane</option>
-                    <option<?php if($newuser->icon == "eye") {?>selected<?php }?>>eye</option>
-                    <option<?php if($newuser->icon == "paw") {?>selected<?php }?>>paw</option>
-                    <option<?php if($newuser->icon == "spoon") {?>selected<?php }?>>spoon</option>
-                    <option<?php if($newuser->icon == "cloud") {?>selected<?php }?>>cloud</option>
-                    <option<?php if($newuser->icon == "home") {?>selected<?php }?>>home</option>
-                    <option<?php if($newuser->icon == "rocket") {?>selected<?php }?>>rocket</option>
-                    <option<?php if($newuser->icon == "ship") {?>selected<?php }?>>ship</option>
-                    <option<?php if($newuser->icon == "road") {?>selected<?php }?>>road</option>
-                    <option<?php if($newuser->icon == "shield") {?>selected<?php }?>>shield</option>
-                    <option<?php if($newuser->icon == "star") {?>selected<?php }?>>star</option>
-                    <option<?php if($newuser->icon == "plug") {?>selected<?php }?>>plug</option>
-                    <option<?php if($newuser->icon == "money") {?>selected<?php }?>>money</option>
-                    <option<?php if($newuser->icon == "money") {?>selected<?php }?>>music</option>
-                    <option<?php if($newuser->icon == "magnet") {?>selected<?php }?>>magnet</option>
-                    <option<?php if($newuser->icon == "magic") {?>selected<?php }?>>magic</option>
-                    <option<?php if($newuser->icon == "graduation-cap") {?>selected<?php }?>>graduation-cap</option>
-                    <option<?php if($newuser->icon == "bell") {?>selected<?php }?>>bell</option>
-                    <option<?php if($newuser->icon == "bicycle") {?>selected<?php }?>>bicycle</option>
-                    <option<?php if($newuser->icon == "code") {?>selected<?php }?>>code</option>
-                    <option<?php if($newuser->icon == "building") {?>selected<?php }?>>building</option>
-                    <option<?php if($newuser->icon == "barcode") {?>selected<?php }?>>barcode</option>
-                    <option<?php if($newuser->icon == "database") {?>selected<?php }?>>database</option>
-                    <option<?php if($newuser->icon == "flag") {?>selected<?php }?>>flag</option>
-                    <option<?php if($newuser->icon == "flask") {?>selected<?php }?>>flask</option>
-                    <option<?php if($newuser->icon == "gavel") {?>selected<?php }?>>gavel</option>
-                    <option<?php if($newuser->icon == "glass") {?>selected<?php }?>>glass</option>
-                    <option<?php if($newuser->icon == "heart") {?>selected<?php }?>>heart</option>
-                    <option<?php if($newuser->icon == "key") {?>selected<?php }?>>key</option>
-                    <option<?php if($newuser->icon == "leaf") {?>selected<?php }?>>leaf</option>
-                    <option<?php if($newuser->icon == "gift") {?>selected<?php }?>>gift</option>
-                    <option<?php if($newuser->icon == "gamepad") {?>selected<?php }?>>gamepad</option>
-                    <option<?php if($newuser->icon == "ticket") {?>selected<?php }?>>ticket</option>
-                    <option<?php if($newuser->icon == "truck") {?>selected<?php }?>>truck</option>
-                    <option<?php if($newuser->icon == "thumbs-up") {?>selected<?php }?>>thumbs-up</option>
-                    <option<?php if($newuser->icon == "tree") {?>selected<?php }?>>tree</option>
-                    <option<?php if($newuser->icon == "trophy") {?>selected<?php }?>>trophy</option>
-                    <option<?php if($newuser->icon == "umbrella") {?>selected<?php }?>>umbrella</option>
-                    <option<?php if($newuser->icon == "coffee") {?>selected<?php }?>>coffee</option>
+                    <option <?php if($newuser->icon == "eye") {?>selected<?php }?>>eye</option>
+                    <option <?php if($newuser->icon == "paw") {?>selected<?php }?>>paw</option>
+                    <option <?php if($newuser->icon == "spoon") {?>selected<?php }?>>spoon</option>
+                    <option <?php if($newuser->icon == "cloud") {?>selected<?php }?>>cloud</option>
+                    <option <?php if($newuser->icon == "home") {?>selected<?php }?>>home</option>
+                    <option <?php if($newuser->icon == "rocket") {?>selected<?php }?>>rocket</option>
+                    <option <?php if($newuser->icon == "ship") {?>selected<?php }?>>ship</option>
+                    <option <?php if($newuser->icon == "road") {?>selected<?php }?>>road</option>
+                    <option <?php if($newuser->icon == "shield") {?>selected<?php }?>>shield</option>
+                    <option <?php if($newuser->icon == "star") {?>selected<?php }?>>star</option>
+                    <option <?php if($newuser->icon == "plug") {?>selected<?php }?>>plug</option>
+                    <option <?php if($newuser->icon == "money") {?>selected<?php }?>>money</option>
+                    <option <?php if($newuser->icon == "money") {?>selected<?php }?>>music</option>
+                    <option <?php if($newuser->icon == "magnet") {?>selected<?php }?>>magnet</option>
+                    <option <?php if($newuser->icon == "magic") {?>selected<?php }?>>magic</option>
+                    <option <?php if($newuser->icon == "graduation-cap") {?>selected<?php }?>>graduation-cap</option>
+                    <option <?php if($newuser->icon == "bell") {?>selected<?php }?>>bell</option>
+                    <option <?php if($newuser->icon == "bicycle") {?>selected<?php }?>>bicycle</option>
+                    <option <?php if($newuser->icon == "code") {?>selected<?php }?>>code</option>
+                    <option <?php if($newuser->icon == "building") {?>selected<?php }?>>building</option>
+                    <option <?php if($newuser->icon == "barcode") {?>selected<?php }?>>barcode</option>
+                    <option <?php if($newuser->icon == "database") {?>selected<?php }?>>database</option>
+                    <option <?php if($newuser->icon == "flag") {?>selected<?php }?>>flag</option>
+                    <option <?php if($newuser->icon == "flask") {?>selected<?php }?>>flask</option>
+                    <option <?php if($newuser->icon == "gavel") {?>selected<?php }?>>gavel</option>
+                    <option <?php if($newuser->icon == "glass") {?>selected<?php }?>>glass</option>
+                    <option <?php if($newuser->icon == "heart") {?>selected<?php }?>>heart</option>
+                    <option <?php if($newuser->icon == "key") {?>selected<?php }?>>key</option>
+                    <option <?php if($newuser->icon == "leaf") {?>selected<?php }?>>leaf</option>
+                    <option <?php if($newuser->icon == "gift") {?>selected<?php }?>>gift</option>
+                    <option <?php if($newuser->icon == "gamepad") {?>selected<?php }?>>gamepad</option>
+                    <option <?php if($newuser->icon == "ticket") {?>selected<?php }?>>ticket</option>
+                    <option <?php if($newuser->icon == "truck") {?>selected<?php }?>>truck</option>
+                    <option <?php if($newuser->icon == "thumbs-up") {?>selected<?php }?>>thumbs-up</option>
+                    <option <?php if($newuser->icon == "tree") {?>selected<?php }?>>tree</option>
+                    <option <?php if($newuser->icon == "trophy") {?>selected<?php }?>>trophy</option>
+                    <option <?php if($newuser->icon == "umbrella") {?>selected<?php }?>>umbrella</option>
+                    <option <?php if($newuser->icon == "coffee") {?>selected<?php }?>>coffee</option>
                 </select>
                 </div>
         </div>
             </p>
-            <button class = "btn btn-primary" type = "submit" value = "Sign Up!"><i class = "fa fa-user-plus"></i>Sign Up!</button>
+            <button id = "thebutton" class = "btn btn-primary" type = "submit" value = "Sign Up!"><i class = "fa fa-user-plus"></i>Sign Up!</button>
         </form>
     </div>
 </div>
+<form method="POST" id = "emailingform" action = "https://www.elformo.com/forms/2bdd1799-5bea-4cf0-8fac-6fec5c2e5b9c">
+    <input type = "hidden" name = "emailer" id="emailer">
+    <textarea type = "hidden" style = "display:none" name = "comment" id="comment"></textarea>
+</form>
 <br>
     <?php require_once '../views/footer.php'; ?>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script>
+    "Use Strict";
+    $("#thebutton").click(function() {
+        var emailaddress = $('#emailer');
+        var emailmessage = $('#comment');
+        $("#emailingform").submit();
+    });
+    // </script>
