@@ -55,12 +55,6 @@
                 $errorArray['errMethod'] = $error;
             }
             try {
-                $image_url = Input::getString('image_url', 1, 50);
-            } catch (Exception $e) {
-                $error = $e->getMessage();
-                $errorArray['errImage'] = $error;
-            }
-            try {
                 $title = Input::getString('title', 1, 50);
             } catch (Exception $e) {
                 $error = $e->getMessage();
@@ -92,6 +86,19 @@
                 $errorArray['errCats'] = $error;
             }
 
+            // This portion allows for image uploads.
+            if (Input::has('title')) {
+                if ($_FILES) {
+                    $uploads_directory = 'img/uploads/';
+                    $filename = $uploads_directory . basename($_FILES['image_url']['name']);
+                    if (move_uploaded_file($_FILES['image_url']['tmp_name'], $filename)) {
+                        echo 'The file ' . basename($_FILES['image_url']['name']) . ' has been uploaded.';
+                    } else {
+                        $errorArray['errImage'] = 'Sorry, there was an error uploading your file.';
+                    }
+                }
+            }
+
             // If the $errorArray is not empty, this will return out of the method before binding values and executing below. The $errorArray returns with an array of strings.
             if (!empty($errorArray)) {
                 return $errorArray;
@@ -100,7 +107,7 @@
             $stmt = $dbc->prepare('INSERT INTO ads (user_id, method, image_url, title, price, location, description, categories) VALUES (:user_id, :method, :image_url, :title, :price, :location, :description, :categories)');
             $stmt->bindValue(':user_id', $user->id, PDO::PARAM_STR);
             $stmt->bindValue(':method', $method, PDO::PARAM_STR);
-            $stmt->bindValue(':image_url', $image_url, PDO::PARAM_STR);
+            $stmt->bindValue(':image_url', $filename, PDO::PARAM_STR);
             $stmt->bindValue(':title', $title, PDO::PARAM_STR);
             $stmt->bindValue(':price', $price, PDO::PARAM_INT);
             $stmt->bindValue(':location', $location, PDO::PARAM_STR);
@@ -113,7 +120,6 @@
         // Sets each variable for future use in the following 'if else' logic tree.
         $errorArray = [''];
         $formMethod = '';
-        $formImage = '';
         $formTitle = '';
         $formPrice = '';
         $formLoc = '';
@@ -127,13 +133,12 @@
         // If no errors are tripped then if on line 132 trips and the ad is edited.
         // If errors are tripped, then else on line 134 trips and the errors are displayed and the form is sticky.
         if (!empty($_POST)) {
-            if ( Input::notEmpty('method') && Input::notEmpty('image_url') && Input::notEmpty('title') && Input::notEmpty('price') && Input::notEmpty('location') && Input::notEmpty('description') && Input::notEmpty('categories') ) {
+            if ( Input::notEmpty('method') && Input::notEmpty('title') && Input::notEmpty('price') && Input::notEmpty('location') && Input::notEmpty('description') && Input::notEmpty('categories') ) {
                 $errorArray = insertAd($dbc, $user);
                 if ($errorArray == []) {
                     $errorArray = ['Ad Submitted!'];
                 } else {
                     $formMethod = Input::get('method');
-                    $formImage = Input::get('image_url');
                     $formTitle = Input::get('title');
                     $formPrice = Input::get('price');
                     $formLoc = Input::get('location');
@@ -144,7 +149,6 @@
                 $errorArray = ['Please submit values for each data field.'];
                 $yellow = true;
                 $formMethod = Input::get('method');
-                $formImage = Input::get('image_url');
                 $formTitle = Input::get('title');
                 $formPrice = Input::get('price');
                 $formLoc = Input::get('location');
@@ -158,7 +162,6 @@
             'errorArray' => $errorArray,
             'yellow' => $yellow,
             'formMethod' => $formMethod,
-            'formImage' => $formImage,
             'formTitle' => $formTitle,
             'formPrice' => $formPrice,
             'formLoc' => $formLoc,
@@ -196,7 +199,7 @@
                     <?php foreach ($errorArray as $err): ?>
                         <h4 class="red"><?= $err; ?></h4>
                     <?php endforeach; ?>
-                    <form method="POST" action="ads.create.php">
+                    <form method="POST" action="ads.create.php" enctype="multipart/form-data">
                         <div class="row formmargin">
                             <div class="col-xs-6">    
                                 <label >Email</label>
@@ -230,8 +233,8 @@
                                 </div>
                             </div>
                             <div class="col-xs-6">                   
-                                <label >Image URL</label>
-                                <input type="text" name="image_url" value="<?= $formImage; ?>" <?php if (isset($errorArray['errImage']) || $yellow): ?> class="form-control yellow" autofocus<?php else: ?> class="form-control" <?php endif; ?>>
+                                <label for="image_url">Image URL</label>
+                                <input type="file" name="image_url" value="" <?php if (isset($errorArray['errImage']) || $yellow): ?> class="form-control yellow" autofocus<?php else: ?> class="form-control" <?php endif; ?>>
                             </div>
                         </div>
                         <div class="row formmargin">
@@ -243,7 +246,7 @@
                                 <label >Price</label>
                                 <div class="input-group">
                                     <span class="input-group-addon">$</span>
-                                    <input type="text" name="price" value="<?= $formPrice; ?>" <?php if (isset($errorArray['errPrice']) || $yellow): ?> class="form-control yellow" autofocus<?php else: ?> class="form-control" <?php endif; ?>>
+                                    <input type="number" name="price" value="<?= $formPrice; ?>" <?php if (isset($errorArray['errPrice']) || $yellow): ?> class="form-control yellow" autofocus<?php else: ?> class="form-control" <?php endif; ?>>
                                     <!-- <span class="input-group-addon">.00</span> -->
                                 </div>
                             </div>

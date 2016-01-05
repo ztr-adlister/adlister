@@ -63,12 +63,6 @@
                 $errorArray['errMethod'] = $error;
             }
             try {
-                $image_url = Input::getString('image_url', 1, 50);
-            } catch (Exception $e) {
-                $error = $e->getMessage();
-                $errorArray['errImage'] = $error;
-            }
-            try {
                 $title = Input::getString('title', 1, 50);
             } catch (Exception $e) {
                 $error = $e->getMessage();
@@ -105,6 +99,25 @@
                 $errorArray['errCats'] = $error;
             }
 
+            // This portion allows for image uploads.
+            // If the user does not upload an image, the value in the readonly input of image url is used instead.
+            if (!isset($_FILES['image_upload'])) {
+                $filename = Input::get('image_url'); 
+            } else {
+                if ($_FILES['image_upload']['name'] != '') {
+                    $uploads_directory = 'img/uploads/';
+                    $filename = $uploads_directory . basename($_FILES['image_upload']['name']);
+                    if (move_uploaded_file($_FILES['image_upload']['tmp_name'], $filename)) {
+                        echo 'The file ' . basename($_FILES['image_upload']['name']) . ' has been uploaded.';
+                    } else {
+                        $errorArray['errImage'] = 'Sorry, there was an error uploading your file.';
+                        var_dump($_FILES);
+                    }
+                } else {
+                    $filename = Input::get('image_url');
+                }
+            }
+
             // If the $errorArray is not empty, this will return out of the method before binding values and executing below. The $errorArray returns with an array of strings.
             if (!empty($errorArray)) {
                 return $errorArray;
@@ -114,7 +127,7 @@
             $stmt->bindValue(':id', $adid, PDO::PARAM_INT);
             $stmt->bindValue(':user_id', $user->id, PDO::PARAM_STR);
             $stmt->bindValue(':method', $method, PDO::PARAM_STR);
-            $stmt->bindValue(':image_url', $image_url, PDO::PARAM_STR);
+            $stmt->bindValue(':image_url', $filename, PDO::PARAM_STR);
             $stmt->bindValue(':title', $title, PDO::PARAM_STR);
             $stmt->bindValue(':price', $price, PDO::PARAM_INT);
             $stmt->bindValue(':location', $location, PDO::PARAM_STR);
@@ -137,6 +150,7 @@
         $yellow = false;
 
         // If an ad is selected for editing, then this will populate each input with the ad's data from the ads table.
+        // If no ad is selected, such as landing on the page at first or trying to submit an empty form, the else on line 152 will display.
         if (isset($_POST['ad_to_edit'])) {
             $errorArray = ['Make your edits.'];
             $yellow = true;
@@ -148,7 +162,9 @@
             $formDes = $adToEditObj->description;
             $formCat = explode(', ', $adToEditObj->categories);
             $formAdId = $adToEdit;
-        } 
+        } else {
+            $errorArray = ['Please select an ad to edit.'];
+        }
         
         // If none of these are set in the $_POST, then nothing happens. This is the outer most if.
         // If these are empty, then the else on line 173 is tripped. Inner if/else on lines 158 and 173.
@@ -244,7 +260,7 @@
                         <button class="btn btn-default" type="submit">Load for Editing</button>
                     </form>
 
-                    <form method="POST" action="ads.edit.php">
+                    <form method="POST" action="ads.edit.php" enctype="multipart/form-data">
                         <div class="row formmargin">
                             <div class="col-xs-6">    
                                 <label >Email</label>
@@ -284,7 +300,9 @@
                             </div>
                             <div class="col-xs-6">                   
                                 <label >Image URL</label>
-                                <input type="text" name="image_url" value="<?= $formImage; ?>" <?php if (isset($errorArray['errImage']) || $yellow): ?> class="form-control yellow" autofocus<?php else: ?> class="form-control" <?php endif; ?>>
+                                <input type="text" name="image_url" value="<?= $formImage; ?>" class="form-control" readonly>
+                                <label >Or Upload a Different Image</label>
+                                <input type="file" name="image_upload" value="" <?php if (isset($errorArray['errImage']) || $yellow): ?> class="form-control yellow" autofocus<?php else: ?> class="form-control" <?php endif; ?>>
                             </div>
                         </div>
                         <div class="row formmargin">
@@ -296,7 +314,7 @@
                                 <label >Price</label>
                                 <div class="input-group">
                                     <span class="input-group-addon">$</span>
-                                    <input type="text" name="price" value="<?= $formPrice; ?>" <?php if (isset($errorArray['errPrice']) || $yellow): ?> class="form-control yellow" autofocus<?php else: ?> class="form-control" <?php endif; ?>>
+                                    <input type="number" name="price" value="<?= $formPrice; ?>" <?php if (isset($errorArray['errPrice']) || $yellow): ?> class="form-control yellow" autofocus<?php else: ?> class="form-control" <?php endif; ?>>
                                 </div>
                             </div>
                             <div class="col-xs-4">

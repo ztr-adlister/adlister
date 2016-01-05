@@ -100,7 +100,7 @@
                     <div class="bigboxtop hidden-xs hidden-sm">
                         <h1 class="boxtitle">Spatula Spotlight! <?= $spotlight['title']?></h1>
                     </div>
-                    <div class="bigbox hidden-xs hidden-sm" style="background:black url(../img/<?= $spotlight['image_url']?>) center center repeat;background-size:contain;">
+                    <div class="bigbox hidden-xs hidden-sm" style="background:black url(../<?= $spotlight['image_url']?>) center center repeat;background-size:contain;">
                     </div>
                     
                     <!-- The ads are retrieved from the database and are all displayed by the foreach loop. -->
@@ -114,7 +114,7 @@
                             <?php endif; ?>
                         <div class="adSquare" title="<?= $fullTitle ?>">
                             <div class="forimages">
-                                <img src="img/<?= $ad['image_url']; ?>" class="img-responsive" alt="Responsive image">
+                                <img src="<?= $ad['image_url']; ?>" class="img-responsive" alt="Responsive image">
                             </div>
                             <a href="ads.show.php?id=<?=$ad['id'];?>"><?= $adEllipsedTitle; ?></a>
                             <p class="priceTag">$<?= "{$ad['price']}"; ?></p>
