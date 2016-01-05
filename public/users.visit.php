@@ -37,7 +37,7 @@ if(User::finduserbyusername($usertovisit)) {
     <body class = "meetColor">
    <?php require_once '../views/navbar.php';?>
     <h2 class = "show textinfrontofbackground"><?=$visitinguser['username']?>'s Ads</h2>
-    <div id = "box" style = "background-color: <?=$boxcolor?>;"><br><br><i id = "icon" class = "fa fa-<?=$visitinguser['icon']?> fa-5x"></i></div>
+    <div class = "hidden-xs hidden-sm" id = "box" style = "background-color: <?=$boxcolor?>;"><br><br><i id = "icon" class = "fa fa-<?=$visitinguser['icon']?> fa-5x"></i></div>
  <!-- Ads the user has posted -->
  <div class = "row">
     <div class ="col-md-8 col-md-offset-2 col-sm-7 col-sm-offset-2 showads">
