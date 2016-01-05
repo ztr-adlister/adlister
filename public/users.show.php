@@ -15,13 +15,15 @@ if (!Auth::check()) {
     die();
 }
 
-// Grabs the necessary data from the database
+// Grabs the user data
 User::dbConnect();
 $stmt = $dbc->prepare('SELECT * FROM users WHERE username = :username');
 $stmt->bindValue(':username', $_SESSION['Loggedinuser'], PDO::PARAM_STR);
 $stmt->execute();
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 $boxcolor = $user['boxcolor'];
+
+// Grabs the ad data
 $stmt1 = $dbc->prepare('SELECT * FROM ads WHERE user_id = :id');
 $stmt1->bindValue(':id', $user['id'], PDO::PARAM_INT);
 $stmt1->execute();
@@ -67,30 +69,56 @@ if(Input::notempty('adid')) {
     <body class = "meetColor">
     <?php require_once '../views/navbar.php'; ?>
 <!-- Your username, box, and icon -->
-    	<h2 class = "show textinfrontofbackground">Hello, <?=$user['username'] ?>!</h2>
-        <div class = "hidden-xs hidden-sm" id = "box" style = "background-color: <?=$boxcolor?>;"><br><br><i id = "icon" class = "fa fa-<?=$user['icon']?> fa-5x"></i></div>
+<div class="container">
+<div class ="row">
+    <div class ="col-md-12">
+    <!-- Shows username, box, and icon -->
+    	<h2 class ="show textinfrontofbackground">Hello, <?=$user['username'] ?>!</h2>
+        <div class ="hidden-xs hidden-sm" id ="box" style ="background-color: <?=$boxcolor?>;"><br><br><i id ="icon" class ="fa fa-<?=$user['icon']?> fa-5x"></i></div>
+    </div>
+</div>
 
 <!-- Ads the user has posted -->
-    	<h3 class = "show textinfrontofbackground">Your Ads:</h3>
-    	<ul class = "showads">
-            <div class = "col-md-7 col-md-offset-2 col-sm-7 col-sm-offset-2">
-                <br>
+<h3 class ="show textinfrontofbackground">Your Ads:</h3>
+<div class ="row">
+    <div class ="col-md-8 col-md-offset-2 col-sm-7 col-sm-offset-2 showads">
+        <ul><br>
+        <!-- Shows the image, title, description, and price of every ad you have posted -->
             <?php foreach($userads as $advalue) {?>
-                <li><a class = "hidden-xs hidden-sm" href = "ads.show.php?id=<?=$advalue['id']?>"><img id = "image" src = "img/<?=$advalue['image_url']?>" class = "img-responsive" alt="Responsive image"></a></li>
+
+            <!-- image -->
+                <li><a class="hidden-xs hidden-sm" href="ads.show.php?id=<?=$advalue['id']?>"><img id="image" src ="<?=$advalue['image_url']?>" class="img-responsive" alt="Responsive image"></a></li>
+
+            <!-- ad title -->
             <li><strong>Title:</strong><a href = "ads.show.php?id=<?=$advalue['id']?>"><?=$advalue['title']?></a></li>
+
+            <!-- ad description -->
             <li><strong>Description:</strong> <?=$advalue['description']?></li>
+
+            <!-- ad price -->
             <li><strong>Price:</strong> $<?=$advalue['price']?></li>
+
+            <!-- button to delete the ad -->
             <li><button class = "deleter" data-id="<?=$advalue['id']?>" data-name = "<?=$advalue['title']?>"><i class = "fa fa-trash"></i>Delete this Ad</button></li>
             <br><br><br>
             <?php } ?>
-            </div>
-        <button class = "btn btn-warning col-md-6 hidden-xs hidden-sm"><a href="ads.create.php" id = "createads"><i class = "fa fa-commenting-o"></i>Post a new Ad</a></button>
-        <br><br><br><br>
-        <button class = "btn btn-success hidden-xs hidden-sm"><a href="ads.edit.php" id = "editads"><i class = "fa fa-pencil hidden-sm"></i>Edit an existing Ad</a></button>
-        <br><br><br>
         </ul>
-    	<br><br><br><br><br><br><br><br><br><br>
-<!-- Takes you to the edit profile page -->
+<!-- Buttons inside ad space -->
+        <div class = "row">
+            <div class = "col-md-6">
+            <!-- Create an ad -->
+                <button class = "btn btn-warning"><a href="ads.create.php" id = "createads"><i class = "fa fa-commenting-o"></i>Post a new Ad</a></button>
+            </div>
+
+            <div class = "col-md-6">
+            <!-- Edit an ad -->
+                <button class = "btn btn-success"><a href="ads.edit.php" id = "editads"><i class = "fa fa-pencil hidden-sm"></i>Edit an existing Ad</a></button>
+            </div>
+        </div>
+    </div>
+</div>
+</div> <!-- End of the ad display-->
+    	<!-- Takes you to the edit profile page -->
     	<a class = "show" id = "editprofile" href="users.edit.php"><i class = "fa fa-pencil"></i>Edit your profile</a>
         <br><br>
 <!-- Logs you out -->
@@ -99,6 +127,7 @@ if(Input::notempty('adid')) {
 <!-- Deletes your profile -->
         <a class="show" id="deleteprofile" data-id="<?=$user['id']?>" data-name="<?=$user['username']?>"><i class = "fa fa-trash"></i>Delete Profile</a>
         <br><br><br>
+</div> <!-- end of container -->
     </body>
     <?php require_once '../views/footer.php'; ?>
 

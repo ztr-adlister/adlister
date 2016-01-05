@@ -63,8 +63,10 @@ if(Auth::check()) {
                             </div>    
                         </div>
                         
-                        <button class="btn btn-default" type="submit"><i class="fa fa-check"></i></span>Submit</button>
+                        <button class="btn btn-default" type="submit"><i class="fa fa-sign-in"></i></span>Log in!</button>
                     </form>
+                    
+                    <br>
                     <button class = "btn btn-primary"><a href = "auth.forgot.php" id = "forgot">Forgot Password?</a></button></div>
             </div>        
             <!-- <h2><?= $login ?><h2> -->

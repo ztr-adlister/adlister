@@ -84,6 +84,7 @@ if(Auth::check()) {
                         </div>
                         <button class="btn btn-default" type="submit"><i class="fa fa-check"></i></span>Submit</button>
                     </form>
+                    <br>
                     <button class = "btn btn-primary"><i class = "fa fa-arrow-left"></i><a id = "forgot" href="auth.login.php">To login</a></button>
                 </div>
             </div>        
